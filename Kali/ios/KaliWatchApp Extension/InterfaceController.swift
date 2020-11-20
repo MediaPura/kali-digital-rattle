@@ -6,21 +6,39 @@
 //
 
 import WatchKit
+import AVFoundation
 import Foundation
 
+class InterfaceController: WKInterfaceController 
+{
+    @IBOutlet private weak var animatedImage: WKInterfaceImage!
+    private var player: AVPlayer!
+    private let imageRange = NSRange(location: 0, length: 40)
 
-class InterfaceController: WKInterfaceController {
+    private var animationDuration: TimeInterval = 1
 
-    override func awake(withContext context: Any?) {
-        // Configure interface objects here.
+    override func awake(withContext context: Any?) 
+    {
+        super.awake(withContext: context)
+        animatedImage.setImageNamed("earth")
+    }
+
+    private func slowAnimationAndPlayIt()
+    {
+        animationDuration += 1
+        animatedImage.startAnimatingWithImages(in: imageRange, 
+                                               duration: animationDuration, 
+                                               repeatCount: 0)
+    }
+
+    override func willActivate() 
+    {
+        super.willActivate()
+        slowAnimationAndPlayIt()
     }
     
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+    @IBAction func tappedImage()
+    {
+        slowAnimationAndPlayIt()
     }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-    }
-
 }

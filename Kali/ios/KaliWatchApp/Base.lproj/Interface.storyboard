@@ -12,7 +12,19 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="KaliWatchApp" customModuleProvider="target">
                     <items>
                         <label alignment="left" text="Time to change your diaper!" id="SbE-jU-MtH"/>
+                        <imageView alignment="left" image="earth0" id="rJ6-SX-jdB">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="sO5-ZO-Yf6">
+                                    <connections>
+                                        <action selector="tappedImage" destination="AgC-eL-Hgc" id="Llu-tC-VxP"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </imageView>
                     </items>
+                    <connections>
+                        <outlet property="animatedImage" destination="rJ6-SX-jdB" id="syK-RJ-f8C"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
@@ -49,4 +61,7 @@
             <point key="canvasLocation" x="545" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="earth0" width="200" height="190.5"/>
+    </resources>
 </document>
