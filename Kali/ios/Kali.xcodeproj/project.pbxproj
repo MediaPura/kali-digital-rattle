@@ -18,6 +18,15 @@
 		2DCD954D1E0B4F2C00145EB5 /* KaliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KaliTests.m */; };
 		3A4B83179DE1EF69EA5146A1 /* libPods-Kali-KaliTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A486F1650F0CD794663FF131 /* libPods-Kali-KaliTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AC10332B2568194300162259 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1033292568194300162259 /* Interface.storyboard */; };
+		AC10332D2568194400162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC10332C2568194400162259 /* Assets.xcassets */; };
+		AC1033342568194400162259 /* KaliWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC1033332568194400162259 /* KaliWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC1033392568194400162259 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1033382568194400162259 /* InterfaceController.swift */; };
+		AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333A2568194400162259 /* ExtensionDelegate.swift */; };
+		AC10333D2568194400162259 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333C2568194400162259 /* NotificationController.swift */; };
+		AC10333F2568194400162259 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333E2568194400162259 /* ComplicationController.swift */; };
+		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
+		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -37,7 +46,46 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "Kali-tvOS";
 		};
+		AC1033352568194400162259 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC1033322568194400162259;
+			remoteInfo = "KaliWatchApp Extension";
+		};
+		AC1033442568194500162259 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC1033262568194300162259;
+			remoteInfo = KaliWatchApp;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC1033472568194500162259 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC10334A2568194500162259 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AC1033342568194400162259 /* KaliWatchApp Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -62,6 +110,18 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Kali/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9476E734264D708B48A29182 /* Pods-Kali-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		A486F1650F0CD794663FF131 /* libPods-Kali-KaliTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kali-KaliTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1033272568194300162259 /* KaliWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaliWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC10332A2568194300162259 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		AC10332C2568194400162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC10332E2568194400162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC1033332568194400162259 /* KaliWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KaliWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1033382568194400162259 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		AC10333A2568194400162259 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		AC10333C2568194400162259 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		AC10333E2568194400162259 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -99,6 +159,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC1033302568194400162259 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +229,8 @@
 				13B07FAE1A68108700A75B9A /* Kali */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* KaliTests */,
+				AC1033282568194300162259 /* KaliWatchApp */,
+				AC1033372568194400162259 /* KaliWatchApp Extension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E34A86F701F24680D9CA42F7 /* Pods */,
@@ -178,8 +247,34 @@
 				00E356EE1AD99517003FC87E /* KaliTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* Kali-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* Kali-tvOSTests.xctest */,
+				AC1033272568194300162259 /* KaliWatchApp.app */,
+				AC1033332568194400162259 /* KaliWatchApp Extension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AC1033282568194300162259 /* KaliWatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				AC1033292568194300162259 /* Interface.storyboard */,
+				AC10332C2568194400162259 /* Assets.xcassets */,
+				AC10332E2568194400162259 /* Info.plist */,
+			);
+			path = KaliWatchApp;
+			sourceTree = "<group>";
+		};
+		AC1033372568194400162259 /* KaliWatchApp Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC1033382568194400162259 /* InterfaceController.swift */,
+				AC10333A2568194400162259 /* ExtensionDelegate.swift */,
+				AC10333C2568194400162259 /* NotificationController.swift */,
+				AC10333E2568194400162259 /* ComplicationController.swift */,
+				AC1033402568194500162259 /* Assets.xcassets */,
+				AC1033422568194500162259 /* Info.plist */,
+				AC1033432568194500162259 /* PushNotificationPayload.apns */,
+			);
+			path = "KaliWatchApp Extension";
 			sourceTree = "<group>";
 		};
 		E34A86F701F24680D9CA42F7 /* Pods */ = {
@@ -194,7 +289,6 @@
 				CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */,
 				9476E734264D708B48A29182 /* Pods-Kali-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -232,10 +326,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C80A79C5C29C07D614DA6D80 /* [CP] Copy Pods Resources */,
+				AC1033472568194500162259 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AC1033452568194500162259 /* PBXTargetDependency */,
 			);
 			name = Kali;
 			productName = Kali;
@@ -281,12 +377,47 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* Kali-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		AC1033262568194300162259 /* KaliWatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC10334E2568194500162259 /* Build configuration list for PBXNativeTarget "KaliWatchApp" */;
+			buildPhases = (
+				AC1033252568194300162259 /* Resources */,
+				AC10334A2568194500162259 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC1033362568194400162259 /* PBXTargetDependency */,
+			);
+			name = KaliWatchApp;
+			productName = KaliWatchApp;
+			productReference = AC1033272568194300162259 /* KaliWatchApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AC1033322568194400162259 /* KaliWatchApp Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC10334D2568194500162259 /* Build configuration list for PBXNativeTarget "KaliWatchApp Extension" */;
+			buildPhases = (
+				AC10332F2568194400162259 /* Sources */,
+				AC1033302568194400162259 /* Frameworks */,
+				AC1033312568194400162259 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KaliWatchApp Extension";
+			productName = "KaliWatchApp Extension";
+			productReference = AC1033332568194400162259 /* KaliWatchApp Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -294,6 +425,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = SHR79YU44T;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -304,6 +436,16 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					AC1033262568194300162259 = {
+						CreatedOnToolsVersion = 12.2;
+						DevelopmentTeam = SHR79YU44T;
+						ProvisioningStyle = Automatic;
+					};
+					AC1033322568194400162259 = {
+						CreatedOnToolsVersion = 12.2;
+						DevelopmentTeam = SHR79YU44T;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -324,6 +466,8 @@
 				00E356ED1AD99517003FC87E /* KaliTests */,
 				2D02E47A1E0B4A5D006451C7 /* Kali-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* Kali-tvOSTests */,
+				AC1033262568194300162259 /* KaliWatchApp */,
+				AC1033322568194400162259 /* KaliWatchApp Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -357,6 +501,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC1033252568194300162259 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
+				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC1033312568194400162259 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC1033412568194500162259 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +751,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC10332F2568194400162259 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC10333D2568194400162259 /* NotificationController.swift in Sources */,
+				AC10333F2568194400162259 /* ComplicationController.swift in Sources */,
+				AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */,
+				AC1033392568194400162259 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -603,7 +775,28 @@
 			target = 2D02E47A1E0B4A5D006451C7 /* Kali-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
+		AC1033362568194400162259 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC1033322568194400162259 /* KaliWatchApp Extension */;
+			targetProxy = AC1033352568194400162259 /* PBXContainerItemProxy */;
+		};
+		AC1033452568194500162259 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC1033262568194300162259 /* KaliWatchApp */;
+			targetProxy = AC1033442568194500162259 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC1033292568194300162259 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC10332A2568194300162259 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
@@ -656,6 +849,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SHR79YU44T;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Kali/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -664,7 +858,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali;
 				PRODUCT_NAME = Kali;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -679,6 +873,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SHR79YU44T;
 				INFOPLIST_FILE = Kali/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -686,7 +881,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali;
 				PRODUCT_NAME = Kali;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -916,6 +1111,132 @@
 			};
 			name = Release;
 		};
+		AC1033482568194500162259 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SHR79YU44T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = KaliWatchApp_Extension;
+				INFOPLIST_FILE = KaliWatchApp/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Debug;
+		};
+		AC1033492568194500162259 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SHR79YU44T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = KaliWatchApp_Extension;
+				INFOPLIST_FILE = KaliWatchApp/Info.plist;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Release;
+		};
+		AC10334B2568194500162259 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SHR79YU44T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "KaliWatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch.extension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Debug;
+		};
+		AC10334C2568194500162259 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SHR79YU44T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "KaliWatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch.extension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -960,6 +1281,24 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC10334D2568194500162259 /* Build configuration list for PBXNativeTarget "KaliWatchApp Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC10334B2568194500162259 /* Debug */,
+				AC10334C2568194500162259 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC10334E2568194500162259 /* Build configuration list for PBXNativeTarget "KaliWatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC1033482568194500162259 /* Debug */,
+				AC1033492568194500162259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
