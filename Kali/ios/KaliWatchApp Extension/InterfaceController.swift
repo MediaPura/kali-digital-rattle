@@ -16,11 +16,23 @@ class InterfaceController: WKInterfaceController
     private let imageRange = NSRange(location: 0, length: 40)
 
     private var animationDuration: TimeInterval = 1
+    private var soundPlayer: AVPlayer!
 
     override func awake(withContext context: Any?) 
     {
         super.awake(withContext: context)
         animatedImage.setImageNamed("earth")
+
+        guard let soundURL = Bundle.main.url(forResource: "tilt",
+                                             withExtension: "m4a") else
+        {
+            assertionFailure("All sounds must exist before being loaded")
+            return
+        }
+
+        let asset = AVAsset(url: soundURL)
+        let playerItem = AVPlayerItem(asset: asset)
+        soundPlayer = AVPlayer(playerItem: playerItem)
     }
 
     private func slowAnimationAndPlayIt()
@@ -35,6 +47,7 @@ class InterfaceController: WKInterfaceController
     {
         super.willActivate()
         slowAnimationAndPlayIt()
+        soundPlayer.play()
     }
     
     @IBAction func tappedImage()
