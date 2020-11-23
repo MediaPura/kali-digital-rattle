@@ -27,6 +27,16 @@
 		AC10333F2568194400162259 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333E2568194400162259 /* ComplicationController.swift */; };
 		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
 		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC875473256C7A0800FF4F8B /* Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546E256C7A0800FF4F8B /* Song.m4a */; };
+		AC875474256C7A0800FF4F8B /* Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546E256C7A0800FF4F8B /* Song.m4a */; };
+		AC875475256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */; };
+		AC875476256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */; };
+		AC875477256C7A0800FF4F8B /* PlayGame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875470256C7A0800FF4F8B /* PlayGame.m4a */; };
+		AC875478256C7A0800FF4F8B /* PlayGame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875470256C7A0800FF4F8B /* PlayGame.m4a */; };
+		AC875479256C7A0800FF4F8B /* YouAreBack.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875471256C7A0800FF4F8B /* YouAreBack.m4a */; };
+		AC87547A256C7A0800FF4F8B /* YouAreBack.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875471256C7A0800FF4F8B /* YouAreBack.m4a */; };
+		AC87547B256C7A0800FF4F8B /* SillyFace.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875472256C7A0800FF4F8B /* SillyFace.m4a */; };
+		AC87547C256C7A0800FF4F8B /* SillyFace.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875472256C7A0800FF4F8B /* SillyFace.m4a */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -122,6 +132,11 @@
 		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		AC87546E256C7A0800FF4F8B /* Song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Song.m4a; sourceTree = "<group>"; };
+		AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = AreYouGoing.m4a; sourceTree = "<group>"; };
+		AC875470256C7A0800FF4F8B /* PlayGame.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayGame.m4a; sourceTree = "<group>"; };
+		AC875471256C7A0800FF4F8B /* YouAreBack.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouAreBack.m4a; sourceTree = "<group>"; };
+		AC875472256C7A0800FF4F8B /* SillyFace.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SillyFace.m4a; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -257,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				AC1033292568194300162259 /* Interface.storyboard */,
+				AC87546D256C7A0800FF4F8B /* KaliRecordings */,
 				AC10332C2568194400162259 /* Assets.xcassets */,
 				AC10332E2568194400162259 /* Info.plist */,
 			);
@@ -275,6 +291,18 @@
 				AC1033432568194500162259 /* PushNotificationPayload.apns */,
 			);
 			path = "KaliWatchApp Extension";
+			sourceTree = "<group>";
+		};
+		AC87546D256C7A0800FF4F8B /* KaliRecordings */ = {
+			isa = PBXGroup;
+			children = (
+				AC87546E256C7A0800FF4F8B /* Song.m4a */,
+				AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */,
+				AC875470256C7A0800FF4F8B /* PlayGame.m4a */,
+				AC875471256C7A0800FF4F8B /* YouAreBack.m4a */,
+				AC875472256C7A0800FF4F8B /* SillyFace.m4a */,
+			);
+			path = KaliRecordings;
 			sourceTree = "<group>";
 		};
 		E34A86F701F24680D9CA42F7 /* Pods */ = {
@@ -508,8 +536,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC875479256C7A0800FF4F8B /* YouAreBack.m4a in Resources */,
+				AC875475256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */,
+				AC875477256C7A0800FF4F8B /* PlayGame.m4a in Resources */,
 				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
+				AC87547B256C7A0800FF4F8B /* SillyFace.m4a in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
+				AC875473256C7A0800FF4F8B /* Song.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,7 +550,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC875478256C7A0800FF4F8B /* PlayGame.m4a in Resources */,
+				AC87547A256C7A0800FF4F8B /* YouAreBack.m4a in Resources */,
+				AC875476256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
+				AC875474256C7A0800FF4F8B /* Song.m4a in Resources */,
+				AC87547C256C7A0800FF4F8B /* SillyFace.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

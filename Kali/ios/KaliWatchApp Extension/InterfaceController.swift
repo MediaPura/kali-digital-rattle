@@ -11,19 +11,22 @@ import Foundation
 
 class InterfaceController: WKInterfaceController 
 {
-    @IBOutlet private weak var animatedImage: WKInterfaceImage!
-    private var player: AVPlayer!
-    private let imageRange = NSRange(location: 0, length: 40)
-
-    private var animationDuration: TimeInterval = 1
-    private var soundPlayer: AVPlayer!
+    @IBOutlet private weak var animatedImage: WKInterfaceImage?
+    private var soundPlayer: AVPlayer?
 
     override func awake(withContext context: Any?) 
     {
         super.awake(withContext: context)
-        animatedImage.setImageNamed("earth")
 
-        guard let soundURL = Bundle.main.url(forResource: "tilt",
+        guard let animatedImage = animatedImage else
+        {
+            assertionFailure("WKInterfaceImage: animatedImage unavailable. Did you hook up the IBOutlet?")
+            return
+        }
+
+        animatedImage.setImageNamed("Smile")
+
+        guard let soundURL = Bundle.main.url(forResource: "PlayGame",
                                              withExtension: "m4a") else
         {
             assertionFailure("All sounds must exist before being loaded")
@@ -35,23 +38,21 @@ class InterfaceController: WKInterfaceController
         soundPlayer = AVPlayer(playerItem: playerItem)
     }
 
-    private func slowAnimationAndPlayIt()
-    {
-        animationDuration += 1
-        animatedImage.startAnimatingWithImages(in: imageRange, 
-                                               duration: animationDuration, 
-                                               repeatCount: 0)
-    }
-
     override func willActivate() 
     {
         super.willActivate()
-        slowAnimationAndPlayIt()
+
+        guard let soundPlayer = soundPlayer else
+        {
+            assertionFailure("The Sound Player must be setup before the watch screen activates")
+            return
+        }
+
         soundPlayer.play()
     }
     
     @IBAction func tappedImage()
     {
-        slowAnimationAndPlayIt()
+
     }
 }

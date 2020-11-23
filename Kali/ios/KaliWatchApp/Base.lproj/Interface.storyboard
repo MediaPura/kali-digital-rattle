@@ -11,8 +11,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="KaliWatchApp" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Time to change your diaper!" id="SbE-jU-MtH"/>
-                        <imageView alignment="left" image="earth0" id="rJ6-SX-jdB">
+                        <imageView width="1" height="1" alignment="left" image="Smile" contentMode="scaleAspectFit" id="rJ6-SX-jdB">
                             <gestureRecognizers>
                                 <tapGestureRecognizer id="sO5-ZO-Yf6">
                                     <connections>
@@ -62,6 +61,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="earth0" width="200" height="190.5"/>
+        <image name="Smile" width="64" height="64"/>
     </resources>
 </document>
