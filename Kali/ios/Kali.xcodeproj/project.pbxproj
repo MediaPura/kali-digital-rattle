@@ -27,16 +27,18 @@
 		AC10333F2568194400162259 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333E2568194400162259 /* ComplicationController.swift */; };
 		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
 		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AC875473256C7A0800FF4F8B /* Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546E256C7A0800FF4F8B /* Song.m4a */; };
-		AC875474256C7A0800FF4F8B /* Song.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546E256C7A0800FF4F8B /* Song.m4a */; };
-		AC875475256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */; };
-		AC875476256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */; };
-		AC875477256C7A0800FF4F8B /* PlayGame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875470256C7A0800FF4F8B /* PlayGame.m4a */; };
-		AC875478256C7A0800FF4F8B /* PlayGame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875470256C7A0800FF4F8B /* PlayGame.m4a */; };
-		AC875479256C7A0800FF4F8B /* YouAreBack.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875471256C7A0800FF4F8B /* YouAreBack.m4a */; };
-		AC87547A256C7A0800FF4F8B /* YouAreBack.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875471256C7A0800FF4F8B /* YouAreBack.m4a */; };
-		AC87547B256C7A0800FF4F8B /* SillyFace.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875472256C7A0800FF4F8B /* SillyFace.m4a */; };
-		AC87547C256C7A0800FF4F8B /* SillyFace.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC875472256C7A0800FF4F8B /* SillyFace.m4a */; };
+		AC5EBF91256DA098002AECFD /* WorldMooseCritters.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8C256DA098002AECFD /* WorldMooseCritters.m4a */; };
+		AC5EBF92256DA098002AECFD /* WorldMooseCritters.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8C256DA098002AECFD /* WorldMooseCritters.m4a */; };
+		AC5EBF93256DA098002AECFD /* Waldo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8D256DA098002AECFD /* Waldo.m4a */; };
+		AC5EBF94256DA098002AECFD /* Waldo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8D256DA098002AECFD /* Waldo.m4a */; };
+		AC5EBF95256DA098002AECFD /* TapMyAntlers.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8E256DA098002AECFD /* TapMyAntlers.m4a */; };
+		AC5EBF96256DA098002AECFD /* TapMyAntlers.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8E256DA098002AECFD /* TapMyAntlers.m4a */; };
+		AC5EBF97256DA098002AECFD /* TapMySnout.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8F256DA098002AECFD /* TapMySnout.m4a */; };
+		AC5EBF98256DA098002AECFD /* TapMySnout.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF8F256DA098002AECFD /* TapMySnout.m4a */; };
+		AC5EBF99256DA098002AECFD /* MoosiePlayGame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF90256DA098002AECFD /* MoosiePlayGame.m4a */; };
+		AC5EBF9A256DA098002AECFD /* MoosiePlayGame.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBF90256DA098002AECFD /* MoosiePlayGame.m4a */; };
+		AC5EBFA2256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBFA1256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a */; };
+		AC5EBFA3256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC5EBFA1256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -132,11 +134,12 @@
 		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		AC87546E256C7A0800FF4F8B /* Song.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Song.m4a; sourceTree = "<group>"; };
-		AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = AreYouGoing.m4a; sourceTree = "<group>"; };
-		AC875470256C7A0800FF4F8B /* PlayGame.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayGame.m4a; sourceTree = "<group>"; };
-		AC875471256C7A0800FF4F8B /* YouAreBack.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouAreBack.m4a; sourceTree = "<group>"; };
-		AC875472256C7A0800FF4F8B /* SillyFace.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SillyFace.m4a; sourceTree = "<group>"; };
+		AC5EBF8C256DA098002AECFD /* WorldMooseCritters.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = WorldMooseCritters.m4a; sourceTree = "<group>"; };
+		AC5EBF8D256DA098002AECFD /* Waldo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Waldo.m4a; sourceTree = "<group>"; };
+		AC5EBF8E256DA098002AECFD /* TapMyAntlers.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = TapMyAntlers.m4a; sourceTree = "<group>"; };
+		AC5EBF8F256DA098002AECFD /* TapMySnout.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = TapMySnout.m4a; sourceTree = "<group>"; };
+		AC5EBF90256DA098002AECFD /* MoosiePlayGame.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = MoosiePlayGame.m4a; sourceTree = "<group>"; };
+		AC5EBFA1256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = WhereDidYouGoSnoutTap.m4a; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -272,7 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				AC1033292568194300162259 /* Interface.storyboard */,
-				AC87546D256C7A0800FF4F8B /* KaliRecordings */,
+				AC5EBF8B256DA098002AECFD /* KaliRecordings */,
 				AC10332C2568194400162259 /* Assets.xcassets */,
 				AC10332E2568194400162259 /* Info.plist */,
 			);
@@ -293,16 +296,18 @@
 			path = "KaliWatchApp Extension";
 			sourceTree = "<group>";
 		};
-		AC87546D256C7A0800FF4F8B /* KaliRecordings */ = {
+		AC5EBF8B256DA098002AECFD /* KaliRecordings */ = {
 			isa = PBXGroup;
 			children = (
-				AC87546E256C7A0800FF4F8B /* Song.m4a */,
-				AC87546F256C7A0800FF4F8B /* AreYouGoing.m4a */,
-				AC875470256C7A0800FF4F8B /* PlayGame.m4a */,
-				AC875471256C7A0800FF4F8B /* YouAreBack.m4a */,
-				AC875472256C7A0800FF4F8B /* SillyFace.m4a */,
+				AC5EBF8C256DA098002AECFD /* WorldMooseCritters.m4a */,
+				AC5EBF8D256DA098002AECFD /* Waldo.m4a */,
+				AC5EBF8E256DA098002AECFD /* TapMyAntlers.m4a */,
+				AC5EBF8F256DA098002AECFD /* TapMySnout.m4a */,
+				AC5EBFA1256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a */,
+				AC5EBF90256DA098002AECFD /* MoosiePlayGame.m4a */,
 			);
-			path = KaliRecordings;
+			name = KaliRecordings;
+			path = ../../../../../../Desktop/KaliRecordings;
 			sourceTree = "<group>";
 		};
 		E34A86F701F24680D9CA42F7 /* Pods */ = {
@@ -536,13 +541,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC875479256C7A0800FF4F8B /* YouAreBack.m4a in Resources */,
-				AC875475256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */,
-				AC875477256C7A0800FF4F8B /* PlayGame.m4a in Resources */,
+				AC5EBF99256DA098002AECFD /* MoosiePlayGame.m4a in Resources */,
+				AC5EBF93256DA098002AECFD /* Waldo.m4a in Resources */,
 				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
-				AC87547B256C7A0800FF4F8B /* SillyFace.m4a in Resources */,
+				AC5EBF91256DA098002AECFD /* WorldMooseCritters.m4a in Resources */,
+				AC5EBF95256DA098002AECFD /* TapMyAntlers.m4a in Resources */,
+				AC5EBF97256DA098002AECFD /* TapMySnout.m4a in Resources */,
+				AC5EBFA2256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
-				AC875473256C7A0800FF4F8B /* Song.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,12 +556,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC875478256C7A0800FF4F8B /* PlayGame.m4a in Resources */,
-				AC87547A256C7A0800FF4F8B /* YouAreBack.m4a in Resources */,
-				AC875476256C7A0800FF4F8B /* AreYouGoing.m4a in Resources */,
+				AC5EBF96256DA098002AECFD /* TapMyAntlers.m4a in Resources */,
+				AC5EBF94256DA098002AECFD /* Waldo.m4a in Resources */,
+				AC5EBFA3256DAB33002AECFD /* WhereDidYouGoSnoutTap.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
-				AC875474256C7A0800FF4F8B /* Song.m4a in Resources */,
-				AC87547C256C7A0800FF4F8B /* SillyFace.m4a in Resources */,
+				AC5EBF92256DA098002AECFD /* WorldMooseCritters.m4a in Resources */,
+				AC5EBF9A256DA098002AECFD /* MoosiePlayGame.m4a in Resources */,
+				AC5EBF98256DA098002AECFD /* TapMySnout.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1175,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = KaliWatchApp_Extension;
 				INFOPLIST_FILE = KaliWatchApp/Info.plist;
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch;
@@ -1202,6 +1210,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = KaliWatchApp_Extension;
 				INFOPLIST_FILE = KaliWatchApp/Info.plist;
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1231,6 +1240,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "KaliWatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch.extension;
@@ -1263,6 +1273,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "KaliWatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";

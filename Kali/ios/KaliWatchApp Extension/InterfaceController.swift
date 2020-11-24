@@ -9,50 +9,121 @@ import WatchKit
 import AVFoundation
 import Foundation
 
-class InterfaceController: WKInterfaceController 
+class InterfaceController: WKInterfaceController
 {
-    @IBOutlet private weak var animatedImage: WKInterfaceImage?
-    private var soundPlayer: AVPlayer?
-
-    override func awake(withContext context: Any?) 
+    enum AnimatedCharacterState
     {
-        super.awake(withContext: context)
+        case intro
+        case tapMySnout
+        case awaitingSnoutTap
+        case world
+        case tapMyAntlers
+        case waldoIntroduction
+    }
 
+    var characterState: AnimatedCharacterState = .intro
+
+    @IBOutlet private weak var animatedImage: WKInterfaceImage?
+    private var soundPlayer: AVAudioPlayer?
+
+    private func displayImage(imageName: String, animated: Bool = false)
+    {
         guard let animatedImage = animatedImage else
         {
             assertionFailure("WKInterfaceImage: animatedImage unavailable. Did you hook up the IBOutlet?")
             return
         }
 
-        animatedImage.setImageNamed("Smile")
+        animatedImage.setImageNamed(imageName)
 
-        guard let soundURL = Bundle.main.url(forResource: "PlayGame",
+        if animated
+        {
+            animatedImage.startAnimating()
+        } else
+        {
+            animatedImage.stopAnimating()
+        }
+    }
+
+    private func playSound(soundName: String)
+    {
+        guard let soundURL = Bundle.main.url(forResource: soundName,
                                              withExtension: "m4a") else
         {
             assertionFailure("All sounds must exist before being loaded")
             return
         }
 
-        let asset = AVAsset(url: soundURL)
-        let playerItem = AVPlayerItem(asset: asset)
-        soundPlayer = AVPlayer(playerItem: playerItem)
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            soundPlayer!.delegate = self
+            soundPlayer!.play() 
+        } catch
+        {
+            assertionFailure("It should always be possible to create a sound player")
+        }
     }
 
-    override func willActivate() 
+    override func willActivate()
     {
         super.willActivate()
 
-        guard let soundPlayer = soundPlayer else
+        switch characterState {
+
+        case .intro:
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "MoosiePlayGame")
+
+        case .tapMySnout:
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "TapMySnout")
+
+        case .awaitingSnoutTap:
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "WhereDidYouGoSnoutTap")
+
+        default: break
+
+        }
+    }
+
+    @IBAction func tappedImage()
+    {
+        if characterState == .awaitingSnoutTap
         {
-            assertionFailure("The Sound Player must be setup before the watch screen activates")
+            characterState = .world
+            displayImage(imageName: "earth", animated: true)
+            playSound(soundName: "WorldMooseCritters")
+        }
+
+        
+    }
+}
+
+extension InterfaceController: AVAudioPlayerDelegate
+{
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
+    {
+        // NOTE: (Ted)  Don't continue unless it has played successfully.
+        guard flag else
+        {
             return
         }
 
-        soundPlayer.play()
-    }
-    
-    @IBAction func tappedImage()
-    {
+        switch characterState {
+        case .intro:
+            characterState = .tapMySnout
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "TapMySnout")
+        case .tapMySnout:
+            characterState = .awaitingSnoutTap
+        case .world:
+            characterState = .tapMyAntlers
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "TapMyAntlers")
+
+        default: break
+        }
 
     }
 }
