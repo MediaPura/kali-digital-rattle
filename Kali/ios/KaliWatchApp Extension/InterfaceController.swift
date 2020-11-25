@@ -69,31 +69,46 @@ class InterfaceController: WKInterfaceController
     {
         super.willActivate()
 
-        switch characterState {
-
-        case .intro:
-            displayImage(imageName: "Moosie")
-            playSound(soundName: "MoosiePlayGame")
-
-        case .tapMySnout:
-            displayImage(imageName: "Moosie")
-            playSound(soundName: "TapMySnout")
-
-        case .awaitingSnoutTap:
-            displayImage(imageName: "Moosie")
-            playSound(soundName: "WhereDidYouGoSnoutTap")
-
-        case .tapMyAntlers:
-            displayImage(imageName: "Moosie")
-            playSound(soundName: "TapMyAntlers")
-
-        case .awaitingAntlerTap:
-            displayImage(imageName: "Moosie")
-            playSound(soundName: "TapMyAntlers")
-
-        default: break
-
+        if let soundPlayer = soundPlayer 
+        {
+            soundPlayer.pause()
         }
+
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
+            guard let weakSelf = self else { return }
+
+            switch weakSelf.characterState {
+
+            case .intro:
+                weakSelf.displayImage(imageName: "Moosie")
+                weakSelf.playSound(soundName: "MoosiePlayGame")
+
+            case .tapMySnout:
+                weakSelf.displayImage(imageName: "Moosie")
+                weakSelf.playSound(soundName: "TapMySnout")
+
+            case .awaitingSnoutTap:
+                weakSelf.displayImage(imageName: "Moosie")
+                weakSelf.playSound(soundName: "WhereDidYouGoSnoutTap")
+
+            case .tapMyAntlers:
+                weakSelf.displayImage(imageName: "Moosie")
+                weakSelf.playSound(soundName: "TapMyAntlers")
+
+            case .awaitingAntlerTap:
+                weakSelf.displayImage(imageName: "Moosie")
+                weakSelf.playSound(soundName: "TapMyAntlers")
+
+            case .waldoIntroduction:
+                weakSelf.displayImage(imageName: "Waldo")
+                weakSelf.playSound(soundName: "Waldo")
+
+
+            default: break
+
+            }
+        })
+
     }
 
     @IBAction func tappedImage(gestureRecognizer: WKGestureRecognizer)
