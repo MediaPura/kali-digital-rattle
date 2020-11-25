@@ -15,7 +15,7 @@
                             <gestureRecognizers>
                                 <tapGestureRecognizer id="sO5-ZO-Yf6">
                                     <connections>
-                                        <action selector="tappedImage" destination="AgC-eL-Hgc" id="Llu-tC-VxP"/>
+                                        <action selector="tappedImageWithGestureRecognizer:" destination="AgC-eL-Hgc" id="JMo-ip-IhD"/>
                                     </connections>
                                 </tapGestureRecognizer>
                             </gestureRecognizers>

@@ -18,6 +18,7 @@ class InterfaceController: WKInterfaceController
         case awaitingSnoutTap
         case world
         case tapMyAntlers
+        case awaitingAntlerTap
         case waldoIntroduction
     }
 
@@ -82,20 +83,40 @@ class InterfaceController: WKInterfaceController
             displayImage(imageName: "Moosie")
             playSound(soundName: "WhereDidYouGoSnoutTap")
 
+        case .tapMyAntlers:
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "TapMyAntlers")
+
+        case .awaitingAntlerTap:
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "TapMyAntlers")
+
         default: break
 
         }
     }
 
-    @IBAction func tappedImage()
+    @IBAction func tappedImage(gestureRecognizer: WKGestureRecognizer)
     {
-        if characterState == .awaitingSnoutTap
-        {
+        switch characterState {
+        case .awaitingSnoutTap:
             characterState = .world
             displayImage(imageName: "earth", animated: true)
             playSound(soundName: "WorldMooseCritters")
-        }
+       
+        case .awaitingAntlerTap:
+            let touchPoint = gestureRecognizer.locationInObject()
+            let bounds = gestureRecognizer.objectBounds()
 
+            if touchPoint.y < (bounds.height/2)
+            {
+                characterState = .waldoIntroduction 
+                displayImage(imageName: "Waldo")
+                playSound(soundName: "Waldo")
+            }
+
+        default: break
+        }
         
     }
 }
@@ -105,22 +126,28 @@ extension InterfaceController: AVAudioPlayerDelegate
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {
         // NOTE: (Ted)  Don't continue unless it has played successfully.
-        guard flag else
-        {
-            return
-        }
+        guard flag else { return }
 
         switch characterState {
+
         case .intro:
             characterState = .tapMySnout
             displayImage(imageName: "Moosie")
             playSound(soundName: "TapMySnout")
+
         case .tapMySnout:
             characterState = .awaitingSnoutTap
+
         case .world:
             characterState = .tapMyAntlers
             displayImage(imageName: "Moosie")
             playSound(soundName: "TapMyAntlers")
+        
+        case .tapMyAntlers:
+            characterState = .awaitingAntlerTap
+
+        case .waldoIntroduction:
+            characterState = .intro
 
         default: break
         }
