@@ -27,6 +27,8 @@ class InterfaceController: WKInterfaceController
     @IBOutlet private weak var animatedImage: WKInterfaceImage?
     private var soundPlayer: AVAudioPlayer?
 
+    private var soundIsPlaying: Bool = false
+
     private func displayImage(imageName: String, animated: Bool = false)
     {
         guard let animatedImage = animatedImage else
@@ -59,9 +61,21 @@ class InterfaceController: WKInterfaceController
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
             soundPlayer!.delegate = self
             soundPlayer!.play() 
+            soundIsPlaying = true
         } catch
         {
             assertionFailure("It should always be possible to create a sound player")
+        }
+    }
+
+    override func didDeactivate()
+    {
+        super.didDeactivate()
+
+        if let soundPlayer = soundPlayer 
+        {
+            soundPlayer.pause()
+            soundIsPlaying = false
         }
     }
 
@@ -69,13 +83,10 @@ class InterfaceController: WKInterfaceController
     {
         super.willActivate()
 
-        if let soundPlayer = soundPlayer 
-        {
-            soundPlayer.pause()
-        }
-
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
-            guard let weakSelf = self else { return }
+            guard 
+                let weakSelf = self,
+                !weakSelf.soundIsPlaying else { return }
 
             switch weakSelf.characterState {
 
@@ -94,6 +105,10 @@ class InterfaceController: WKInterfaceController
             case .tapMyAntlers:
                 weakSelf.displayImage(imageName: "Moosie")
                 weakSelf.playSound(soundName: "TapMyAntlers")
+
+            case .world:
+                weakSelf.displayImage(imageName: "earth", animated: true)
+                weakSelf.playSound(soundName: "WorldMooseCritters")
 
             case .awaitingAntlerTap:
                 weakSelf.displayImage(imageName: "Moosie")
@@ -142,6 +157,8 @@ extension InterfaceController: AVAudioPlayerDelegate
     {
         // NOTE: (Ted)  Don't continue unless it has played successfully.
         guard flag else { return }
+
+        soundIsPlaying = false
 
         switch characterState {
 
