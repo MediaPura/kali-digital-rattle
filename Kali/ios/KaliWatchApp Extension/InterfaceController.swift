@@ -145,6 +145,11 @@ class InterfaceController: WKInterfaceController
                 playSound(soundName: "Waldo")
             }
 
+        case .waldoIntroduction:
+            displayImage(imageName: "Moosie")
+            playSound(soundName: "MoosiePlayGame")
+            characterState = .intro
+
         default: break
         }
         
@@ -177,9 +182,6 @@ extension InterfaceController: AVAudioPlayerDelegate
         
         case .tapMyAntlers:
             characterState = .awaitingAntlerTap
-
-        case .waldoIntroduction:
-            characterState = .intro
 
         default: break
         }
