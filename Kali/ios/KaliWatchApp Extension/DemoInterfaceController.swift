@@ -9,7 +9,7 @@ import WatchKit
 import AVFoundation
 import Foundation
 
-class InterfaceController: WKInterfaceController
+class DemoInterfaceController: WKInterfaceController
 {
     enum AnimatedCharacterState
     {
@@ -156,7 +156,7 @@ class InterfaceController: WKInterfaceController
     }
 }
 
-extension InterfaceController: AVAudioPlayerDelegate
+extension DemoInterfaceController: AVAudioPlayerDelegate
 {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {

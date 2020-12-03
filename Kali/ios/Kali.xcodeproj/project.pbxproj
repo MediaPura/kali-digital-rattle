@@ -21,12 +21,14 @@
 		AC10332B2568194300162259 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1033292568194300162259 /* Interface.storyboard */; };
 		AC10332D2568194400162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC10332C2568194400162259 /* Assets.xcassets */; };
 		AC1033342568194400162259 /* KaliWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC1033332568194400162259 /* KaliWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AC1033392568194400162259 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1033382568194400162259 /* InterfaceController.swift */; };
+		AC1033392568194400162259 /* DemoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1033382568194400162259 /* DemoInterfaceController.swift */; };
 		AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333A2568194400162259 /* ExtensionDelegate.swift */; };
 		AC10333D2568194400162259 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333C2568194400162259 /* NotificationController.swift */; };
 		AC10333F2568194400162259 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333E2568194400162259 /* ComplicationController.swift */; };
 		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
 		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ACA6652F2579555800724299 /* SpriteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA6652E2579555800724299 /* SpriteTestController.swift */; };
+		ACA6653725795B4500724299 /* Kali.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA6653625795B4500724299 /* Kali.sks */; };
 		ACBF90F02576D42A0022FCC9 /* WorldMooseCritters.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACBF90EA2576D42A0022FCC9 /* WorldMooseCritters.m4a */; };
 		ACBF90F12576D42A0022FCC9 /* Waldo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACBF90EB2576D42A0022FCC9 /* Waldo.m4a */; };
 		ACBF90F22576D42A0022FCC9 /* WhereDidYouGoSnoutTap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACBF90EC2576D42A0022FCC9 /* WhereDidYouGoSnoutTap.m4a */; };
@@ -127,13 +129,15 @@
 		AC10332C2568194400162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC10332E2568194400162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033332568194400162259 /* KaliWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KaliWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC1033382568194400162259 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		AC1033382568194400162259 /* DemoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoInterfaceController.swift; sourceTree = "<group>"; };
 		AC10333A2568194400162259 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		AC10333C2568194400162259 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AC10333E2568194400162259 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		ACA6652E2579555800724299 /* SpriteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteTestController.swift; sourceTree = "<group>"; };
+		ACA6653625795B4500724299 /* Kali.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Kali.sks; sourceTree = "<group>"; };
 		ACBF90EA2576D42A0022FCC9 /* WorldMooseCritters.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = WorldMooseCritters.m4a; sourceTree = "<group>"; };
 		ACBF90EB2576D42A0022FCC9 /* Waldo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Waldo.m4a; sourceTree = "<group>"; };
 		ACBF90EC2576D42A0022FCC9 /* WhereDidYouGoSnoutTap.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = WhereDidYouGoSnoutTap.m4a; sourceTree = "<group>"; };
@@ -285,7 +289,9 @@
 		AC1033372568194400162259 /* KaliWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
-				AC1033382568194400162259 /* InterfaceController.swift */,
+				AC1033382568194400162259 /* DemoInterfaceController.swift */,
+				ACA6653625795B4500724299 /* Kali.sks */,
+				ACA6652E2579555800724299 /* SpriteTestController.swift */,
 				AC10333A2568194400162259 /* ExtensionDelegate.swift */,
 				AC10333C2568194400162259 /* NotificationController.swift */,
 				AC10333E2568194400162259 /* ComplicationController.swift */,
@@ -555,6 +561,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA6653725795B4500724299 /* Kali.sks in Resources */,
 				ACBF91192576D6C50022FCC9 /* MoosiePlayGame.m4a in Resources */,
 				ACBF91032576D6BB0022FCC9 /* Waldo.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
@@ -802,7 +809,8 @@
 				AC10333D2568194400162259 /* NotificationController.swift in Sources */,
 				AC10333F2568194400162259 /* ComplicationController.swift in Sources */,
 				AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */,
-				AC1033392568194400162259 /* InterfaceController.swift in Sources */,
+				AC1033392568194400162259 /* DemoInterfaceController.swift in Sources */,
+				ACA6652F2579555800724299 /* SpriteTestController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
