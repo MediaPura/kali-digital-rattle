@@ -19,13 +19,39 @@ class SpriteTestInterfaceController: WKInterfaceController
 
         guard 
             let spriteKitScene = spriteKitScene,
-            let kaliScene = SKScene(fileNamed: "Kali.sks") else
+            let kaliScene = KaliScene(fileNamed: "Kali.sks") else
         {
             assertionFailure("Expected to load Kali Scene")
             return
         }
 
         spriteKitScene.presentScene(kaliScene, transition: .crossFade(withDuration: 0.1))
+    }
+}
+
+class KaliScene: SKScene
+{
+    var kaliNode: SKSpriteNode?
+
+    override func sceneDidLoad()
+    {
+        super.sceneDidLoad()
+
+        kaliNode = childNode(withName: "Kali") as? SKSpriteNode
+
+        guard let kaliNode = kaliNode else
+        {
+            assertionFailure("Unable to find Kali Node in SpriteKit Scene")
+            return
+        }
+
+        guard let kaliTexture = kaliNode.texture else
+        {
+            assertionFailure("Unable to get Kali Texture")
+            return
+        }
+
+        kaliTexture.filteringMode = .nearest
     }
 }
 
