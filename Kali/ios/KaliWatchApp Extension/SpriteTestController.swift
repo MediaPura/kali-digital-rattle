@@ -35,7 +35,31 @@ class SpriteTestInterfaceController: WKInterfaceController
         crownSequencer.focus()
     }
 
+    // NOTE: (Ted)  Switch the presentation mode whenever the scene is tapped.
+    @IBAction func tappedScene(gestureRecognizer: WKGestureRecognizer)
+    {
+        guard 
+            let kaliScene = kaliScene,
+            let kaliNode = kaliScene.kaliNode else
+        {
+            assertionFailure("Kali Scene and Kali Node should be hooked up")
+            return
+        }
 
+        switch kaliScene.presentationMode {
+            case .pixelArt:
+                kaliScene.presentationMode = .fullResolution
+                let texture = SKTexture(imageNamed: "KaliHighRes")
+                texture.filteringMode = .linear
+                kaliNode.texture = texture
+            case .fullResolution:
+                kaliScene.presentationMode = .pixelArt
+                let texture = SKTexture(imageNamed: "Kali")
+                texture.filteringMode = .nearest
+                kaliNode.texture = texture
+        }
+
+    }
 }
 
 extension SpriteTestInterfaceController: WKCrownDelegate
@@ -62,6 +86,14 @@ extension SpriteTestInterfaceController: WKCrownDelegate
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
+    
+    enum PresentationMode
+    {
+        case pixelArt
+        case fullResolution
+    }
+
+    var presentationMode: PresentationMode = .pixelArt
 
     override func sceneDidLoad()
     {

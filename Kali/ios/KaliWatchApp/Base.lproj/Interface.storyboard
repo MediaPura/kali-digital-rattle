@@ -11,7 +11,15 @@
             <objects>
                 <controller id="O6m-kx-Yqc" customClass="SpriteTestInterfaceController" customModule="KaliWatchApp_Extension">
                     <items>
-                        <spriteKitScene alignment="left" id="dhq-r9-eLD"/>
+                        <spriteKitScene alignment="left" id="dhq-r9-eLD">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="X1Z-0V-MqM">
+                                    <connections>
+                                        <action selector="tappedSceneWithGestureRecognizer:" destination="O6m-kx-Yqc" id="ziq-Tn-hXQ"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </spriteKitScene>
                     </items>
                     <connections>
                         <outlet property="spriteKitScene" destination="dhq-r9-eLD" id="iKa-vz-fdn"/>
