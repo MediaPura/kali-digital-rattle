@@ -13,6 +13,9 @@ class SpriteTestInterfaceController: WKInterfaceController
 {
     @IBOutlet private weak var spriteKitScene: WKInterfaceSKScene?
 
+    private var kaliScene: KaliScene?
+    private var crownRotationEventCount: Int = 0
+
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
@@ -25,7 +28,34 @@ class SpriteTestInterfaceController: WKInterfaceController
             return
         }
 
+        self.kaliScene = kaliScene
         spriteKitScene.presentScene(kaliScene, transition: .crossFade(withDuration: 0.1))
+
+        crownSequencer.delegate = self
+        crownSequencer.focus()
+    }
+
+
+}
+
+extension SpriteTestInterfaceController: WKCrownDelegate
+{
+    func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double)
+    {
+        guard 
+            let kaliScene = kaliScene,
+            let kaliNode = kaliScene.kaliNode else
+        {
+            return
+        }
+
+        crownRotationEventCount += 1
+
+        if crownRotationEventCount == 30
+        {
+            crownRotationEventCount = 0
+            kaliNode.zRotation = kaliNode.zRotation + 3.14159
+        }
     }
 }
 
