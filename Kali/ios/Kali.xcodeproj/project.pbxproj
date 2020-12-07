@@ -24,7 +24,6 @@
 		AC1033392568194400162259 /* DemoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1033382568194400162259 /* DemoInterfaceController.swift */; };
 		AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333A2568194400162259 /* ExtensionDelegate.swift */; };
 		AC10333D2568194400162259 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333C2568194400162259 /* NotificationController.swift */; };
-		AC10333F2568194400162259 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333E2568194400162259 /* ComplicationController.swift */; };
 		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
 		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ACA6652F2579555800724299 /* SpriteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA6652E2579555800724299 /* SpriteTestController.swift */; };
@@ -132,7 +131,6 @@
 		AC1033382568194400162259 /* DemoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoInterfaceController.swift; sourceTree = "<group>"; };
 		AC10333A2568194400162259 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		AC10333C2568194400162259 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		AC10333E2568194400162259 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 				ACA6652E2579555800724299 /* SpriteTestController.swift */,
 				AC10333A2568194400162259 /* ExtensionDelegate.swift */,
 				AC10333C2568194400162259 /* NotificationController.swift */,
-				AC10333E2568194400162259 /* ComplicationController.swift */,
 				AC1033402568194500162259 /* Assets.xcassets */,
 				AC1033422568194500162259 /* Info.plist */,
 				AC1033432568194500162259 /* PushNotificationPayload.apns */,
@@ -807,7 +804,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC10333D2568194400162259 /* NotificationController.swift in Sources */,
-				AC10333F2568194400162259 /* ComplicationController.swift in Sources */,
 				AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */,
 				AC1033392568194400162259 /* DemoInterfaceController.swift in Sources */,
 				ACA6652F2579555800724299 /* SpriteTestController.swift in Sources */,
@@ -1193,7 +1189,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -1226,7 +1222,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -1258,7 +1254,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -1289,7 +1285,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
