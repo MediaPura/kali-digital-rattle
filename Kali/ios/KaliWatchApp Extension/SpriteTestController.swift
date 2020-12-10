@@ -54,7 +54,7 @@ class SpriteTestInterfaceController: WKInterfaceController
                 kaliNode.texture = texture
             case .fullResolution:
                 kaliScene.presentationMode = .pixelArt
-                let texture = SKTexture(imageNamed: "KaliF")
+                let texture = SKTexture(imageNamed: "KaliB")
                 texture.filteringMode = .nearest
                 kaliNode.texture = texture
         }
