@@ -8,6 +8,7 @@
 import Foundation
 import WatchKit
 import SpriteKit
+import AVFoundation
 
 class SpriteTestInterfaceController: WKInterfaceController
 {
@@ -15,6 +16,44 @@ class SpriteTestInterfaceController: WKInterfaceController
 
     private var kaliScene: KaliScene?
     private var crownRotationEventCount: Int = 0
+
+    private var soundPlayer: AVAudioPlayer?
+    private var soundIsPlaying: Bool = false
+
+    private var soundIndex = 0
+
+    private func playSound(soundName: String)
+    {
+        guard let soundURL = Bundle.main.url(forResource: soundName,
+                                             withExtension: "m4a") else
+        {
+            assertionFailure("All sounds must exist before being loaded")
+            return
+        }
+
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            soundPlayer!.delegate = self
+            soundPlayer!.play() 
+            soundIsPlaying = true
+        } catch
+        {
+            assertionFailure("It should always be possible to create a sound player")
+        }
+    }
+
+    private func incrementIndexAndPlaySound()
+    {
+        soundIndex = soundIndex + 1
+
+        if (soundIndex > 10)
+        {
+            soundIndex = 1
+        }
+
+        let soundName = "\(soundIndex)-clean-full_01"
+        playSound(soundName: soundName)
+    }
 
     override func awake(withContext context: Any?)
     {
@@ -35,30 +74,44 @@ class SpriteTestInterfaceController: WKInterfaceController
         crownSequencer.focus()
     }
 
-    // NOTE: (Ted)  Switch the presentation mode whenever the scene is tapped.
+    override func willActivate()
+    {
+        super.willActivate()
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
+            guard 
+                let weakSelf = self,
+                !weakSelf.soundIsPlaying else { return }
+        
+                weakSelf.incrementIndexAndPlaySound()
+        })
+
+    }
+
+    override func didDeactivate()
+    {
+        super.didDeactivate()
+
+        if let soundPlayer = soundPlayer 
+        {
+            soundPlayer.pause()
+            soundIsPlaying = false
+        }
+    }
+
     @IBAction func tappedScene(gestureRecognizer: WKGestureRecognizer)
     {
-        guard 
-            let kaliScene = kaliScene,
-            let kaliNode = kaliScene.kaliNode else
-        {
-            assertionFailure("Kali Scene and Kali Node should be hooked up")
-            return
-        }
+        incrementIndexAndPlaySound()
+    }
+}
 
-        switch kaliScene.presentationMode {
-            case .pixelArt:
-                kaliScene.presentationMode = .fullResolution
-                let texture = SKTexture(imageNamed: "KaliHighRes")
-                texture.filteringMode = .linear
-                kaliNode.texture = texture
-            case .fullResolution:
-                kaliScene.presentationMode = .pixelArt
-                let texture = SKTexture(imageNamed: "KaliB")
-                texture.filteringMode = .nearest
-                kaliNode.texture = texture
-        }
+extension SpriteTestInterfaceController: AVAudioPlayerDelegate
+{
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
+    {
+        guard flag else { return } 
 
+        soundIsPlaying = false
+        incrementIndexAndPlaySound()
     }
 }
 

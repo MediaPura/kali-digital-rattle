@@ -26,7 +26,6 @@ class DemoInterfaceController: WKInterfaceController
 
     @IBOutlet private weak var animatedImage: WKInterfaceImage?
     private var soundPlayer: AVAudioPlayer?
-
     private var soundIsPlaying: Bool = false
 
     private func displayImage(imageName: String, animated: Bool = false)
