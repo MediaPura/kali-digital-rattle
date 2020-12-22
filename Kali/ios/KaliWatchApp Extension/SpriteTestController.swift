@@ -77,7 +77,14 @@ class SpriteTestInterfaceController: WKInterfaceController
     override func willActivate()
     {
         super.willActivate()
-        incrementIndexAndPlaySound()
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
+            guard 
+                let weakSelf = self,
+                !weakSelf.soundIsPlaying else { return }
+        
+                weakSelf.incrementIndexAndPlaySound()
+        })
+
     }
 
     override func didDeactivate()
