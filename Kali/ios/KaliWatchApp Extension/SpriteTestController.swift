@@ -59,6 +59,29 @@ class SpriteTestInterfaceController: WKInterfaceController
     {
         super.awake(withContext: context)
 
+        let textureAtlas = SKTextureAtlas(named: "Kali")
+        var frames: [SKTexture] = []
+
+        let frameCount = textureAtlas.textureNames.count
+
+        for frameNumber in 0...frameCount
+        {
+            var textureName = String()
+
+            if (frameNumber < 10)
+            {
+                textureName = "Kali_Intro_03_0000\(frameNumber)"
+            } else if (frameNumber < 100)
+            {
+                textureName = "Kali_Intro_03_000\(frameNumber)"
+            } else
+            {
+                textureName = "Kali_Intro_03_00\(frameNumber)"
+            }
+
+            frames.append(textureAtlas.textureNamed(textureName))
+        }
+
         guard 
             let spriteKitScene = spriteKitScene,
             let kaliScene = KaliScene(fileNamed: "Kali.sks") else
@@ -67,8 +90,10 @@ class SpriteTestInterfaceController: WKInterfaceController
             return
         }
 
+        kaliScene.frames = frames
         self.kaliScene = kaliScene
-        spriteKitScene.presentScene(kaliScene, transition: .crossFade(withDuration: 0.1))
+        spriteKitScene.presentScene(kaliScene)
+        kaliScene.animateKali()
 
         crownSequencer.delegate = self
         crownSequencer.focus()
@@ -139,11 +164,10 @@ extension SpriteTestInterfaceController: WKCrownDelegate
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
+    var frames: [SKTexture] = []
 
-    override func sceneDidLoad()
+    func animateKali()
     {
-        super.sceneDidLoad()
-
         kaliNode = childNode(withName: "Kali") as? SKSpriteNode
 
         guard let kaliNode = kaliNode else
@@ -152,34 +176,12 @@ class KaliScene: SKScene
             return
         }
 
-        let textureAtlas = SKTextureAtlas(named: "Kali")
-        var frames: [SKTexture] = []
+        let animateAction = SKAction.animate(with: frames,
+                                     timePerFrame: 1/24,
+                                           resize: false,
+                                          restore: true)
 
-        let frameCount = textureAtlas.textureNames.count
-
-        for frameNumber in 0...frameCount
-        {
-            var textureName = String()
-
-            if (frameNumber < 10)
-            {
-                textureName = "Kali_Intro_03_0000\(frameNumber)"
-            } else if (frameNumber < 100)
-            {
-                textureName = "Kali_Intro_03_000\(frameNumber)"
-            } else
-            {
-                textureName = "Kali_Intro_03_00\(frameNumber)"
-            }
-
-            frames.append(textureAtlas.textureNamed(textureName))
-        }
-
-        kaliNode.run(SKAction.animate(with: frames,
-                                      timePerFrame: 1/24,
-                                      resize: false,
-                                      restore: true))
-
+        kaliNode.run(SKAction.repeatForever(animateAction))
     }
 }
 
