@@ -139,14 +139,6 @@ extension SpriteTestInterfaceController: WKCrownDelegate
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
-    
-    enum PresentationMode
-    {
-        case pixelArt
-        case fullResolution
-    }
-
-    var presentationMode: PresentationMode = .pixelArt
 
     override func sceneDidLoad()
     {
@@ -160,13 +152,34 @@ class KaliScene: SKScene
             return
         }
 
-        guard let kaliTexture = kaliNode.texture else
+        let textureAtlas = SKTextureAtlas(named: "Kali")
+        var frames: [SKTexture] = []
+
+        let frameCount = textureAtlas.textureNames.count
+
+        for frameNumber in 0...frameCount
         {
-            assertionFailure("Unable to get Kali Texture")
-            return
+            var textureName = String()
+
+            if (frameNumber < 10)
+            {
+                textureName = "Kali_Intro_03_0000\(frameNumber)"
+            } else if (frameNumber < 100)
+            {
+                textureName = "Kali_Intro_03_000\(frameNumber)"
+            } else
+            {
+                textureName = "Kali_Intro_03_00\(frameNumber)"
+            }
+
+            frames.append(textureAtlas.textureNamed(textureName))
         }
 
-        kaliTexture.filteringMode = .nearest
+        kaliNode.run(SKAction.animate(with: frames,
+                                      timePerFrame: 1/24,
+                                      resize: false,
+                                      restore: true))
+
     }
 }
 
