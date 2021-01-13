@@ -55,31 +55,36 @@ class SpriteTestInterfaceController: WKInterfaceController
         playSound(soundName: soundName)
     }
 
+    var loadedFrames = false
+    let textureAtlas = SKTextureAtlas(named: "Kali")
+
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
 
-        let textureAtlas = SKTextureAtlas(named: "Kali")
         var frames: [SKTexture] = []
 
-        let frameCount = textureAtlas.textureNames.count
-
-        for frameNumber in 0...frameCount
+        if (!loadedFrames)
         {
-            var textureName = String()
+            let frameCount = textureAtlas.textureNames.count - 1
 
-            if (frameNumber < 10)
+            for frameNumber in 0...frameCount
             {
-                textureName = "Kali_Intro_03_0000\(frameNumber)"
-            } else if (frameNumber < 100)
-            {
-                textureName = "Kali_Intro_03_000\(frameNumber)"
-            } else
-            {
-                textureName = "Kali_Intro_03_00\(frameNumber)"
+                var textureName = String()
+
+                if (frameNumber < 10)
+                {
+                    textureName = "Kali_Intro_03_0000\(frameNumber)"
+                } else if (frameNumber < 100)
+                {
+                    textureName = "Kali_Intro_03_000\(frameNumber)"
+                } else
+                {
+                    textureName = "Kali_Intro_03_00\(frameNumber)"
+                }
+
+                frames.append(textureAtlas.textureNamed(textureName))
             }
-
-            frames.append(textureAtlas.textureNamed(textureName))
         }
 
         guard 
@@ -90,15 +95,24 @@ class SpriteTestInterfaceController: WKInterfaceController
             return
         }
 
-        kaliScene.frames = frames
-        self.kaliScene = kaliScene
-        spriteKitScene.presentScene(kaliScene)
-        kaliScene.animateKali()
+        spriteKitScene.preferredFramesPerSecond = 30
+
+        if !loadedFrames
+        {
+            spriteKitScene.presentScene(kaliScene)
+
+            textureAtlas.preload(completionHandler: { [weak self] in
+                kaliScene.frames = frames
+                self?.kaliScene = kaliScene
+                self?.loadedFrames = true
+                kaliScene.animateKali()
+            })
+        }
 
         crownSequencer.delegate = self
         crownSequencer.focus()
     }
-
+    
     override func willActivate()
     {
         super.willActivate()
@@ -181,7 +195,7 @@ class KaliScene: SKScene
                                            resize: false,
                                           restore: true)
 
-        kaliNode.run(SKAction.repeatForever(animateAction))
+        kaliNode.run(animateAction)
     }
 }
 
