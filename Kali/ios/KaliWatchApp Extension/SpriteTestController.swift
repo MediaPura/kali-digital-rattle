@@ -20,8 +20,6 @@ class SpriteTestInterfaceController: WKInterfaceController
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
 
-    private var soundIndex = 0
-
     private func playSound(soundName: String)
     {
         guard let soundURL = Bundle.main.url(forResource: soundName,
@@ -42,19 +40,6 @@ class SpriteTestInterfaceController: WKInterfaceController
         }
     }
 
-    private func incrementIndexAndPlaySound()
-    {
-        soundIndex = soundIndex + 1
-
-        if (soundIndex > 10)
-        {
-            soundIndex = 1
-        }
-
-        let soundName = "\(soundIndex)-clean-full_01"
-        playSound(soundName: soundName)
-    }
-
     var loadedFrames = false
     let textureAtlas = SKTextureAtlas(named: "Kali")
 
@@ -62,10 +47,9 @@ class SpriteTestInterfaceController: WKInterfaceController
     {
         super.awake(withContext: context)
 
-        var frames: [SKTexture] = []
-
-        if (!loadedFrames)
+        if !loadedFrames
         {
+            var frames: [SKTexture] = []
             let frameCount = textureAtlas.textureNames.count - 1
 
             for frameNumber in 0...frameCount
@@ -85,45 +69,29 @@ class SpriteTestInterfaceController: WKInterfaceController
 
                 frames.append(textureAtlas.textureNamed(textureName))
             }
-        }
 
-        guard 
-            let spriteKitScene = spriteKitScene,
-            let kaliScene = KaliScene(fileNamed: "Kali.sks") else
-        {
-            assertionFailure("Expected to load Kali Scene")
-            return
-        }
-
-        spriteKitScene.preferredFramesPerSecond = 30
-
-        if !loadedFrames
-        {
+            guard 
+                let spriteKitScene = spriteKitScene,
+                let kaliScene = KaliScene(fileNamed: "Kali.sks") else
+            {
+                assertionFailure("Expected to load Kali Scene")
+                return
+            }
+        
+            spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
 
             textureAtlas.preload(completionHandler: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.loadedFrames = true
                 kaliScene.frames = frames
-                self?.kaliScene = kaliScene
-                self?.loadedFrames = true
+                weakSelf.kaliScene = kaliScene
                 kaliScene.animateKali()
             })
         }
 
         crownSequencer.delegate = self
         crownSequencer.focus()
-    }
-    
-    override func willActivate()
-    {
-        super.willActivate()
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
-            guard 
-                let weakSelf = self,
-                !weakSelf.soundIsPlaying else { return }
-        
-                weakSelf.incrementIndexAndPlaySound()
-        })
-
     }
 
     override func didDeactivate()
@@ -136,11 +104,6 @@ class SpriteTestInterfaceController: WKInterfaceController
             soundIsPlaying = false
         }
     }
-
-    @IBAction func tappedScene(gestureRecognizer: WKGestureRecognizer)
-    {
-        incrementIndexAndPlaySound()
-    }
 }
 
 extension SpriteTestInterfaceController: AVAudioPlayerDelegate
@@ -150,7 +113,6 @@ extension SpriteTestInterfaceController: AVAudioPlayerDelegate
         guard flag else { return } 
 
         soundIsPlaying = false
-        incrementIndexAndPlaySound()
     }
 }
 
