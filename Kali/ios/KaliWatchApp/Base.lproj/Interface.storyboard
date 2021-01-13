@@ -14,11 +14,7 @@
                     <items>
                         <spriteKitScene alignment="left" id="dhq-r9-eLD">
                             <gestureRecognizers>
-                                <tapGestureRecognizer id="X1Z-0V-MqM">
-                                    <connections>
-                                        <action selector="tappedSceneWithGestureRecognizer:" destination="O6m-kx-Yqc" id="ziq-Tn-hXQ"/>
-                                    </connections>
-                                </tapGestureRecognizer>
+                                <tapGestureRecognizer id="X1Z-0V-MqM"/>
                             </gestureRecognizers>
                         </spriteKitScene>
                     </items>
