@@ -195,7 +195,7 @@ class KaliScene: SKScene
                                            resize: false,
                                           restore: true)
 
-        kaliNode.run(animateAction)
+        kaliNode.run(SKAction.repeatForever(animateAction))
     }
 }
 
