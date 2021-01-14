@@ -10,6 +10,7 @@ import WatchKit
 import SpriteKit
 import AVFoundation
 
+// TODO: (Ted)  Rename this. It has become more official.
 class SpriteTestInterfaceController: WKInterfaceController
 {
     @IBOutlet private weak var spriteKitScene: WKInterfaceSKScene?
@@ -31,7 +32,6 @@ class SpriteTestInterfaceController: WKInterfaceController
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            soundPlayer!.delegate = self
             soundPlayer!.play() 
             soundIsPlaying = true
         } catch
@@ -86,6 +86,7 @@ class SpriteTestInterfaceController: WKInterfaceController
                 weakSelf.loadedFrames = true
                 kaliScene.frames = frames
                 weakSelf.kaliScene = kaliScene
+                weakSelf.playSound(soundName: "Kali_Intro_04")
                 kaliScene.animateKali()
             })
         }
@@ -104,15 +105,22 @@ class SpriteTestInterfaceController: WKInterfaceController
             soundIsPlaying = false
         }
     }
-}
 
-extension SpriteTestInterfaceController: AVAudioPlayerDelegate
-{
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
+    override func willActivate()
     {
-        guard flag else { return } 
+        super.willActivate()
 
-        soundIsPlaying = false
+        if let soundPlayer = soundPlayer,
+           !soundIsPlaying
+        {
+            soundPlayer.play() 
+        }
+    }
+
+    @IBAction func didTapWatchFace()
+    {
+        playSound(soundName: "Kali_Intro_04")
+        kaliScene!.animateKali()
     }
 }
 
@@ -153,11 +161,11 @@ class KaliScene: SKScene
         }
 
         let animateAction = SKAction.animate(with: frames,
-                                     timePerFrame: 1/24,
+                                     timePerFrame: 1/30,
                                            resize: false,
                                           restore: true)
 
-        kaliNode.run(SKAction.repeatForever(animateAction))
+        kaliNode.run(animateAction)
     }
 }
 
