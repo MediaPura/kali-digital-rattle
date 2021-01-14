@@ -32,6 +32,7 @@ class SpriteTestInterfaceController: WKInterfaceController
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            soundPlayer!.volume = 0.75
             soundPlayer!.play() 
             soundIsPlaying = true
         } catch
@@ -50,21 +51,20 @@ class SpriteTestInterfaceController: WKInterfaceController
         if !loadedFrames
         {
             var frames: [SKTexture] = []
-            let frameCount = textureAtlas.textureNames.count - 1
 
-            for frameNumber in 0...frameCount
+            for frameNumber in 242...447
             {
                 var textureName = String()
 
                 if (frameNumber < 10)
                 {
-                    textureName = "Kali_Intro_03_0000\(frameNumber)"
+                    textureName = "Kali_Intro_05_0000\(frameNumber)"
                 } else if (frameNumber < 100)
                 {
-                    textureName = "Kali_Intro_03_000\(frameNumber)"
+                    textureName = "Kali_Intro_05_000\(frameNumber)"
                 } else
                 {
-                    textureName = "Kali_Intro_03_00\(frameNumber)"
+                    textureName = "Kali_Intro_05_00\(frameNumber)"
                 }
 
                 frames.append(textureAtlas.textureNamed(textureName))
@@ -86,7 +86,7 @@ class SpriteTestInterfaceController: WKInterfaceController
                 weakSelf.loadedFrames = true
                 kaliScene.frames = frames
                 weakSelf.kaliScene = kaliScene
-                weakSelf.playSound(soundName: "Kali_Intro_04")
+                weakSelf.playSound(soundName: "Kali_Intro_05")
                 kaliScene.animateKali()
             })
         }
@@ -119,7 +119,7 @@ class SpriteTestInterfaceController: WKInterfaceController
 
     @IBAction func didTapWatchFace()
     {
-        playSound(soundName: "Kali_Intro_04")
+        playSound(soundName: "Kali_Intro_05")
         kaliScene!.animateKali()
     }
 }
