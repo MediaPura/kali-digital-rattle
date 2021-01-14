@@ -94,6 +94,29 @@ class SpriteTestInterfaceController: WKInterfaceController
         crownSequencer.delegate = self
         crownSequencer.focus()
     }
+
+    override func didDeactivate()
+    {
+        super.didDeactivate()
+
+        if let soundPlayer = soundPlayer 
+        {
+            soundPlayer.pause()
+            soundIsPlaying = false
+        }
+    }
+
+    override func willActivate()
+    {
+        super.willActivate()
+
+        if let soundPlayer = soundPlayer,
+           !soundIsPlaying
+        {
+            soundPlayer.play() 
+        }
+    }
+
 }
 
 extension SpriteTestInterfaceController: WKCrownDelegate
