@@ -32,6 +32,7 @@ class SpriteTestInterfaceController: WKInterfaceController
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            soundPlayer!.volume = 0.75
             soundPlayer!.play() 
             soundIsPlaying = true
         } catch
