@@ -117,6 +117,11 @@ class SpriteTestInterfaceController: WKInterfaceController
         }
     }
 
+    @IBAction func didTapWatchFace()
+    {
+        playSound(soundName: "Kali_Intro_04")
+        kaliScene!.animateKali()
+    }
 }
 
 extension SpriteTestInterfaceController: WKCrownDelegate
@@ -160,7 +165,7 @@ class KaliScene: SKScene
                                            resize: false,
                                           restore: true)
 
-        kaliNode.run(SKAction.repeatForever(animateAction))
+        kaliNode.run(animateAction)
     }
 }
 
