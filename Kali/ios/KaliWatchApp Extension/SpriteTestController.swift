@@ -10,6 +10,7 @@ import WatchKit
 import SpriteKit
 import AVFoundation
 
+// TODO: (Ted)  Rename this. It has become more official.
 class SpriteTestInterfaceController: WKInterfaceController
 {
     @IBOutlet private weak var spriteKitScene: WKInterfaceSKScene?
@@ -31,7 +32,6 @@ class SpriteTestInterfaceController: WKInterfaceController
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            soundPlayer!.delegate = self
             soundPlayer!.play() 
             soundIsPlaying = true
         } catch
@@ -86,33 +86,13 @@ class SpriteTestInterfaceController: WKInterfaceController
                 weakSelf.loadedFrames = true
                 kaliScene.frames = frames
                 weakSelf.kaliScene = kaliScene
+                weakSelf.playSound(soundName: "Kali_Intro_04")
                 kaliScene.animateKali()
             })
         }
 
         crownSequencer.delegate = self
         crownSequencer.focus()
-    }
-
-    override func didDeactivate()
-    {
-        super.didDeactivate()
-
-        if let soundPlayer = soundPlayer 
-        {
-            soundPlayer.pause()
-            soundIsPlaying = false
-        }
-    }
-}
-
-extension SpriteTestInterfaceController: AVAudioPlayerDelegate
-{
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
-    {
-        guard flag else { return } 
-
-        soundIsPlaying = false
     }
 }
 
@@ -153,7 +133,7 @@ class KaliScene: SKScene
         }
 
         let animateAction = SKAction.animate(with: frames,
-                                     timePerFrame: 1/24,
+                                     timePerFrame: 1/30,
                                            resize: false,
                                           restore: true)
 

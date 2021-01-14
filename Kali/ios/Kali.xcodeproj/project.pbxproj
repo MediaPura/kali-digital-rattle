@@ -19,6 +19,8 @@
 		3A4B83179DE1EF69EA5146A1 /* libPods-Kali-KaliTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A486F1650F0CD794663FF131 /* libPods-Kali-KaliTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AC0BE35025AE5AEF00DAC435 /* Kali.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC0BE34825AE51E200DAC435 /* Kali.atlas */; };
+		AC0BE3B525AFAF7F00DAC435 /* Kali_Intro_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC0BE3B425AFAF7F00DAC435 /* Kali_Intro_04.m4a */; };
+		AC0BE3B625AFAF7F00DAC435 /* Kali_Intro_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC0BE3B425AFAF7F00DAC435 /* Kali_Intro_04.m4a */; };
 		AC10332B2568194300162259 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1033292568194300162259 /* Interface.storyboard */; };
 		AC10332D2568194400162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC10332C2568194400162259 /* Assets.xcassets */; };
 		AC1033342568194400162259 /* KaliWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC1033332568194400162259 /* KaliWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -113,6 +115,7 @@
 		9476E734264D708B48A29182 /* Pods-Kali-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		A486F1650F0CD794663FF131 /* libPods-Kali-KaliTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kali-KaliTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0BE34825AE51E200DAC435 /* Kali.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Kali.atlas; path = "KaliWatchApp Extension/Kali.atlas"; sourceTree = SOURCE_ROOT; };
+		AC0BE3B425AFAF7F00DAC435 /* Kali_Intro_04.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_Intro_04.m4a; sourceTree = "<group>"; };
 		AC1033272568194300162259 /* KaliWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaliWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC10332A2568194300162259 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		AC10332C2568194400162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -257,6 +260,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AC0BE39125AF95AD00DAC435 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				AC0BE3B425AFAF7F00DAC435 /* Kali_Intro_04.m4a */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		AC1033282568194300162259 /* KaliWatchApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +282,7 @@
 		AC1033372568194400162259 /* KaliWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AC0BE39125AF95AD00DAC435 /* Audio */,
 				AC1033382568194400162259 /* DemoInterfaceController.swift */,
 				ACA6653625795B4500724299 /* Kali.sks */,
 				ACA6652E2579555800724299 /* SpriteTestController.swift */,
@@ -514,6 +526,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0BE3B525AFAF7F00DAC435 /* Kali_Intro_04.m4a in Resources */,
 				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
 			);
@@ -523,6 +536,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0BE3B625AFAF7F00DAC435 /* Kali_Intro_04.m4a in Resources */,
 				ACA6653725795B4500724299 /* Kali.sks in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
 				AC0BE35025AE5AEF00DAC435 /* Kali.atlas in Resources */,
