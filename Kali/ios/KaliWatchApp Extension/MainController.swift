@@ -23,7 +23,7 @@ class MainController: WKInterfaceController
         // TODO: (Ted)  Sandwich Let's learn a letter here.
         case letter(letter: String)
         case letterObject(letter: String)
-        case goodJob
+        case goodJob(letter: String)
     }
 
     private var sceneState: SceneState = .loadingIntro
@@ -58,13 +58,10 @@ class MainController: WKInterfaceController
     // TODO: (Ted)  Rename this later.
     let textureAtlas = SKTextureAtlas(named: "Kali")
 
-    let letterAAtlas = SKTextureAtlas(named: "LetterA")
-    let letterBAtlas = SKTextureAtlas(named: "LetterB")
-    let letterCAtlas = SKTextureAtlas(named: "LetterC")
-
-    let letterAObjectAtlas = SKTextureAtlas(named: "LetterAObject")
-    let letterBObjectAtlas = SKTextureAtlas(named: "LetterBObject")
-    let letterCObjectAtlas = SKTextureAtlas(named: "LetterCObject")
+    var letterIndex = 0
+    let supportedLetters = ["A", "B", "C"]
+    private var letterAtlases: [String: SKTextureAtlas] = [String: SKTextureAtlas]()
+    private var letterObjectAtlases: [String: SKTextureAtlas] = [String: SKTextureAtlas]()
 
     private var introFrames: [SKTexture] = []
 
@@ -74,6 +71,12 @@ class MainController: WKInterfaceController
 
         switch sceneState {
         case .loadingIntro:
+
+            for letter in supportedLetters
+            {
+                letterAtlases[letter] = SKTextureAtlas(named: "Letter\(letter)")
+                letterObjectAtlases[letter] = SKTextureAtlas(named: "Letter\(letter)Object")
+            }
 
             for frameNumber in 242...447
             {
@@ -154,7 +157,8 @@ class MainController: WKInterfaceController
             kaliScene.animateKali(frames: introFrames)
 
         case .playingIntro:
-            sceneState = .letter(letter: "A")
+            let currentLetter = supportedLetters[letterIndex]
+            sceneState = .letter(letter: currentLetter)
 
             guard let kaliScene = kaliScene else
             {
@@ -162,11 +166,17 @@ class MainController: WKInterfaceController
                 return
             }
 
-            // TODO: (Ted)  Make this the full fancy one later.
             var frames: [SKTexture] = []
-            frames.append(letterAAtlas.textureNamed("Kali_Letters_00000.png"))
+
+            guard let textureAtlas = letterAtlases[currentLetter] else
+            {
+                assertionFailure("All letter Texture Atlases must be populated by now")
+                return
+            }
+
+            frames.append(textureAtlas.textureNamed("0"))
             kaliScene.animateKali(frames: frames)
-            playSound(soundName: "LetterA")
+            playSound(soundName: "Letter\(currentLetter)")
 
         case .letter(let letter):
             sceneState = .letterObject(letter: letter)
@@ -178,12 +188,19 @@ class MainController: WKInterfaceController
             }
 
             var frames: [SKTexture] = []
-            frames.append(letterAObjectAtlas.textureNamed("LetterObjects_00000.png"))
-            kaliScene.animateKali(frames: frames)
-            playSound(soundName: "LetterAObject")
 
-        case .letterObject:
-            sceneState = .goodJob
+            guard let textureAtlas = letterObjectAtlases[letter] else
+            {
+                assertionFailure("All letter Object Texture Atlases must be populated by now")
+                return
+            }
+
+            frames.append(textureAtlas.textureNamed("0"))
+            kaliScene.animateKali(frames: frames)
+            playSound(soundName: "Letter\(letter)Object")
+
+        case .letterObject(let letter):
+            sceneState = .goodJob(letter: letter)
             playSound(soundName: "GoodJob")
 
         default: break
@@ -201,6 +218,13 @@ extension MainController: AVAudioPlayerDelegate
         guard flag else { return }
 
         switch sceneState {
+
+        case .goodJob(let letter):
+
+            if letter == "A"
+            {
+
+            }
 
         default: break
         }
