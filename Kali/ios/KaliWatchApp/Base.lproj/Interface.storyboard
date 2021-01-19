@@ -7,10 +7,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
     </dependencies>
     <scenes>
-        <!--Sprite Test Interface Controller-->
+        <!--Main Controller-->
         <scene sceneID="R27-qH-Mmc">
             <objects>
-                <controller id="O6m-kx-Yqc" customClass="SpriteTestInterfaceController" customModule="KaliWatchApp_Extension">
+                <controller id="O6m-kx-Yqc" customClass="MainController" customModule="KaliWatchApp_Extension">
                     <items>
                         <spriteKitScene alignment="left" id="dhq-r9-eLD">
                             <gestureRecognizers>

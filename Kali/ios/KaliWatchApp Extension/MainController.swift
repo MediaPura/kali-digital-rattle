@@ -10,10 +10,18 @@ import WatchKit
 import SpriteKit
 import AVFoundation
 
-// TODO: (Ted)  Rename this. It has become more official.
-class SpriteTestInterfaceController: WKInterfaceController
+class MainController: WKInterfaceController
 {
     @IBOutlet private weak var spriteKitScene: WKInterfaceSKScene?
+
+    enum SceneState
+    {
+        case loadingIntro
+        case intro
+        case letter(letter: String)
+    }
+
+    private var sceneState: SceneState = .loadingIntro
 
     private var kaliScene: KaliScene?
     private var crownRotationEventCount: Int = 0
@@ -32,7 +40,7 @@ class SpriteTestInterfaceController: WKInterfaceController
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            soundPlayer!.volume = 0.75
+            soundPlayer!.volume = 0.5
             soundPlayer!.play() 
             soundIsPlaying = true
         } catch
@@ -41,15 +49,15 @@ class SpriteTestInterfaceController: WKInterfaceController
         }
     }
 
-    var loadedFrames = false
     let textureAtlas = SKTextureAtlas(named: "Kali")
 
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
 
-        if !loadedFrames
-        {
+        switch sceneState {
+        case .loadingIntro:
+
             var frames: [SKTexture] = []
 
             for frameNumber in 242...447
@@ -83,12 +91,13 @@ class SpriteTestInterfaceController: WKInterfaceController
 
             textureAtlas.preload(completionHandler: { [weak self] in
                 guard let weakSelf = self else { return }
-                weakSelf.loadedFrames = true
+                weakSelf.sceneState = .intro
                 kaliScene.frames = frames
                 weakSelf.kaliScene = kaliScene
-                weakSelf.playSound(soundName: "Kali_Intro_05")
-                kaliScene.animateKali()
             })
+
+        default: break
+
         }
 
         crownSequencer.delegate = self
@@ -110,21 +119,47 @@ class SpriteTestInterfaceController: WKInterfaceController
     {
         super.willActivate()
 
-        if let soundPlayer = soundPlayer,
-           !soundIsPlaying
-        {
-            soundPlayer.play() 
-        }
     }
 
     @IBAction func didTapWatchFace()
     {
-        playSound(soundName: "Kali_Intro_05")
-        kaliScene!.animateKali()
+        switch sceneState {
+        case .intro:
+            guard let kaliScene = kaliScene else
+            {
+                assertionFailure("Expected to load Kali Scene")
+                return
+            }
+
+            playSound(soundName: "Kali_Intro_05")
+            kaliScene.animateKali()
+
+        default: break
+        }
+
     }
 }
 
-extension SpriteTestInterfaceController: WKCrownDelegate
+extension MainController: AVAudioPlayerDelegate
+{
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
+    {
+        // NOTE: (Ted)  Don't continue unless it has played successfully.
+        guard flag else { return }
+
+        switch sceneState {
+        case .intro:
+            sceneState = .letter(letter: "A")
+
+            // TODO: (Ted) Show the letter A and play the associated sound file.
+
+        default: break
+        }
+    }
+}
+
+extension MainController: WKCrownDelegate
 {
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double)
     {
