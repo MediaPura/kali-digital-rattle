@@ -18,8 +18,12 @@ class MainController: WKInterfaceController
     {
         case loadingIntro
         case intro
+        case playingIntro
+
+        // TODO: (Ted)  Sandwich Let's learn a letter here.
         case letter(letter: String)
         case letterObject(letter: String)
+        case goodJob
     }
 
     private var sceneState: SceneState = .loadingIntro
@@ -57,6 +61,10 @@ class MainController: WKInterfaceController
     let letterAAtlas = SKTextureAtlas(named: "LetterA")
     let letterBAtlas = SKTextureAtlas(named: "LetterB")
     let letterCAtlas = SKTextureAtlas(named: "LetterC")
+
+    let letterAObjectAtlas = SKTextureAtlas(named: "LetterAObject")
+    let letterBObjectAtlas = SKTextureAtlas(named: "LetterBObject")
+    let letterCObjectAtlas = SKTextureAtlas(named: "LetterCObject")
 
     private var introFrames: [SKTexture] = []
 
@@ -130,16 +138,12 @@ class MainController: WKInterfaceController
         }
     }
 
-    override func willActivate()
-    {
-        super.willActivate()
-
-    }
-
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
         case .intro:
+            sceneState = .playingIntro
+
             guard let kaliScene = kaliScene else
             {
                 assertionFailure("Expected to load Kali Scene")
@@ -148,6 +152,39 @@ class MainController: WKInterfaceController
 
             playSound(soundName: "Kali_Intro_05")
             kaliScene.animateKali(frames: introFrames)
+
+        case .playingIntro:
+            sceneState = .letter(letter: "A")
+
+            guard let kaliScene = kaliScene else
+            {
+                assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
+                return
+            }
+
+            // TODO: (Ted)  Make this the full fancy one later.
+            var frames: [SKTexture] = []
+            frames.append(letterAAtlas.textureNamed("Kali_Letters_00000.png"))
+            kaliScene.animateKali(frames: frames)
+            playSound(soundName: "LetterA")
+
+        case .letter(let letter):
+            sceneState = .letterObject(letter: letter)
+
+            guard let kaliScene = kaliScene else
+            {
+                assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
+                return
+            }
+
+            var frames: [SKTexture] = []
+            frames.append(letterAObjectAtlas.textureNamed("LetterObjects_00000.png"))
+            kaliScene.animateKali(frames: frames)
+            playSound(soundName: "LetterAObject")
+
+        case .letterObject:
+            sceneState = .goodJob
+            playSound(soundName: "GoodJob")
 
         default: break
         }
@@ -164,25 +201,6 @@ extension MainController: AVAudioPlayerDelegate
         guard flag else { return }
 
         switch sceneState {
-        case .intro:
-            sceneState = .letter(letter: "A")
-
-            guard let kaliScene = kaliScene else
-            {
-                assertionFailure("Expected Kali Scene and Kali Node to hooked up")
-                return
-            }
-
-            var frames: [SKTexture] = []
-
-            // TODO: (Ted)  Make this the full fancy one later.
-            frames.append(letterAAtlas.textureNamed("Kali_Letters_00000.png"))
-            kaliScene.animateKali(frames: frames)
-            playSound(soundName: "LetterA")
-
-        case .letter(let letter):
-            sceneState = .letterObject(letter: letter)
-            playSound(soundName: "LetterAObject")
 
         default: break
         }
