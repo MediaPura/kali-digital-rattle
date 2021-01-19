@@ -19,6 +19,7 @@ class MainController: WKInterfaceController
         case loadingIntro
         case intro
         case letter(letter: String)
+        case letterObject(letter: String)
     }
 
     private var sceneState: SceneState = .loadingIntro
@@ -41,6 +42,7 @@ class MainController: WKInterfaceController
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
             soundPlayer!.volume = 0.5
+            soundPlayer!.delegate = self
             soundPlayer!.play() 
             soundIsPlaying = true
         } catch
@@ -49,7 +51,14 @@ class MainController: WKInterfaceController
         }
     }
 
+    // TODO: (Ted)  Rename this later.
     let textureAtlas = SKTextureAtlas(named: "Kali")
+
+    let letterAAtlas = SKTextureAtlas(named: "LetterA")
+    let letterBAtlas = SKTextureAtlas(named: "LetterB")
+    let letterCAtlas = SKTextureAtlas(named: "LetterC")
+
+    private var introFrames: [SKTexture] = []
 
     override func awake(withContext context: Any?)
     {
@@ -57,8 +66,6 @@ class MainController: WKInterfaceController
 
         switch sceneState {
         case .loadingIntro:
-
-            var frames: [SKTexture] = []
 
             for frameNumber in 242...447
             {
@@ -75,7 +82,7 @@ class MainController: WKInterfaceController
                     textureName = "Kali_Intro_05_00\(frameNumber)"
                 }
 
-                frames.append(textureAtlas.textureNamed(textureName))
+                introFrames.append(textureAtlas.textureNamed(textureName))
             }
 
             guard 
@@ -92,7 +99,6 @@ class MainController: WKInterfaceController
             textureAtlas.preload(completionHandler: { [weak self] in
                 guard let weakSelf = self else { return }
                 weakSelf.sceneState = .intro
-                kaliScene.frames = frames
 
                 guard let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode else
                 {
@@ -141,7 +147,7 @@ class MainController: WKInterfaceController
             }
 
             playSound(soundName: "Kali_Intro_05")
-            kaliScene.animateKali()
+            kaliScene.animateKali(frames: introFrames)
 
         default: break
         }
@@ -161,7 +167,22 @@ extension MainController: AVAudioPlayerDelegate
         case .intro:
             sceneState = .letter(letter: "A")
 
-            // TODO: (Ted) Show the letter A and play the associated sound file.
+            guard let kaliScene = kaliScene else
+            {
+                assertionFailure("Expected Kali Scene and Kali Node to hooked up")
+                return
+            }
+
+            var frames: [SKTexture] = []
+
+            // TODO: (Ted)  Make this the full fancy one later.
+            frames.append(letterAAtlas.textureNamed("Kali_Letters_00000.png"))
+            kaliScene.animateKali(frames: frames)
+            playSound(soundName: "LetterA")
+
+        case .letter(let letter):
+            sceneState = .letterObject(letter: letter)
+            playSound(soundName: "LetterAObject")
 
         default: break
         }
@@ -192,11 +213,9 @@ extension MainController: WKCrownDelegate
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
-    var frames: [SKTexture] = []
 
-    func animateKali()
+    func animateKali(frames: [SKTexture])
     {
-
         guard let kaliNode = kaliNode else
         {
             assertionFailure("Unable to find Kali Node in SpriteKit Scene")
