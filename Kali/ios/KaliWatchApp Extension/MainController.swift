@@ -93,6 +93,15 @@ class MainController: WKInterfaceController
                 guard let weakSelf = self else { return }
                 weakSelf.sceneState = .intro
                 kaliScene.frames = frames
+
+                guard let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode else
+                {
+                    assertionFailure("The Kali Scene Must have a Kali Node hooked up in IB")
+                    return
+                }
+
+                kaliNode.alpha = 1.0
+                kaliScene.kaliNode = kaliNode 
                 weakSelf.kaliScene = kaliScene
             })
 
@@ -187,7 +196,6 @@ class KaliScene: SKScene
 
     func animateKali()
     {
-        kaliNode = childNode(withName: "Kali") as? SKSpriteNode
 
         guard let kaliNode = kaliNode else
         {
@@ -198,7 +206,7 @@ class KaliScene: SKScene
         let animateAction = SKAction.animate(with: frames,
                                      timePerFrame: 1/30,
                                            resize: false,
-                                          restore: true)
+                                          restore: false)
 
         kaliNode.run(animateAction)
     }
