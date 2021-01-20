@@ -117,7 +117,17 @@ class MainController: WKInterfaceController
                     return
                 }
 
-                kaliNode.alpha = 1.0
+                guard 
+                    let introLabelsNode = kaliScene.childNode(withName: "IntroLabels"),
+                    let tapToStart = kaliScene.childNode(withName: "TapToStart") else
+                {
+                    assertionFailure("The Kali Scene Must have intro labels node hooked up in IB")
+                    return
+                }
+
+                introLabelsNode.alpha = 0
+                tapToStart.alpha = 1
+
                 kaliScene.kaliNode = kaliNode 
                 weakSelf.kaliScene = kaliScene
             })
@@ -140,7 +150,6 @@ class MainController: WKInterfaceController
             soundIsPlaying = false
         }
     }
-
 
     override func willActivate()
     {
@@ -206,12 +215,15 @@ class MainController: WKInterfaceController
         case .intro:
             sceneState = .playingIntro
 
-            guard let kaliScene = kaliScene else
+            guard 
+                let kaliScene = kaliScene,
+                let tapToStart = kaliScene.childNode(withName: "TapToStart") else
             {
                 assertionFailure("Expected to load Kali Scene")
                 return
             }
 
+            tapToStart.alpha = 0
             playSound(soundName: "Kali_Intro_05")
             kaliScene.animateKali(frames: introFrames)
 
