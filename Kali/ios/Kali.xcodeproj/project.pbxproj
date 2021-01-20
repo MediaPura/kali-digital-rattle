@@ -30,7 +30,35 @@
 		AC10333D2568194400162259 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333C2568194400162259 /* NotificationController.swift */; };
 		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
 		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		ACA6652F2579555800724299 /* SpriteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA6652E2579555800724299 /* SpriteTestController.swift */; };
+		AC1218C225B79485004F39B7 /* LetsLearnALetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218C125B79485004F39B7 /* LetsLearnALetter.m4a */; };
+		AC1218C325B79485004F39B7 /* LetsLearnALetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218C125B79485004F39B7 /* LetsLearnALetter.m4a */; };
+		AC1218CB25B7952C004F39B7 /* LetterA.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218CA25B7952C004F39B7 /* LetterA.m4a */; };
+		AC1218CC25B7952C004F39B7 /* LetterA.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218CA25B7952C004F39B7 /* LetterA.m4a */; };
+		AC1218D425B79534004F39B7 /* LetterAObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218D325B79534004F39B7 /* LetterAObject.m4a */; };
+		AC1218D525B79534004F39B7 /* LetterAObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218D325B79534004F39B7 /* LetterAObject.m4a */; };
+		AC1218FB25B79D4D004F39B7 /* GoodJob.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218FA25B79D4D004F39B7 /* GoodJob.m4a */; };
+		AC1218FC25B79D4D004F39B7 /* GoodJob.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218FA25B79D4D004F39B7 /* GoodJob.m4a */; };
+		AC12190F25B7A7EE004F39B7 /* LetterAObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */; };
+		AC12191025B7A7EE004F39B7 /* LetterAObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */; };
+		AC12191125B7A7EE004F39B7 /* LetterCObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */; };
+		AC12191225B7A7EE004F39B7 /* LetterCObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */; };
+		AC12191325B7A7EE004F39B7 /* LetterC.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190B25B7A7EE004F39B7 /* LetterC.atlas */; };
+		AC12191425B7A7EE004F39B7 /* LetterC.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190B25B7A7EE004F39B7 /* LetterC.atlas */; };
+		AC12191525B7A7EE004F39B7 /* LetterB.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190C25B7A7EE004F39B7 /* LetterB.atlas */; };
+		AC12191625B7A7EE004F39B7 /* LetterB.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190C25B7A7EE004F39B7 /* LetterB.atlas */; };
+		AC12191725B7A7EE004F39B7 /* LetterBObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */; };
+		AC12191825B7A7EE004F39B7 /* LetterBObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */; };
+		AC12191925B7A7EE004F39B7 /* LetterA.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190E25B7A7EE004F39B7 /* LetterA.atlas */; };
+		AC12191A25B7A7EE004F39B7 /* LetterA.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190E25B7A7EE004F39B7 /* LetterA.atlas */; };
+		AC12192525B7AA94004F39B7 /* LetterC.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192125B7AA94004F39B7 /* LetterC.m4a */; };
+		AC12192625B7AA94004F39B7 /* LetterC.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192125B7AA94004F39B7 /* LetterC.m4a */; };
+		AC12192725B7AA94004F39B7 /* LetterBObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192225B7AA94004F39B7 /* LetterBObject.m4a */; };
+		AC12192825B7AA94004F39B7 /* LetterBObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192225B7AA94004F39B7 /* LetterBObject.m4a */; };
+		AC12192925B7AA94004F39B7 /* LetterB.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192325B7AA94004F39B7 /* LetterB.m4a */; };
+		AC12192A25B7AA94004F39B7 /* LetterB.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192325B7AA94004F39B7 /* LetterB.m4a */; };
+		AC12192B25B7AA94004F39B7 /* LetterCObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192425B7AA94004F39B7 /* LetterCObject.m4a */; };
+		AC12192C25B7AA94004F39B7 /* LetterCObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192425B7AA94004F39B7 /* LetterCObject.m4a */; };
+		ACA6652F2579555800724299 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA6652E2579555800724299 /* MainController.swift */; };
 		ACA6653725795B4500724299 /* Kali.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA6653625795B4500724299 /* Kali.sks */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
@@ -128,7 +156,21 @@
 		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		ACA6652E2579555800724299 /* SpriteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteTestController.swift; sourceTree = "<group>"; };
+		AC1218C125B79485004F39B7 /* LetsLearnALetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetsLearnALetter.m4a; sourceTree = "<group>"; };
+		AC1218CA25B7952C004F39B7 /* LetterA.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterA.m4a; sourceTree = "<group>"; };
+		AC1218D325B79534004F39B7 /* LetterAObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterAObject.m4a; sourceTree = "<group>"; };
+		AC1218FA25B79D4D004F39B7 /* GoodJob.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = GoodJob.m4a; sourceTree = "<group>"; };
+		AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterAObject.atlas; path = "KaliWatchApp Extension/LetterAObject.atlas"; sourceTree = SOURCE_ROOT; };
+		AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterCObject.atlas; path = "KaliWatchApp Extension/LetterCObject.atlas"; sourceTree = SOURCE_ROOT; };
+		AC12190B25B7A7EE004F39B7 /* LetterC.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterC.atlas; path = "KaliWatchApp Extension/LetterC.atlas"; sourceTree = SOURCE_ROOT; };
+		AC12190C25B7A7EE004F39B7 /* LetterB.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterB.atlas; path = "KaliWatchApp Extension/LetterB.atlas"; sourceTree = SOURCE_ROOT; };
+		AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterBObject.atlas; path = "KaliWatchApp Extension/LetterBObject.atlas"; sourceTree = SOURCE_ROOT; };
+		AC12190E25B7A7EE004F39B7 /* LetterA.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterA.atlas; path = "KaliWatchApp Extension/LetterA.atlas"; sourceTree = SOURCE_ROOT; };
+		AC12192125B7AA94004F39B7 /* LetterC.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterC.m4a; sourceTree = "<group>"; };
+		AC12192225B7AA94004F39B7 /* LetterBObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterBObject.m4a; sourceTree = "<group>"; };
+		AC12192325B7AA94004F39B7 /* LetterB.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterB.m4a; sourceTree = "<group>"; };
+		AC12192425B7AA94004F39B7 /* LetterCObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterCObject.m4a; sourceTree = "<group>"; };
+		ACA6652E2579555800724299 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		ACA6653625795B4500724299 /* Kali.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Kali.sks; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -264,7 +306,15 @@
 		AC0BE39125AF95AD00DAC435 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				AC1218FA25B79D4D004F39B7 /* GoodJob.m4a */,
 				AC0BE3DD25B0E9AB00DAC435 /* Kali_Intro_05.m4a */,
+				AC1218C125B79485004F39B7 /* LetsLearnALetter.m4a */,
+				AC1218CA25B7952C004F39B7 /* LetterA.m4a */,
+				AC1218D325B79534004F39B7 /* LetterAObject.m4a */,
+				AC12192325B7AA94004F39B7 /* LetterB.m4a */,
+				AC12192225B7AA94004F39B7 /* LetterBObject.m4a */,
+				AC12192125B7AA94004F39B7 /* LetterC.m4a */,
+				AC12192425B7AA94004F39B7 /* LetterCObject.m4a */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -273,6 +323,12 @@
 			isa = PBXGroup;
 			children = (
 				AC1033292568194300162259 /* Interface.storyboard */,
+				AC12190E25B7A7EE004F39B7 /* LetterA.atlas */,
+				AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */,
+				AC12190C25B7A7EE004F39B7 /* LetterB.atlas */,
+				AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */,
+				AC12190B25B7A7EE004F39B7 /* LetterC.atlas */,
+				AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */,
 				AC0BE3CF25B0E98600DAC435 /* Kali.atlas */,
 				AC10332C2568194400162259 /* Assets.xcassets */,
 				AC10332E2568194400162259 /* Info.plist */,
@@ -286,7 +342,7 @@
 				AC0BE39125AF95AD00DAC435 /* Audio */,
 				AC1033382568194400162259 /* DemoInterfaceController.swift */,
 				ACA6653625795B4500724299 /* Kali.sks */,
-				ACA6652E2579555800724299 /* SpriteTestController.swift */,
+				ACA6652E2579555800724299 /* MainController.swift */,
 				AC10333A2568194400162259 /* ExtensionDelegate.swift */,
 				AC10333C2568194400162259 /* NotificationController.swift */,
 				AC1033402568194500162259 /* Assets.xcassets */,
@@ -527,10 +583,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC12191325B7A7EE004F39B7 /* LetterC.atlas in Resources */,
+				AC12192B25B7AA94004F39B7 /* LetterCObject.m4a in Resources */,
+				AC1218D425B79534004F39B7 /* LetterAObject.m4a in Resources */,
+				AC12191725B7A7EE004F39B7 /* LetterBObject.atlas in Resources */,
 				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
+				AC12192525B7AA94004F39B7 /* LetterC.m4a in Resources */,
+				AC1218FB25B79D4D004F39B7 /* GoodJob.m4a in Resources */,
 				AC0BE3DE25B0E9AB00DAC435 /* Kali_Intro_05.m4a in Resources */,
 				AC0BE3F325B0EA9700DAC435 /* Kali.atlas in Resources */,
+				AC12191925B7A7EE004F39B7 /* LetterA.atlas in Resources */,
+				AC12191525B7A7EE004F39B7 /* LetterB.atlas in Resources */,
+				AC12192725B7AA94004F39B7 /* LetterBObject.m4a in Resources */,
+				AC12192925B7AA94004F39B7 /* LetterB.m4a in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
+				AC1218CB25B7952C004F39B7 /* LetterA.m4a in Resources */,
+				AC12190F25B7A7EE004F39B7 /* LetterAObject.atlas in Resources */,
+				AC12191125B7A7EE004F39B7 /* LetterCObject.atlas in Resources */,
+				AC1218C225B79485004F39B7 /* LetsLearnALetter.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,10 +608,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC12191425B7A7EE004F39B7 /* LetterC.atlas in Resources */,
+				AC12192C25B7AA94004F39B7 /* LetterCObject.m4a in Resources */,
+				AC1218D525B79534004F39B7 /* LetterAObject.m4a in Resources */,
+				AC12191825B7A7EE004F39B7 /* LetterBObject.atlas in Resources */,
 				AC0BE3DF25B0E9AB00DAC435 /* Kali_Intro_05.m4a in Resources */,
+				AC12192625B7AA94004F39B7 /* LetterC.m4a in Resources */,
+				AC1218FC25B79D4D004F39B7 /* GoodJob.m4a in Resources */,
 				ACA6653725795B4500724299 /* Kali.sks in Resources */,
 				AC0BE3E625B0EA5500DAC435 /* Kali.atlas in Resources */,
+				AC12191A25B7A7EE004F39B7 /* LetterA.atlas in Resources */,
+				AC12191625B7A7EE004F39B7 /* LetterB.atlas in Resources */,
+				AC12192825B7AA94004F39B7 /* LetterBObject.m4a in Resources */,
+				AC12192A25B7AA94004F39B7 /* LetterB.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
+				AC1218CC25B7952C004F39B7 /* LetterA.m4a in Resources */,
+				AC12191025B7A7EE004F39B7 /* LetterAObject.atlas in Resources */,
+				AC12191225B7A7EE004F39B7 /* LetterCObject.atlas in Resources */,
+				AC1218C325B79485004F39B7 /* LetsLearnALetter.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,7 +866,7 @@
 				AC10333D2568194400162259 /* NotificationController.swift in Sources */,
 				AC10333B2568194400162259 /* ExtensionDelegate.swift in Sources */,
 				AC1033392568194400162259 /* DemoInterfaceController.swift in Sources */,
-				ACA6652F2579555800724299 /* SpriteTestController.swift in Sources */,
+				ACA6652F2579555800724299 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
