@@ -160,8 +160,12 @@ class MainController: WKInterfaceController
             return
         }
 
-        frames.append(textureAtlas.textureNamed("0"))
-        kaliScene.animateKali(frames: frames)
+        for index in 0...3
+        {
+            frames.append(textureAtlas.textureNamed("\(index)"))
+        }
+
+        kaliScene.animateKali(frames: frames, repeats: true)
         playSound(soundName: "Letter\(currentLetter)")
     }
 
@@ -200,8 +204,12 @@ class MainController: WKInterfaceController
                 return
             }
 
-            frames.append(textureAtlas.textureNamed("0"))
-            kaliScene.animateKali(frames: frames)
+            for index in 0...3
+            {
+                frames.append(textureAtlas.textureNamed("\(index)"))
+            }
+
+            kaliScene.animateKali(frames: frames, repeats: true)
             playSound(soundName: "Letter\(letter)Object")
 
         case .letterObject:
@@ -265,7 +273,7 @@ class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture])
+    func animateKali(frames: [SKTexture], repeats: Bool = false)
     {
         guard let kaliNode = kaliNode else
         {
@@ -278,7 +286,13 @@ class KaliScene: SKScene
                                            resize: false,
                                           restore: false)
 
-        kaliNode.run(animateAction)
+        if repeats
+        {
+            kaliNode.run(SKAction.repeatForever(animateAction))
+        } else
+        {
+            kaliNode.run(animateAction)
+        }
     }
 }
 
