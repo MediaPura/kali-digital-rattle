@@ -153,11 +153,17 @@ class MainController: WKInterfaceController
 
             switch weakSelf.sceneState {
 
+            case .playingIntro:
+                weakSelf.playCurrentLetter()
+
             case .letter(let letter):
                 weakSelf.playSound(soundName: "Letter\(letter)")
 
             case .letterObject(let letter):
                 weakSelf.playSound(soundName: "Letter\(letter)Object")
+
+            case .goodJob:
+                weakSelf.changeLetterAndPlayIt()
 
             default: break
             }
@@ -196,6 +202,7 @@ class MainController: WKInterfaceController
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
+        
         case .intro:
             sceneState = .playingIntro
 
@@ -244,6 +251,19 @@ class MainController: WKInterfaceController
         }
 
     }
+
+    // TODO: (Ted)  Randomize the index.
+    private func changeLetterAndPlayIt()
+    {
+        letterIndex += 1
+
+        if letterIndex == 3
+        {
+            letterIndex = 0
+        }
+      
+        playCurrentLetter()
+    }
 }
 
 extension MainController: AVAudioPlayerDelegate
@@ -257,15 +277,7 @@ extension MainController: AVAudioPlayerDelegate
         switch sceneState {
 
         case .goodJob:
-
-            letterIndex += 1
-
-            if letterIndex == 3
-            {
-                letterIndex = 0
-            }
-          
-            playCurrentLetter()
+            changeLetterAndPlayIt()
 
         default: break
         }
