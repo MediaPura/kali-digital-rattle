@@ -23,7 +23,7 @@ class MainController: WKInterfaceController
         // TODO: (Ted)  Sandwich Let's learn a letter here.
         case letter(letter: String)
         case letterObject(letter: String)
-        case goodJob(letter: String)
+        case goodJob
     }
 
     private var sceneState: SceneState = .loadingIntro
@@ -141,6 +141,30 @@ class MainController: WKInterfaceController
         }
     }
 
+    private func playCurrentLetter()
+    {
+        let currentLetter = supportedLetters[letterIndex]
+        sceneState = .letter(letter: currentLetter)
+
+        guard let kaliScene = kaliScene else
+        {
+            assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
+            return
+        }
+
+        var frames: [SKTexture] = []
+
+        guard let textureAtlas = letterAtlases[currentLetter] else
+        {
+            assertionFailure("All letter Texture Atlases must be populated by now")
+            return
+        }
+
+        frames.append(textureAtlas.textureNamed("0"))
+        kaliScene.animateKali(frames: frames)
+        playSound(soundName: "Letter\(currentLetter)")
+    }
+
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
@@ -157,26 +181,7 @@ class MainController: WKInterfaceController
             kaliScene.animateKali(frames: introFrames)
 
         case .playingIntro:
-            let currentLetter = supportedLetters[letterIndex]
-            sceneState = .letter(letter: currentLetter)
-
-            guard let kaliScene = kaliScene else
-            {
-                assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
-                return
-            }
-
-            var frames: [SKTexture] = []
-
-            guard let textureAtlas = letterAtlases[currentLetter] else
-            {
-                assertionFailure("All letter Texture Atlases must be populated by now")
-                return
-            }
-
-            frames.append(textureAtlas.textureNamed("0"))
-            kaliScene.animateKali(frames: frames)
-            playSound(soundName: "Letter\(currentLetter)")
+            playCurrentLetter()
 
         case .letter(let letter):
             sceneState = .letterObject(letter: letter)
@@ -199,8 +204,8 @@ class MainController: WKInterfaceController
             kaliScene.animateKali(frames: frames)
             playSound(soundName: "Letter\(letter)Object")
 
-        case .letterObject(let letter):
-            sceneState = .goodJob(letter: letter)
+        case .letterObject:
+            sceneState = .goodJob
             playSound(soundName: "GoodJob")
 
         default: break
@@ -219,12 +224,16 @@ extension MainController: AVAudioPlayerDelegate
 
         switch sceneState {
 
-        case .goodJob(let letter):
+        case .goodJob:
 
-            if letter == "A"
+            letterIndex += 1
+
+            if letterIndex == 3
             {
-
+                letterIndex = 0
             }
+          
+            playCurrentLetter()
 
         default: break
         }
