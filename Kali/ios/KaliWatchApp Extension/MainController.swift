@@ -141,6 +141,30 @@ class MainController: WKInterfaceController
         }
     }
 
+
+    override func willActivate()
+    {
+        super.willActivate()
+
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
+            guard 
+                let weakSelf = self,
+                !weakSelf.soundIsPlaying else { return }
+
+            switch weakSelf.sceneState {
+
+            case .letter(let letter):
+                weakSelf.playSound(soundName: "Letter\(letter)")
+
+            case .letterObject(let letter):
+                weakSelf.playSound(soundName: "Letter\(letter)Object")
+
+            default: break
+            }
+
+        })
+    }
+
     private func playCurrentLetter()
     {
         let currentLetter = supportedLetters[letterIndex]
@@ -165,7 +189,7 @@ class MainController: WKInterfaceController
             frames.append(textureAtlas.textureNamed("\(index)"))
         }
 
-        kaliScene.animateKali(frames: frames, repeats: true)
+        kaliScene.animateKali(frames: frames, repeats: true, fps: 15)
         playSound(soundName: "Letter\(currentLetter)")
     }
 
@@ -209,7 +233,7 @@ class MainController: WKInterfaceController
                 frames.append(textureAtlas.textureNamed("\(index)"))
             }
 
-            kaliScene.animateKali(frames: frames, repeats: true)
+            kaliScene.animateKali(frames: frames, repeats: true, fps: 15)
             playSound(soundName: "Letter\(letter)Object")
 
         case .letterObject:
@@ -273,7 +297,7 @@ class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture], repeats: Bool = false)
+    func animateKali(frames: [SKTexture], repeats: Bool = false, fps: Double = 30)
     {
         guard let kaliNode = kaliNode else
         {
@@ -282,7 +306,7 @@ class KaliScene: SKScene
         }
 
         let animateAction = SKAction.animate(with: frames,
-                                     timePerFrame: 1/30,
+                                     timePerFrame: 1/fps,
                                            resize: false,
                                           restore: false)
 
