@@ -264,15 +264,15 @@ class MainController: WKInterfaceController
 
     }
 
-    // TODO: (Ted)  Randomize the index.
     private func changeLetterAndPlayIt()
     {
-        letterIndex += 1
+        var randomNumber = 0 
 
-        if letterIndex == 3
-        {
-            letterIndex = 0
-        }
+        repeat {
+            randomNumber = Int(arc4random_uniform(3))
+        } while randomNumber == letterIndex
+
+        letterIndex = randomNumber
       
         playCurrentLetter()
     }
