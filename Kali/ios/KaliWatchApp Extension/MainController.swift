@@ -19,8 +19,7 @@ class MainController: WKInterfaceController
         case loadingIntro
         case intro
         case playingIntro
-
-        // TODO: (Ted)  Sandwich Let's learn a letter here.
+        case letsLearnALetterIntro
         case letter(letter: String)
         case letterObject(letter: String)
         case goodJob
@@ -55,8 +54,9 @@ class MainController: WKInterfaceController
         }
     }
 
-    // TODO: (Ted)  Rename this later.
-    let textureAtlas = SKTextureAtlas(named: "Kali")
+    let kaliIntroAtlas = SKTextureAtlas(named: "Kali")
+    let learnLetterIntroAtlas = SKTextureAtlas(named: "LetsLearnALetter")
+    var learnLetterAtlasLoaded = false
 
     var letterIndex = 0
     let supportedLetters = ["A", "B", "C"]
@@ -93,7 +93,7 @@ class MainController: WKInterfaceController
                     textureName = "Kali_Intro_05_00\(frameNumber)"
                 }
 
-                introFrames.append(textureAtlas.textureNamed(textureName))
+                introFrames.append(kaliIntroAtlas.textureNamed(textureName))
             }
 
             guard 
@@ -107,7 +107,7 @@ class MainController: WKInterfaceController
             spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
 
-            textureAtlas.preload(completionHandler: { [weak self] in
+            kaliIntroAtlas.preload(completionHandler: { [weak self] in
                 guard let weakSelf = self else { return }
                 weakSelf.sceneState = .intro
 
@@ -130,6 +130,10 @@ class MainController: WKInterfaceController
 
                 kaliScene.kaliNode = kaliNode 
                 weakSelf.kaliScene = kaliScene
+            })
+
+            learnLetterIntroAtlas.preload(completionHandler: { [weak self] in
+                self?.learnLetterAtlasLoaded = true
             })
 
         default: break
@@ -164,6 +168,9 @@ class MainController: WKInterfaceController
 
             case .playingIntro:
                 weakSelf.playCurrentLetter()
+
+            case .letsLearnALetterIntro:
+                weakSelf.changeLetterAndPlayIt()
 
             case .letter(let letter):
                 weakSelf.playSound(soundName: "Letter\(letter)")
@@ -208,6 +215,18 @@ class MainController: WKInterfaceController
         playSound(soundName: "Letter\(currentLetter)")
     }
 
+    private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false, 
+                                               fps: Double = 30)
+    {
+        guard let kaliScene = kaliScene else
+        {
+            assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
+            return
+        }
+
+        kaliScene.animateKali(frames: frames, repeats: repeats, fps: fps)
+    }
+
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
@@ -228,16 +247,38 @@ class MainController: WKInterfaceController
             kaliScene.animateKali(frames: introFrames)
 
         case .playingIntro:
-            playCurrentLetter()
+
+            if learnLetterAtlasLoaded
+            {
+                sceneState = .letsLearnALetterIntro
+
+                var frames: [SKTexture] = []
+
+                for frameNumber in 16...140
+                {
+                    var textureName = String()
+
+                    if frameNumber < 100
+                    {
+                        textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
+                    } else if frameNumber > 100
+                    {
+                        textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
+                    }
+
+                    frames.append(learnLetterIntroAtlas.textureNamed(textureName))
+                }
+
+                playAnimationInSpriteKitScene(frames: frames)
+                playSound(soundName: "Kali_LetsLearnALetter_04")
+
+            } else
+            {
+                playCurrentLetter()
+            }
 
         case .letter(let letter):
             sceneState = .letterObject(letter: letter)
-
-            guard let kaliScene = kaliScene else
-            {
-                assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
-                return
-            }
 
             var frames: [SKTexture] = []
 
@@ -252,7 +293,7 @@ class MainController: WKInterfaceController
                 frames.append(textureAtlas.textureNamed("\(index)"))
             }
 
-            kaliScene.animateKali(frames: frames, repeats: true, fps: 15)
+            playAnimationInSpriteKitScene(frames: frames, repeats: true, fps: 15)
             playSound(soundName: "Letter\(letter)Object")
 
         case .letterObject:
@@ -287,6 +328,9 @@ extension MainController: AVAudioPlayerDelegate
         guard flag else { return }
 
         switch sceneState {
+
+        case  .letsLearnALetterIntro:
+            changeLetterAndPlayIt()
 
         case .goodJob:
             changeLetterAndPlayIt()
