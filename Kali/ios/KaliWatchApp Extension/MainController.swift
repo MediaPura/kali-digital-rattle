@@ -55,6 +55,10 @@ class MainController: WKInterfaceController
     }
 
     let kaliIntroAtlas = SKTextureAtlas(named: "Kali")
+
+    let goodJobAtlas = SKTextureAtlas(named: "GoodJob")
+    var goodJobAtlasLoaded = false
+
     let learnLetterIntroAtlas = SKTextureAtlas(named: "LetsLearnALetter")
     var learnLetterAtlasLoaded = false
 
@@ -136,6 +140,10 @@ class MainController: WKInterfaceController
                 self?.learnLetterAtlasLoaded = true
             })
 
+            goodJobAtlas.preload(completionHandler: { [weak self] in
+                self?.goodJobAtlasLoaded = true
+            })
+
         default: break
 
         }
@@ -179,7 +187,7 @@ class MainController: WKInterfaceController
                 weakSelf.playSound(soundName: "Letter\(letter)Object")
 
             case .goodJob:
-                weakSelf.changeLetterAndPlayIt()
+                weakSelf.playLetsLearnALetter()
 
             default: break
             }
@@ -227,6 +235,31 @@ class MainController: WKInterfaceController
         kaliScene.animateKali(frames: frames, repeats: repeats, fps: fps)
     }
 
+    private func playLetsLearnALetter()
+    {
+        sceneState = .letsLearnALetterIntro
+
+        var frames: [SKTexture] = []
+
+        for frameNumber in 16...140
+        {
+            var textureName = String()
+
+            if frameNumber < 100
+            {
+                textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
+            } else if frameNumber >= 100
+            {
+                textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
+            }
+
+            frames.append(learnLetterIntroAtlas.textureNamed(textureName))
+        }
+
+        playAnimationInSpriteKitScene(frames: frames)
+        playSound(soundName: "Kali_LetsLearnALetter_04")
+    }
+
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
@@ -250,28 +283,7 @@ class MainController: WKInterfaceController
 
             if learnLetterAtlasLoaded
             {
-                sceneState = .letsLearnALetterIntro
-
-                var frames: [SKTexture] = []
-
-                for frameNumber in 16...140
-                {
-                    var textureName = String()
-
-                    if frameNumber < 100
-                    {
-                        textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
-                    } else if frameNumber >= 100
-                    {
-                        textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
-                    }
-
-                    frames.append(learnLetterIntroAtlas.textureNamed(textureName))
-                }
-
-                playAnimationInSpriteKitScene(frames: frames)
-                playSound(soundName: "Kali_LetsLearnALetter_04")
-
+                playLetsLearnALetter()
             } else
             {
                 playCurrentLetter()
@@ -297,8 +309,42 @@ class MainController: WKInterfaceController
             playSound(soundName: "Letter\(letter)Object")
 
         case .letterObject:
-            sceneState = .goodJob
-            playSound(soundName: "GoodJob")
+
+            // TODO: (Ted)  Consider randomizing this behavior.
+            if goodJobAtlasLoaded
+            {
+                sceneState = .goodJob
+
+                var frames: [SKTexture] = []
+
+                for frameNumber in 0...150
+                {
+                    var textureName = String()
+
+                    if frameNumber < 10
+                    {
+                        textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
+                    } else if frameNumber < 100
+                    {
+                        textureName = "Kali_KeepGoing_04_000\(frameNumber)"
+                    } else if frameNumber >= 100
+                    {
+                        textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                    }
+
+                    frames.append(goodJobAtlas.textureNamed(textureName))
+                }
+
+                playAnimationInSpriteKitScene(frames: frames)
+                playSound(soundName: "Kali_KeepGoing_04")
+
+            } else
+            {
+                playLetsLearnALetter()
+            }
+
+        case .goodJob:
+            playLetsLearnALetter()
 
         default: break
         }
@@ -332,9 +378,6 @@ extension MainController: AVAudioPlayerDelegate
         case  .letsLearnALetterIntro:
             changeLetterAndPlayIt()
 
-        case .goodJob:
-            changeLetterAndPlayIt()
-
         default: break
         }
     }
@@ -365,7 +408,8 @@ class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture], repeats: Bool = false, fps: Double = 30)
+    func animateKali(frames: [SKTexture], repeats: Bool = false, 
+                     fps: Double = 30)
     {
         guard let kaliNode = kaliNode else
         {
@@ -377,6 +421,8 @@ class KaliScene: SKScene
                                      timePerFrame: 1/fps,
                                            resize: false,
                                           restore: false)
+
+        kaliNode.removeAllActions()
 
         if repeats
         {
