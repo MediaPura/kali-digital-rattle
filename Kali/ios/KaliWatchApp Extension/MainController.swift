@@ -219,12 +219,11 @@ class MainController: WKInterfaceController
             frames.append(textureAtlas.textureNamed("\(index)"))
         }
 
-        kaliScene.animateKali(frames: frames, repeats: true, fps: 15)
+        kaliScene.animateKali(frames: frames, repeats: true)
         playSound(soundName: "Letter\(currentLetter)")
     }
 
-    private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false, 
-                                               fps: Double = 30)
+    private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false)
     {
         guard let kaliScene = kaliScene else
         {
@@ -232,7 +231,7 @@ class MainController: WKInterfaceController
             return
         }
 
-        kaliScene.animateKali(frames: frames, repeats: repeats, fps: fps)
+        kaliScene.animateKali(frames: frames, repeats: repeats)
     }
 
     private func playLetsLearnALetter()
@@ -305,7 +304,7 @@ class MainController: WKInterfaceController
                 frames.append(textureAtlas.textureNamed("\(index)"))
             }
 
-            playAnimationInSpriteKitScene(frames: frames, repeats: true, fps: 15)
+            playAnimationInSpriteKitScene(frames: frames, repeats: true)
             playSound(soundName: "Letter\(letter)Object")
 
         case .letterObject:
@@ -408,8 +407,7 @@ class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture], repeats: Bool = false, 
-                     fps: Double = 30)
+    func animateKali(frames: [SKTexture], repeats: Bool = false)
     {
         guard let kaliNode = kaliNode else
         {
@@ -418,7 +416,7 @@ class KaliScene: SKScene
         }
 
         let animateAction = SKAction.animate(with: frames,
-                                     timePerFrame: 1/fps,
+                                     timePerFrame: 1/30,
                                            resize: false,
                                           restore: false)
 
