@@ -191,7 +191,7 @@ class MainController: WKInterfaceController
                 weakSelf.playSound(soundName: "Letter\(letter)Object")
 
             case .goodJob:
-                weakSelf.playLetsLearnALetter()
+                weakSelf.playCurrentLetter()
 
             default: break
             }
@@ -343,11 +343,11 @@ class MainController: WKInterfaceController
 
             } else
             {
-                playLetsLearnALetter()
+                changeLetterAndPlayIt()
             }
 
         case .goodJob:
-            playLetsLearnALetter()
+            changeLetterAndPlayIt()
 
         default: break
         }
