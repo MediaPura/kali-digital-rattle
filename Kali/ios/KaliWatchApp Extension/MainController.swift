@@ -21,7 +21,9 @@ class MainController: WKInterfaceController
         case playingIntro
         case letsLearnALetterIntro
         case letter(letter: String)
+        case awaitingLetterTap(letter: String)
         case letterObject(letter: String)
+        case awaitingLetterObjectTap(letter: String)
         case goodJob
     }
 
@@ -180,10 +182,12 @@ class MainController: WKInterfaceController
             case .letsLearnALetterIntro:
                 weakSelf.changeLetterAndPlayIt()
 
-            case .letter(let letter):
+            case .letter(let letter), .awaitingLetterTap(let letter):
+                weakSelf.sceneState = .letter(letter: letter)
                 weakSelf.playSound(soundName: "Letter\(letter)")
 
-            case .letterObject(let letter):
+            case .letterObject(let letter), .awaitingLetterObjectTap(let letter):
+                weakSelf.sceneState = .letterObject(letter: letter)
                 weakSelf.playSound(soundName: "Letter\(letter)Object")
 
             case .goodJob:
@@ -288,7 +292,7 @@ class MainController: WKInterfaceController
                 playCurrentLetter()
             }
 
-        case .letter(let letter):
+        case .awaitingLetterTap(let letter):
             sceneState = .letterObject(letter: letter)
 
             var frames: [SKTexture] = []
@@ -307,7 +311,7 @@ class MainController: WKInterfaceController
             playAnimationInSpriteKitScene(frames: frames, repeats: true)
             playSound(soundName: "Letter\(letter)Object")
 
-        case .letterObject:
+        case .awaitingLetterObjectTap:
 
             // TODO: (Ted)  Consider randomizing this behavior.
             if goodJobAtlasLoaded
@@ -374,8 +378,14 @@ extension MainController: AVAudioPlayerDelegate
 
         switch sceneState {
 
-        case  .letsLearnALetterIntro:
+        case .letsLearnALetterIntro:
             changeLetterAndPlayIt()
+
+        case .letter(let letter):
+            sceneState = .awaitingLetterTap(letter: letter)
+
+        case .letterObject(let letter):
+            sceneState = .awaitingLetterObjectTap(letter: letter)
 
         default: break
         }
