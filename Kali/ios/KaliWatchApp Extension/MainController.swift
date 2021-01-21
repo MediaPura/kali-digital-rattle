@@ -261,7 +261,7 @@ class MainController: WKInterfaceController
                     if frameNumber < 100
                     {
                         textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
-                    } else if frameNumber > 100
+                    } else if frameNumber >= 100
                     {
                         textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
                     }
