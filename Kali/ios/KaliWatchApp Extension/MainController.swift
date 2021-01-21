@@ -117,9 +117,12 @@ class MainController: WKInterfaceController
                 guard let weakSelf = self else { return }
                 weakSelf.sceneState = .intro
 
-                guard let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode else
+                guard 
+                    let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode,
+                    let backgroundColorNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
+                else
                 {
-                    assertionFailure("The Kali Scene Must have a Kali Node hooked up in IB")
+                    assertionFailure("The Kali Scene Must have all nodes hooked up in IB")
                     return
                 }
 
@@ -134,6 +137,7 @@ class MainController: WKInterfaceController
                 introLabelsNode.alpha = 0
                 tapToStart.alpha = 1
 
+                kaliScene.backgroundColorNode = backgroundColorNode
                 kaliScene.kaliNode = kaliNode 
                 weakSelf.kaliScene = kaliScene
             })
@@ -223,11 +227,12 @@ class MainController: WKInterfaceController
             frames.append(textureAtlas.textureNamed("\(index)"))
         }
 
-        kaliScene.animateKali(frames: frames, repeats: true)
+        kaliScene.animateKali(frames: frames, repeats: true, isLetter: true)
         playSound(soundName: "Letter\(currentLetter)")
     }
 
-    private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false)
+    private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false, 
+                                               isLetter: Bool)
     {
         guard let kaliScene = kaliScene else
         {
@@ -235,7 +240,7 @@ class MainController: WKInterfaceController
             return
         }
 
-        kaliScene.animateKali(frames: frames, repeats: repeats)
+        kaliScene.animateKali(frames: frames, repeats: repeats, isLetter: isLetter)
     }
 
     private func playLetsLearnALetter()
@@ -259,7 +264,7 @@ class MainController: WKInterfaceController
             frames.append(learnLetterIntroAtlas.textureNamed(textureName))
         }
 
-        playAnimationInSpriteKitScene(frames: frames)
+        playAnimationInSpriteKitScene(frames: frames, isLetter: false)
         playSound(soundName: "Kali_LetsLearnALetter_04")
     }
 
@@ -280,7 +285,7 @@ class MainController: WKInterfaceController
 
             tapToStart.alpha = 0
             playSound(soundName: "Kali_Intro_05")
-            kaliScene.animateKali(frames: introFrames)
+            kaliScene.animateKali(frames: introFrames, isLetter: false)
 
         case .playingIntro:
 
@@ -308,7 +313,7 @@ class MainController: WKInterfaceController
                 frames.append(textureAtlas.textureNamed("\(index)"))
             }
 
-            playAnimationInSpriteKitScene(frames: frames, repeats: true)
+            playAnimationInSpriteKitScene(frames: frames, repeats: true, isLetter: true)
             playSound(soundName: "Letter\(letter)Object")
 
         case .awaitingLetterObjectTap:
@@ -338,7 +343,7 @@ class MainController: WKInterfaceController
                     frames.append(goodJobAtlas.textureNamed(textureName))
                 }
 
-                playAnimationInSpriteKitScene(frames: frames)
+                playAnimationInSpriteKitScene(frames: frames, isLetter: false)
                 playSound(soundName: "Kali_KeepGoing_04")
 
             } else
@@ -416,14 +421,38 @@ extension MainController: WKCrownDelegate
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
+    var backgroundColorNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture], repeats: Bool = false)
+    func animateKali(frames: [SKTexture], repeats: Bool = false, isLetter: Bool)
     {
-        guard let kaliNode = kaliNode else
+        guard 
+            let kaliNode = kaliNode,
+            let backgroundColorNode = backgroundColorNode else
         {
             assertionFailure("Unable to find Kali Node in SpriteKit Scene")
             return
         }
+
+        let backgroundColor: UIColor
+
+        if isLetter
+        {
+            //  Purple Color Hex
+            //  0x493069
+
+            // R   G   B
+            // 73, 48, 105
+            backgroundColor = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
+
+        } else
+        {
+            // Grey Color Hex
+            // 0xDCDCDC
+
+            // RGB == 220 across the board.
+            backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        }
+
 
         let animateAction = SKAction.animate(with: frames,
                                      timePerFrame: 1/30,
@@ -439,6 +468,8 @@ class KaliScene: SKScene
         {
             kaliNode.run(animateAction)
         }
+
+        backgroundColorNode.color = backgroundColor
     }
 }
 
