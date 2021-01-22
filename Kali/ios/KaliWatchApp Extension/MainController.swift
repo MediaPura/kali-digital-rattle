@@ -57,8 +57,26 @@ class MainController: WKInterfaceController
 
     var introAtlas: SKTextureAtlas? 
 
+    enum IntroType
+    {
+        case kali
+        case letsLearnALetter
+    }
+
+    private var introType: IntroType = .kali
+
+    enum CongratulationType
+    {
+        case short
+        case long
+    }
+
+    private var congratulationType: CongratulationType = .long
+
     var goodJobAtlas: SKTextureAtlas?
     var goodJobAtlasLoaded = false
+
+    private var lessonCount = 0
 
     // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
     var letterIndex = 0
@@ -89,7 +107,17 @@ class MainController: WKInterfaceController
 
     private func loadGoodJobAnimation()
     {
-        goodJobAtlas = SKTextureAtlas(named: "GoodJob")
+        let randomNumber = Int(arc4random_uniform(2))
+
+        if randomNumber == 0
+        {
+            congratulationType = .long
+            goodJobAtlas = SKTextureAtlas(named: "GoodJob")
+        } else if randomNumber == 1
+        {
+            congratulationType = .short
+            goodJobAtlas = SKTextureAtlas(named: "GoodJobShort")
+        }
         
         goodJobAtlas!.preload(completionHandler: { [weak self] in
             self?.goodJobAtlasLoaded = true
@@ -120,17 +148,6 @@ class MainController: WKInterfaceController
             default: break
         }
     }
-
-    enum IntroType
-    {
-        case kali
-        case letsLearnALetter
-    }
-
-    private var introType: IntroType = .kali
-
-    private var lessonCount = 0
-
 
     override func willActivate()
     {
@@ -390,27 +407,53 @@ class MainController: WKInterfaceController
                 sceneState = .goodJob
 
                 var frames: [SKTexture] = []
+                var audioFilename = String()
 
-                for frameNumber in 0...150
-                {
-                    var textureName = String()
+                switch congratulationType {
+                case .long:
 
-                    if frameNumber < 10
+                    for frameNumber in 0...150
                     {
-                        textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
-                    } else if frameNumber < 100
-                    {
-                        textureName = "Kali_KeepGoing_04_000\(frameNumber)"
-                    } else if frameNumber >= 100
-                    {
-                        textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                        var textureName = String()
+
+                        if frameNumber < 10
+                        {
+                            textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
+                        } else if frameNumber < 100
+                        {
+                            textureName = "Kali_KeepGoing_04_000\(frameNumber)"
+                        } else if frameNumber >= 100
+                        {
+                            textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                        }
+
+                        frames.append(goodJobAtlas.textureNamed(textureName))
                     }
 
-                    frames.append(goodJobAtlas.textureNamed(textureName))
+                    audioFilename = "Kali_KeepGoing_04"
+
+                case .short:
+
+                    for frameNumber in 0...70
+                    {
+                        var textureName = String()
+
+                        if frameNumber < 10
+                        {
+                            textureName = "Kali_GoodJob_04b_0000\(frameNumber)"
+                        } else if frameNumber < 100
+                        {
+                            textureName = "Kali_GoodJob_04b_000\(frameNumber)"
+                        }
+
+                        frames.append(goodJobAtlas.textureNamed(textureName))
+                    }
+
+                    audioFilename = "Kali_GoodJob_04b"
                 }
 
                 playAnimationInSpriteKitScene(frames: frames, isLetter: false)
-                playSound(soundName: "Kali_KeepGoing_04")
+                playSound(soundName: audioFilename)
 
             } else
             {
@@ -441,7 +484,6 @@ class MainController: WKInterfaceController
 
 extension MainController: AVAudioPlayerDelegate
 {
-
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {
         // NOTE: (Ted)  Don't continue unless it has played successfully.
@@ -470,6 +512,18 @@ extension MainController: AVAudioPlayerDelegate
             }
 
             lessonCount += 1
+
+        case .goodJob:
+
+            switch congratulationType {
+            case .long: break
+            case .short:
+                playCurrentLetter()
+            }
+
+            goodJobAtlas = nil
+            goodJobAtlasLoaded = false
+            lessonCount = 0
 
         default: break
         }
