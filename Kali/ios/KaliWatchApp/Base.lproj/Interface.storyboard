@@ -29,28 +29,6 @@
             </objects>
             <point key="canvasLocation" x="-35" y="162"/>
         </scene>
-        <!--Demo Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="DemoInterfaceController" customModule="KaliWatchApp_Extension">
-                    <items>
-                        <imageView width="1" height="1" alignment="left" image="Smile" contentMode="scaleAspectFit" id="rJ6-SX-jdB">
-                            <gestureRecognizers>
-                                <tapGestureRecognizer id="sO5-ZO-Yf6">
-                                    <connections>
-                                        <action selector="tappedImageWithGestureRecognizer:" destination="AgC-eL-Hgc" id="JMo-ip-IhD"/>
-                                    </connections>
-                                </tapGestureRecognizer>
-                            </gestureRecognizers>
-                        </imageView>
-                    </items>
-                    <connections>
-                        <outlet property="animatedImage" destination="rJ6-SX-jdB" id="syK-RJ-f8C"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
@@ -83,7 +61,4 @@
             <point key="canvasLocation" x="545" y="339"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Smile" width="64" height="64"/>
-    </resources>
 </document>

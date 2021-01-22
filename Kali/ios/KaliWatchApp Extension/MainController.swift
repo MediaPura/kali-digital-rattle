@@ -19,7 +19,6 @@ class MainController: WKInterfaceController
         case loadingIntro
         case intro
         case playingIntro
-        case letsLearnALetterIntro
         case letter(letter: String)
         case awaitingLetterTap(letter: String)
         case letterObject(letter: String)
@@ -56,20 +55,34 @@ class MainController: WKInterfaceController
         }
     }
 
-    let kaliIntroAtlas = SKTextureAtlas(named: "Kali")
+    var introAtlas: SKTextureAtlas? 
 
-    let goodJobAtlas = SKTextureAtlas(named: "GoodJob")
+    enum IntroType
+    {
+        case kali
+        case letsLearnALetter
+    }
+
+    private var introType: IntroType = .kali
+
+    enum CongratulationType
+    {
+        case short
+        case long
+    }
+
+    private var congratulationType: CongratulationType = .long
+
+    var goodJobAtlas: SKTextureAtlas?
     var goodJobAtlasLoaded = false
 
-    let learnLetterIntroAtlas = SKTextureAtlas(named: "LetsLearnALetter")
-    var learnLetterAtlasLoaded = false
+    private var lessonCount = 0
 
+    // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
     var letterIndex = 0
     let supportedLetters = ["A", "B", "C"]
     private var letterAtlases: [String: SKTextureAtlas] = [String: SKTextureAtlas]()
     private var letterObjectAtlases: [String: SKTextureAtlas] = [String: SKTextureAtlas]()
-
-    private var introFrames: [SKTexture] = []
 
     override func awake(withContext context: Any?)
     {
@@ -84,23 +97,71 @@ class MainController: WKInterfaceController
                 letterObjectAtlases[letter] = SKTextureAtlas(named: "Letter\(letter)Object")
             }
 
-            for frameNumber in 242...447
-            {
-                var textureName = String()
+        default: break
 
-                if (frameNumber < 10)
-                {
-                    textureName = "Kali_Intro_05_0000\(frameNumber)"
-                } else if (frameNumber < 100)
-                {
-                    textureName = "Kali_Intro_05_000\(frameNumber)"
-                } else
-                {
-                    textureName = "Kali_Intro_05_00\(frameNumber)"
-                }
+        }
 
-                introFrames.append(kaliIntroAtlas.textureNamed(textureName))
-            }
+        crownSequencer.delegate = self
+        crownSequencer.focus()
+    }
+
+    private func loadGoodJobAnimation()
+    {
+        let randomNumber = Int(arc4random_uniform(2))
+
+        if randomNumber == 0
+        {
+            congratulationType = .long
+            goodJobAtlas = SKTextureAtlas(named: "GoodJob")
+        } else if randomNumber == 1
+        {
+            congratulationType = .short
+            goodJobAtlas = SKTextureAtlas(named: "GoodJobShort")
+        }
+        
+        goodJobAtlas!.preload(completionHandler: { [weak self] in
+            self?.goodJobAtlasLoaded = true
+        })
+    }
+
+    override func didDeactivate()
+    {
+        super.didDeactivate()
+
+        if let soundPlayer = soundPlayer 
+        {
+            soundPlayer.pause()
+            soundIsPlaying = false
+        }
+
+        switch sceneState {
+
+            case .playingIntro:
+                introAtlas = nil
+
+            case .awaitingLetterTap(let letter): 
+                sceneState = .letter(letter: letter)
+
+            case .awaitingLetterObjectTap(let letter):
+                sceneState = .letterObject(letter: letter)
+
+            default: break
+        }
+    }
+
+    override func willActivate()
+    {
+        func loadStandardIntro()
+        {
+            introAtlas = SKTextureAtlas(named: "Kali")
+            introType = .kali
+        }
+
+        super.willActivate()
+
+        // NOTE: (Ted)  If the app goes intro the background and the intro has not yet loaded, load the intro
+        switch sceneState {
+        case .loadingIntro:
 
             guard 
                 let spriteKitScene = spriteKitScene,
@@ -113,7 +174,34 @@ class MainController: WKInterfaceController
             spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
 
-            kaliIntroAtlas.preload(completionHandler: { [weak self] in
+            let defaults = UserDefaults.standard
+            let firstLaunchKey = "FirstLaunch"
+
+            if defaults.bool(forKey: firstLaunchKey) == false
+            {
+                loadStandardIntro()
+                defaults.setValue(true, forKey: firstLaunchKey)
+            } else
+            {
+                let randomNumber = Int(arc4random_uniform(2))
+
+                if randomNumber == 0
+                {
+                    introAtlas = SKTextureAtlas(named: "LetsLearnALetter")
+                    introType = .letsLearnALetter
+                } else if randomNumber == 1
+                {
+                    loadStandardIntro()
+                }
+            }
+
+            guard let introAtlas = introAtlas else
+            {
+                assertionFailure("Kali Intro Atlas must be set at startup")
+                return
+            }
+
+            introAtlas.preload(completionHandler: { [weak self] in
                 guard let weakSelf = self else { return }
                 weakSelf.sceneState = .intro
 
@@ -142,47 +230,9 @@ class MainController: WKInterfaceController
                 weakSelf.kaliScene = kaliScene
             })
 
-            learnLetterIntroAtlas.preload(completionHandler: { [weak self] in
-                self?.learnLetterAtlasLoaded = true
-            })
-
-            goodJobAtlas.preload(completionHandler: { [weak self] in
-                self?.goodJobAtlasLoaded = true
-            })
 
         default: break
-
         }
-
-        crownSequencer.delegate = self
-        crownSequencer.focus()
-    }
-
-    override func didDeactivate()
-    {
-        super.didDeactivate()
-
-        if let soundPlayer = soundPlayer 
-        {
-            soundPlayer.pause()
-            soundIsPlaying = false
-        }
-
-
-        switch sceneState {
-            case .awaitingLetterTap(let letter): 
-                sceneState = .letter(letter: letter)
-
-            case .awaitingLetterObjectTap(let letter):
-                sceneState = .letterObject(letter: letter)
-
-            default: break
-        }
-    }
-
-    override func willActivate()
-    {
-        super.willActivate()
 
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
             guard 
@@ -193,9 +243,6 @@ class MainController: WKInterfaceController
 
             case .playingIntro:
                 weakSelf.playCurrentLetter()
-
-            case .letsLearnALetterIntro:
-                weakSelf.changeLetterAndPlayIt()
 
             case .letter(let letter):
                 weakSelf.playSound(soundName: "Letter\(letter)")
@@ -252,31 +299,6 @@ class MainController: WKInterfaceController
         kaliScene.animateKali(frames: frames, repeats: repeats, isLetter: isLetter)
     }
 
-    private func playLetsLearnALetter()
-    {
-        sceneState = .letsLearnALetterIntro
-
-        var frames: [SKTexture] = []
-
-        for frameNumber in 16...140
-        {
-            var textureName = String()
-
-            if frameNumber < 100
-            {
-                textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
-            } else if frameNumber >= 100
-            {
-                textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
-            }
-
-            frames.append(learnLetterIntroAtlas.textureNamed(textureName))
-        }
-
-        playAnimationInSpriteKitScene(frames: frames, isLetter: false)
-        playSound(soundName: "Kali_LetsLearnALetter_04")
-    }
-
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
@@ -292,19 +314,65 @@ class MainController: WKInterfaceController
                 return
             }
 
+            guard let introAtlas = introAtlas else
+            {
+                assertionFailure("Kali Intro atlas should be available and loaded here")
+                return
+            }
+
+            var introFrames: [SKTexture] = []
+            var introAudioFilename = String()
+
+            switch introType {
+
+            case .kali:
+
+                for frameNumber in 242...447
+                {
+                    var textureName = String()
+
+                    if (frameNumber < 10)
+                    {
+                        textureName = "Kali_Intro_05_0000\(frameNumber)"
+                    } else if (frameNumber < 100)
+                    {
+                        textureName = "Kali_Intro_05_000\(frameNumber)"
+                    } else
+                    {
+                        textureName = "Kali_Intro_05_00\(frameNumber)"
+                    }
+
+                    introFrames.append(introAtlas.textureNamed(textureName))
+                }
+
+                introAudioFilename = "Kali_Intro_05"
+
+            case .letsLearnALetter:
+
+                for frameNumber in 16...140
+                {
+                    var textureName = String()
+
+                    if frameNumber < 100
+                    {
+                        textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
+                    } else if frameNumber >= 100
+                    {
+                        textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
+                    }
+
+                    introFrames.append(introAtlas.textureNamed(textureName))
+                }
+
+                introAudioFilename = "Kali_LetsLearnALetter_04"
+            }
+
             tapToStart.alpha = 0
-            playSound(soundName: "Kali_Intro_05")
+            playSound(soundName: introAudioFilename)
             kaliScene.animateKali(frames: introFrames, isLetter: false)
 
         case .playingIntro:
-
-            if learnLetterAtlasLoaded
-            {
-                playLetsLearnALetter()
-            } else
-            {
-                playCurrentLetter()
-            }
+            playCurrentLetter()
 
         case .awaitingLetterTap(let letter):
             sceneState = .letterObject(letter: letter)
@@ -330,30 +398,62 @@ class MainController: WKInterfaceController
             // TODO: (Ted)  Consider randomizing this behavior.
             if goodJobAtlasLoaded
             {
+                guard let goodJobAtlas = goodJobAtlas else
+                {
+                    assertionFailure("Good job atlas must be loaded and set before it is used")
+                    return
+                }
+
                 sceneState = .goodJob
 
                 var frames: [SKTexture] = []
+                var audioFilename = String()
 
-                for frameNumber in 0...150
-                {
-                    var textureName = String()
+                switch congratulationType {
+                case .long:
 
-                    if frameNumber < 10
+                    for frameNumber in 0...150
                     {
-                        textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
-                    } else if frameNumber < 100
-                    {
-                        textureName = "Kali_KeepGoing_04_000\(frameNumber)"
-                    } else if frameNumber >= 100
-                    {
-                        textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                        var textureName = String()
+
+                        if frameNumber < 10
+                        {
+                            textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
+                        } else if frameNumber < 100
+                        {
+                            textureName = "Kali_KeepGoing_04_000\(frameNumber)"
+                        } else if frameNumber >= 100
+                        {
+                            textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                        }
+
+                        frames.append(goodJobAtlas.textureNamed(textureName))
                     }
 
-                    frames.append(goodJobAtlas.textureNamed(textureName))
+                    audioFilename = "Kali_KeepGoing_04"
+
+                case .short:
+
+                    for frameNumber in 0...70
+                    {
+                        var textureName = String()
+
+                        if frameNumber < 10
+                        {
+                            textureName = "Kali_GoodJob_04b_0000\(frameNumber)"
+                        } else if frameNumber < 100
+                        {
+                            textureName = "Kali_GoodJob_04b_000\(frameNumber)"
+                        }
+
+                        frames.append(goodJobAtlas.textureNamed(textureName))
+                    }
+
+                    audioFilename = "Kali_GoodJob_04b"
                 }
 
                 playAnimationInSpriteKitScene(frames: frames, isLetter: false)
-                playSound(soundName: "Kali_KeepGoing_04")
+                playSound(soundName: audioFilename)
 
             } else
             {
@@ -384,7 +484,6 @@ class MainController: WKInterfaceController
 
 extension MainController: AVAudioPlayerDelegate
 {
-
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {
         // NOTE: (Ted)  Don't continue unless it has played successfully.
@@ -392,14 +491,35 @@ extension MainController: AVAudioPlayerDelegate
 
         switch sceneState {
 
-        case .letsLearnALetterIntro:
-            changeLetterAndPlayIt()
+        case .playingIntro:
+            introAtlas = nil
+
+            switch introType {
+            case .kali: break
+            case .letsLearnALetter:
+                playCurrentLetter()
+            }
 
         case .letter(let letter):
             sceneState = .awaitingLetterTap(letter: letter)
 
         case .letterObject(let letter):
             sceneState = .awaitingLetterObjectTap(letter: letter)
+
+            if !goodJobAtlasLoaded && lessonCount > 2
+            {
+                loadGoodJobAnimation()
+            }
+
+            lessonCount += 1
+
+        case .goodJob:
+
+            switch congratulationType {
+            case .long: break
+            case .short:
+                playCurrentLetter()
+            }
 
         default: break
         }
