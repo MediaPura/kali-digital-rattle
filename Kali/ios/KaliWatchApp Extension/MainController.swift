@@ -129,6 +129,8 @@ class MainController: WKInterfaceController
 
     private var introType: IntroType = .kali
 
+    private var lessonCount = 0
+
     override func willActivate()
     {
         super.willActivate()
@@ -159,8 +161,11 @@ class MainController: WKInterfaceController
             } else
             {
                 // TODO: (Ted)  On subsequent launches, use Kali Intro or Lets Learn A Letter
-                introAtlas = SKTextureAtlas(named: "LetsLearnALetter")
-                introType = .letsLearnALetter
+                //introAtlas = SKTextureAtlas(named: "LetsLearnALetter")
+                //introType = .letsLearnALetter
+
+                introAtlas = SKTextureAtlas(named: "Kali")
+                introType = .kali
             }
 
             guard let introAtlas = introAtlas else
@@ -449,10 +454,12 @@ extension MainController: AVAudioPlayerDelegate
         case .letterObject(let letter):
             sceneState = .awaitingLetterObjectTap(letter: letter)
 
-            if !goodJobAtlasLoaded
+            if !goodJobAtlasLoaded && lessonCount > 2
             {
                 loadGoodJobAnimation()
             }
+
+            lessonCount += 1
 
         default: break
         }
