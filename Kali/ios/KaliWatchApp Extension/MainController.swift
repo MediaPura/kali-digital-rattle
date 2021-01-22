@@ -521,10 +521,6 @@ extension MainController: AVAudioPlayerDelegate
                 playCurrentLetter()
             }
 
-            goodJobAtlas = nil
-            goodJobAtlasLoaded = false
-            lessonCount = 0
-
         default: break
         }
     }
