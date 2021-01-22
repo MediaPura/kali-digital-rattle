@@ -167,6 +167,17 @@ class MainController: WKInterfaceController
             soundPlayer.pause()
             soundIsPlaying = false
         }
+
+
+        switch sceneState {
+            case .awaitingLetterTap(let letter): 
+                sceneState = .letter(letter: letter)
+
+            case .awaitingLetterObjectTap(let letter):
+                sceneState = .letterObject(letter: letter)
+
+            default: break
+        }
     }
 
     override func willActivate()
@@ -186,12 +197,10 @@ class MainController: WKInterfaceController
             case .letsLearnALetterIntro:
                 weakSelf.changeLetterAndPlayIt()
 
-            case .letter(let letter), .awaitingLetterTap(let letter):
-                weakSelf.sceneState = .letter(letter: letter)
+            case .letter(let letter):
                 weakSelf.playSound(soundName: "Letter\(letter)")
 
-            case .letterObject(let letter), .awaitingLetterObjectTap(let letter):
-                weakSelf.sceneState = .letterObject(letter: letter)
+            case .letterObject(let letter):
                 weakSelf.playSound(soundName: "Letter\(letter)Object")
 
             case .goodJob:
