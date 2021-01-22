@@ -131,8 +131,15 @@ class MainController: WKInterfaceController
 
     private var lessonCount = 0
 
+
     override func willActivate()
     {
+        func loadStandardIntro()
+        {
+            introAtlas = SKTextureAtlas(named: "Kali")
+            introType = .kali
+        }
+
         super.willActivate()
 
         // NOTE: (Ted)  If the app goes intro the background and the intro has not yet loaded, load the intro
@@ -155,17 +162,20 @@ class MainController: WKInterfaceController
 
             if defaults.bool(forKey: firstLaunchKey) == false
             {
-                introAtlas = SKTextureAtlas(named: "Kali")
-                introType = .kali
+                loadStandardIntro()
                 defaults.setValue(true, forKey: firstLaunchKey)
             } else
             {
-                // TODO: (Ted)  On subsequent launches, use Kali Intro or Lets Learn A Letter
-                //introAtlas = SKTextureAtlas(named: "LetsLearnALetter")
-                //introType = .letsLearnALetter
+                let randomNumber = Int(arc4random_uniform(2))
 
-                introAtlas = SKTextureAtlas(named: "Kali")
-                introType = .kali
+                if randomNumber == 0
+                {
+                    introAtlas = SKTextureAtlas(named: "LetsLearnALetter")
+                    introType = .letsLearnALetter
+                } else if randomNumber == 1
+                {
+                    loadStandardIntro()
+                }
             }
 
             guard let introAtlas = introAtlas else
