@@ -35,18 +35,6 @@
 		AC1218CC25B7952C004F39B7 /* LetterA.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218CA25B7952C004F39B7 /* LetterA.m4a */; };
 		AC1218D425B79534004F39B7 /* LetterAObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218D325B79534004F39B7 /* LetterAObject.m4a */; };
 		AC1218D525B79534004F39B7 /* LetterAObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC1218D325B79534004F39B7 /* LetterAObject.m4a */; };
-		AC12190F25B7A7EE004F39B7 /* LetterAObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */; };
-		AC12191025B7A7EE004F39B7 /* LetterAObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */; };
-		AC12191125B7A7EE004F39B7 /* LetterCObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */; };
-		AC12191225B7A7EE004F39B7 /* LetterCObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */; };
-		AC12191325B7A7EE004F39B7 /* LetterC.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190B25B7A7EE004F39B7 /* LetterC.atlas */; };
-		AC12191425B7A7EE004F39B7 /* LetterC.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190B25B7A7EE004F39B7 /* LetterC.atlas */; };
-		AC12191525B7A7EE004F39B7 /* LetterB.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190C25B7A7EE004F39B7 /* LetterB.atlas */; };
-		AC12191625B7A7EE004F39B7 /* LetterB.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190C25B7A7EE004F39B7 /* LetterB.atlas */; };
-		AC12191725B7A7EE004F39B7 /* LetterBObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */; };
-		AC12191825B7A7EE004F39B7 /* LetterBObject.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */; };
-		AC12191925B7A7EE004F39B7 /* LetterA.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190E25B7A7EE004F39B7 /* LetterA.atlas */; };
-		AC12191A25B7A7EE004F39B7 /* LetterA.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12190E25B7A7EE004F39B7 /* LetterA.atlas */; };
 		AC12192525B7AA94004F39B7 /* LetterC.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192125B7AA94004F39B7 /* LetterC.m4a */; };
 		AC12192625B7AA94004F39B7 /* LetterC.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192125B7AA94004F39B7 /* LetterC.m4a */; };
 		AC12192725B7AA94004F39B7 /* LetterBObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12192225B7AA94004F39B7 /* LetterBObject.m4a */; };
@@ -63,6 +51,10 @@
 		AC12196525B90A04004F39B7 /* Kali_KeepGoing_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC12196325B90A04004F39B7 /* Kali_KeepGoing_04.m4a */; };
 		AC12196D25B90A26004F39B7 /* GoodJob.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12196C25B90A26004F39B7 /* GoodJob.atlas */; };
 		AC12196E25B90A26004F39B7 /* GoodJob.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC12196C25B90A26004F39B7 /* GoodJob.atlas */; };
+		AC7E5AF525BFA88F002C3FC6 /* Letters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5AF325BFA88F002C3FC6 /* Letters.atlas */; };
+		AC7E5AF625BFA88F002C3FC6 /* Letters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5AF325BFA88F002C3FC6 /* Letters.atlas */; };
+		AC7E5AF725BFA88F002C3FC6 /* LetterObjects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5AF425BFA88F002C3FC6 /* LetterObjects.atlas */; };
+		AC7E5AF825BFA88F002C3FC6 /* LetterObjects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5AF425BFA88F002C3FC6 /* LetterObjects.atlas */; };
 		ACA62A8E25BB8BC600D95C50 /* Kali_GoodJob_04b.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACA62A8D25BB8BC600D95C50 /* Kali_GoodJob_04b.m4a */; };
 		ACA62A8F25BB8BC600D95C50 /* Kali_GoodJob_04b.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACA62A8D25BB8BC600D95C50 /* Kali_GoodJob_04b.m4a */; };
 		ACA62A9725BB8BEF00D95C50 /* GoodJobShort.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACA62A9625BB8BEF00D95C50 /* GoodJobShort.atlas */; };
@@ -167,12 +159,6 @@
 		AC1218C125B79485004F39B7 /* LetsLearnALetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetsLearnALetter.m4a; sourceTree = "<group>"; };
 		AC1218CA25B7952C004F39B7 /* LetterA.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterA.m4a; sourceTree = "<group>"; };
 		AC1218D325B79534004F39B7 /* LetterAObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterAObject.m4a; sourceTree = "<group>"; };
-		AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterAObject.atlas; path = "KaliWatchApp Extension/LetterAObject.atlas"; sourceTree = SOURCE_ROOT; };
-		AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterCObject.atlas; path = "KaliWatchApp Extension/LetterCObject.atlas"; sourceTree = SOURCE_ROOT; };
-		AC12190B25B7A7EE004F39B7 /* LetterC.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterC.atlas; path = "KaliWatchApp Extension/LetterC.atlas"; sourceTree = SOURCE_ROOT; };
-		AC12190C25B7A7EE004F39B7 /* LetterB.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterB.atlas; path = "KaliWatchApp Extension/LetterB.atlas"; sourceTree = SOURCE_ROOT; };
-		AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterBObject.atlas; path = "KaliWatchApp Extension/LetterBObject.atlas"; sourceTree = SOURCE_ROOT; };
-		AC12190E25B7A7EE004F39B7 /* LetterA.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterA.atlas; path = "KaliWatchApp Extension/LetterA.atlas"; sourceTree = SOURCE_ROOT; };
 		AC12192125B7AA94004F39B7 /* LetterC.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterC.m4a; sourceTree = "<group>"; };
 		AC12192225B7AA94004F39B7 /* LetterBObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterBObject.m4a; sourceTree = "<group>"; };
 		AC12192325B7AA94004F39B7 /* LetterB.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterB.m4a; sourceTree = "<group>"; };
@@ -181,6 +167,8 @@
 		AC12194825B8FF10004F39B7 /* LetsLearnALetter.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetsLearnALetter.atlas; path = "KaliWatchApp Extension/LetsLearnALetter.atlas"; sourceTree = SOURCE_ROOT; };
 		AC12196325B90A04004F39B7 /* Kali_KeepGoing_04.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_KeepGoing_04.m4a; sourceTree = "<group>"; };
 		AC12196C25B90A26004F39B7 /* GoodJob.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJob.atlas; path = "KaliWatchApp Extension/GoodJob.atlas"; sourceTree = SOURCE_ROOT; };
+		AC7E5AF325BFA88F002C3FC6 /* Letters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Letters.atlas; path = "KaliWatchApp Extension/Letters.atlas"; sourceTree = SOURCE_ROOT; };
+		AC7E5AF425BFA88F002C3FC6 /* LetterObjects.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterObjects.atlas; path = "KaliWatchApp Extension/LetterObjects.atlas"; sourceTree = SOURCE_ROOT; };
 		ACA62A8D25BB8BC600D95C50 /* Kali_GoodJob_04b.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_GoodJob_04b.m4a; sourceTree = "<group>"; };
 		ACA62A9625BB8BEF00D95C50 /* GoodJobShort.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJobShort.atlas; path = "KaliWatchApp Extension/GoodJobShort.atlas"; sourceTree = SOURCE_ROOT; };
 		ACA6652E2579555800724299 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -338,15 +326,11 @@
 			isa = PBXGroup;
 			children = (
 				AC1033292568194300162259 /* Interface.storyboard */,
+				AC7E5AF425BFA88F002C3FC6 /* LetterObjects.atlas */,
+				AC7E5AF325BFA88F002C3FC6 /* Letters.atlas */,
 				AC12194825B8FF10004F39B7 /* LetsLearnALetter.atlas */,
 				ACA62A9625BB8BEF00D95C50 /* GoodJobShort.atlas */,
 				AC12196C25B90A26004F39B7 /* GoodJob.atlas */,
-				AC12190E25B7A7EE004F39B7 /* LetterA.atlas */,
-				AC12190925B7A7EE004F39B7 /* LetterAObject.atlas */,
-				AC12190C25B7A7EE004F39B7 /* LetterB.atlas */,
-				AC12190D25B7A7EE004F39B7 /* LetterBObject.atlas */,
-				AC12190B25B7A7EE004F39B7 /* LetterC.atlas */,
-				AC12190A25B7A7EE004F39B7 /* LetterCObject.atlas */,
 				AC0BE3CF25B0E98600DAC435 /* Kali.atlas */,
 				AC10332C2568194400162259 /* Assets.xcassets */,
 				AC10332E2568194400162259 /* Info.plist */,
@@ -600,19 +584,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC12191325B7A7EE004F39B7 /* LetterC.atlas in Resources */,
 				AC12192B25B7AA94004F39B7 /* LetterCObject.m4a in Resources */,
 				AC1218D425B79534004F39B7 /* LetterAObject.m4a in Resources */,
-				AC12191725B7A7EE004F39B7 /* LetterBObject.atlas in Resources */,
 				AC12194025B8FF04004F39B7 /* Kali_LetsLearnALetter_04.m4a in Resources */,
+				AC7E5AF525BFA88F002C3FC6 /* Letters.atlas in Resources */,
 				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
 				AC12192525B7AA94004F39B7 /* LetterC.m4a in Resources */,
 				AC0BE3DE25B0E9AB00DAC435 /* Kali_Intro_05.m4a in Resources */,
 				AC0BE3F325B0EA9700DAC435 /* Kali.atlas in Resources */,
 				AC12196425B90A04004F39B7 /* Kali_KeepGoing_04.m4a in Resources */,
-				AC12191925B7A7EE004F39B7 /* LetterA.atlas in Resources */,
 				ACA62A9725BB8BEF00D95C50 /* GoodJobShort.atlas in Resources */,
-				AC12191525B7A7EE004F39B7 /* LetterB.atlas in Resources */,
+				AC7E5AF725BFA88F002C3FC6 /* LetterObjects.atlas in Resources */,
 				AC12194925B8FF10004F39B7 /* LetsLearnALetter.atlas in Resources */,
 				AC12192725B7AA94004F39B7 /* LetterBObject.m4a in Resources */,
 				AC12196D25B90A26004F39B7 /* GoodJob.atlas in Resources */,
@@ -620,8 +602,6 @@
 				AC12192925B7AA94004F39B7 /* LetterB.m4a in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
 				AC1218CB25B7952C004F39B7 /* LetterA.m4a in Resources */,
-				AC12190F25B7A7EE004F39B7 /* LetterAObject.atlas in Resources */,
-				AC12191125B7A7EE004F39B7 /* LetterCObject.atlas in Resources */,
 				AC1218C225B79485004F39B7 /* LetsLearnALetter.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,19 +610,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC12191425B7A7EE004F39B7 /* LetterC.atlas in Resources */,
 				AC12192C25B7AA94004F39B7 /* LetterCObject.m4a in Resources */,
 				AC1218D525B79534004F39B7 /* LetterAObject.m4a in Resources */,
-				AC12191825B7A7EE004F39B7 /* LetterBObject.atlas in Resources */,
 				AC12194125B8FF04004F39B7 /* Kali_LetsLearnALetter_04.m4a in Resources */,
+				AC7E5AF625BFA88F002C3FC6 /* Letters.atlas in Resources */,
 				AC0BE3DF25B0E9AB00DAC435 /* Kali_Intro_05.m4a in Resources */,
 				AC12192625B7AA94004F39B7 /* LetterC.m4a in Resources */,
 				ACA6653725795B4500724299 /* Kali.sks in Resources */,
 				AC0BE3E625B0EA5500DAC435 /* Kali.atlas in Resources */,
 				AC12196525B90A04004F39B7 /* Kali_KeepGoing_04.m4a in Resources */,
-				AC12191A25B7A7EE004F39B7 /* LetterA.atlas in Resources */,
 				ACA62A9825BB8BEF00D95C50 /* GoodJobShort.atlas in Resources */,
-				AC12191625B7A7EE004F39B7 /* LetterB.atlas in Resources */,
+				AC7E5AF825BFA88F002C3FC6 /* LetterObjects.atlas in Resources */,
 				AC12194A25B8FF10004F39B7 /* LetsLearnALetter.atlas in Resources */,
 				AC12192825B7AA94004F39B7 /* LetterBObject.m4a in Resources */,
 				AC12196E25B90A26004F39B7 /* GoodJob.atlas in Resources */,
@@ -650,8 +628,6 @@
 				AC12192A25B7AA94004F39B7 /* LetterB.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
 				AC1218CC25B7952C004F39B7 /* LetterA.m4a in Resources */,
-				AC12191025B7A7EE004F39B7 /* LetterAObject.atlas in Resources */,
-				AC12191225B7A7EE004F39B7 /* LetterCObject.atlas in Resources */,
 				AC1218C325B79485004F39B7 /* LetsLearnALetter.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -81,25 +81,12 @@ class MainController: WKInterfaceController
     // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
     var letterIndex = 0
     let supportedLetters = ["A", "B", "C"]
-    private var letterAtlases: [String: SKTextureAtlas] = [String: SKTextureAtlas]()
-    private var letterObjectAtlases: [String: SKTextureAtlas] = [String: SKTextureAtlas]()
+    private var letterAtlas = SKTextureAtlas(named: "Letters")
+    private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
 
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
-
-        switch sceneState {
-        case .loadingIntro:
-
-            for letter in supportedLetters
-            {
-                letterAtlases[letter] = SKTextureAtlas(named: "Letter\(letter)")
-                letterObjectAtlases[letter] = SKTextureAtlas(named: "Letter\(letter)Object")
-            }
-
-        default: break
-
-        }
 
         crownSequencer.delegate = self
         crownSequencer.focus()
@@ -270,19 +257,7 @@ class MainController: WKInterfaceController
             return
         }
 
-        var frames: [SKTexture] = []
-
-        guard let textureAtlas = letterAtlases[currentLetter] else
-        {
-            assertionFailure("All letter Texture Atlases must be populated by now")
-            return
-        }
-
-        for index in 0...3
-        {
-            frames.append(textureAtlas.textureNamed("\(index)"))
-        }
-
+        let frames: [SKTexture] = [letterAtlas.textureNamed(currentLetter)]
         kaliScene.animateKali(frames: frames, repeats: true, isLetter: true)
         playSound(soundName: "Letter\(currentLetter)")
     }
@@ -376,26 +351,12 @@ class MainController: WKInterfaceController
 
         case .awaitingLetterTap(let letter):
             sceneState = .letterObject(letter: letter)
-
-            var frames: [SKTexture] = []
-
-            guard let textureAtlas = letterObjectAtlases[letter] else
-            {
-                assertionFailure("All letter Object Texture Atlases must be populated by now")
-                return
-            }
-
-            for index in 0...3
-            {
-                frames.append(textureAtlas.textureNamed("\(index)"))
-            }
-
+            let frames = [letterObjectsAtlas.textureNamed(letter)]
             playAnimationInSpriteKitScene(frames: frames, repeats: true, isLetter: true)
             playSound(soundName: "Letter\(letter)Object")
 
         case .awaitingLetterObjectTap:
 
-            // TODO: (Ted)  Consider randomizing this behavior.
             if goodJobAtlasLoaded
             {
                 guard let goodJobAtlas = goodJobAtlas else
@@ -581,7 +542,6 @@ class KaliScene: SKScene
             // RGB == 220 across the board.
             backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
         }
-
 
         let animateAction = SKAction.animate(with: frames,
                                      timePerFrame: 1/30,
