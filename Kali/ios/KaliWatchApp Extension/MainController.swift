@@ -397,17 +397,7 @@ class MainController: WKInterfaceController
 
                     for frameNumber in 0...70
                     {
-                        var textureName = String()
-
-                        if frameNumber < 10
-                        {
-                            textureName = "Kali_GoodJob_04b_0000\(frameNumber)"
-                        } else if frameNumber < 100
-                        {
-                            textureName = "Kali_GoodJob_04b_000\(frameNumber)"
-                        }
-
-                        frames.append(goodJobAtlas.textureNamed(textureName))
+                        frames.append(goodJobAtlas.textureNamed("\(frameNumber)"))
                     }
 
                     audioFilename = "Kali_GoodJob_04b"
