@@ -64,6 +64,24 @@ class MainController: WKInterfaceController
         }
     }
 
+    private func preloadSound(soundName: String)
+    {
+        let soundURL = getSoundURLForM4aFile(soundName: soundName)
+
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
+
+            // NOTE: (Ted)  This is important for the animations. Since a heavy amount
+            //              of work is happening at startup, we want to make sure the sound
+            //              player is ready and has acquired its resources by the time
+            //              the user taps to start the intro animation.
+            soundPlayer!.prepareToPlay()
+        } catch 
+        {
+            assertionFailure("It should always be possible to create a sound player")
+        }
+    }
+
     var introAtlas: SKTextureAtlas? 
 
     enum IntroType
@@ -199,20 +217,7 @@ class MainController: WKInterfaceController
                 introAudioFilename = "Kali_LetsLearnALetter_04"
             }
 
-            let soundURL = getSoundURLForM4aFile(soundName: introAudioFilename)
-
-            do {
-                soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
-
-                // NOTE: (Ted)  This is important for the intro animation. Since a heavy amount
-                //              of work is happening at startup, we want to make sure the sound
-                //              player is ready and has acquired its resources by the time
-                //              the user taps to start the intro animation.
-                soundPlayer!.prepareToPlay()
-            } catch 
-            {
-                assertionFailure("It should always be possible to create a sound player")
-            }
+            preloadSound(soundName: introAudioFilename)
 
             guard let introAtlas = introAtlas else
             {
