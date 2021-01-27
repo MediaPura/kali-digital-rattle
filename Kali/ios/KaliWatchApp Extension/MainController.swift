@@ -34,14 +34,23 @@ class MainController: WKInterfaceController
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
 
-    private func playSound(soundName: String)
+    private func getSoundURLForM4aFile(soundName: String) -> URL
     {
         guard let soundURL = Bundle.main.url(forResource: soundName,
                                              withExtension: "m4a") else
         {
-            assertionFailure("All sounds must exist before being loaded")
-            return
+            fatalError("All sounds must exist before being loaded")
         }
+
+        return soundURL
+    }
+
+    // NOTE: (Ted)  This is purely a convenience, meant only for situations
+    //              when we don't really care if the sound syncs with any
+    //              given animations.
+    private func playSoundLowAudioSync(soundName: String)
+    {
+        let soundURL = getSoundURLForM4aFile(soundName: soundName)
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
@@ -87,7 +96,6 @@ class MainController: WKInterfaceController
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
-
         crownSequencer.delegate = self
         crownSequencer.focus()
     }
@@ -182,6 +190,30 @@ class MainController: WKInterfaceController
                 }
             }
 
+            var introAudioFilename = String()
+
+            switch introType {
+            case .kali:
+                introAudioFilename = "Kali_Intro_05"
+            case .letsLearnALetter:
+                introAudioFilename = "Kali_LetsLearnALetter_04"
+            }
+
+            let soundURL = getSoundURLForM4aFile(soundName: introAudioFilename)
+
+            do {
+                soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
+
+                // NOTE: (Ted)  This is important for the intro animation. Since a heavy amount
+                //              of work is happening at startup, we want to make sure the sound
+                //              player is ready and has acquired its resources by the time
+                //              the user taps to start the intro animation.
+                soundPlayer!.prepareToPlay()
+            } catch 
+            {
+                assertionFailure("It should always be possible to create a sound player")
+            }
+
             guard let introAtlas = introAtlas else
             {
                 assertionFailure("Kali Intro Atlas must be set at startup")
@@ -232,10 +264,10 @@ class MainController: WKInterfaceController
                 weakSelf.playCurrentLetter()
 
             case .letter(let letter):
-                weakSelf.playSound(soundName: "Letter\(letter)")
+                weakSelf.playSoundLowAudioSync(soundName: "Letter\(letter)")
 
             case .letterObject(let letter):
-                weakSelf.playSound(soundName: "Letter\(letter)Object")
+                weakSelf.playSoundLowAudioSync(soundName: "Letter\(letter)Object")
 
             case .goodJob:
                 weakSelf.playCurrentLetter()
@@ -259,7 +291,7 @@ class MainController: WKInterfaceController
 
         let frames: [SKTexture] = [letterAtlas.textureNamed(currentLetter)]
         kaliScene.animateKali(frames: frames, repeats: true, isLetter: true)
-        playSound(soundName: "Letter\(currentLetter)")
+        playSoundLowAudioSync(soundName: "Letter\(currentLetter)")
     }
 
     private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false, 
@@ -320,8 +352,6 @@ class MainController: WKInterfaceController
                     introFrames.append(introAtlas.textureNamed(textureName))
                 }
 
-                introAudioFilename = "Kali_Intro_05"
-
             case .letsLearnALetter:
 
                 for frameNumber in 16...140
@@ -339,11 +369,21 @@ class MainController: WKInterfaceController
                     introFrames.append(introAtlas.textureNamed(textureName))
                 }
 
-                introAudioFilename = "Kali_LetsLearnALetter_04"
             }
 
             tapToStart.alpha = 0
-            playSound(soundName: introAudioFilename)
+
+            guard let soundPlayer = soundPlayer else
+            {
+                assertionFailure("The Sound Player must exist and be setup by the time a user taps to start the intro")
+                return
+            }
+
+            soundPlayer.volume = 0.5
+            soundPlayer.delegate = self
+            soundPlayer.play() 
+            soundIsPlaying = true
+
             kaliScene.animateKali(frames: introFrames, isLetter: false)
 
         case .playingIntro:
@@ -353,7 +393,7 @@ class MainController: WKInterfaceController
             sceneState = .letterObject(letter: letter)
             let frames = [letterObjectsAtlas.textureNamed(letter)]
             playAnimationInSpriteKitScene(frames: frames, repeats: true, isLetter: true)
-            playSound(soundName: "Letter\(letter)Object")
+            playSoundLowAudioSync(soundName: "Letter\(letter)Object")
 
         case .awaitingLetterObjectTap:
 
@@ -404,7 +444,7 @@ class MainController: WKInterfaceController
                 }
 
                 playAnimationInSpriteKitScene(frames: frames, isLetter: false)
-                playSound(soundName: audioFilename)
+                playSoundLowAudioSync(soundName: audioFilename)
 
             } else
             {
