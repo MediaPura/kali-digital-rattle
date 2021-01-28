@@ -28,7 +28,6 @@ class MainController: WKInterfaceController
 
     private var sceneState: SceneState = .loadingIntro
 
-    private var kaliScene: KaliScene?
     private var crownRotationEventCount: Int = 0
 
     private var soundPlayer: AVAudioPlayer?
@@ -82,8 +81,6 @@ class MainController: WKInterfaceController
         }
     }
 
-    var introAtlas: SKTextureAtlas? 
-
     enum IntroType
     {
         case kali
@@ -105,7 +102,6 @@ class MainController: WKInterfaceController
 
     private var lessonCount = 0
 
-    // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
     var letterIndex = 0
     let supportedLetters = ["A", "B", "C"]
     private var letterAtlas = SKTextureAtlas(named: "Letters")
@@ -150,7 +146,14 @@ class MainController: WKInterfaceController
         switch sceneState {
 
             case .playingIntro:
-                introAtlas = nil
+
+                guard let spriteKitScene = spriteKitScene else
+                {
+                    assertionFailure("Should have a WKInterfaceScene here")
+                    return
+                }
+
+                spriteKitScene.presentScene(nil)
 
             case .awaitingLetterTap(let letter): 
                 sceneState = .letter(letter: letter)
@@ -162,98 +165,43 @@ class MainController: WKInterfaceController
         }
     }
 
-    override func willActivate()
+    private func loadIntro()
     {
-        func loadStandardIntro()
+        guard 
+            let spriteKitScene = spriteKitScene,
+            let kaliScene = KaliScene(fileNamed: "Kali.sks") else
         {
-            introAtlas = SKTextureAtlas(named: "Kali")
-            introType = .kali
+            assertionFailure("Expected to load Kali Scene")
+            return
+        }
+    
+        spriteKitScene.preferredFramesPerSecond = 30
+        spriteKitScene.presentScene(kaliScene)
+
+        var introAudioFilename = String()
+
+        switch introType {
+        case .kali:
+            introAudioFilename = "Kali_Intro_05"
+        case .letsLearnALetter:
+            introAudioFilename = "Kali_LetsLearnALetter_04"
         }
 
+        preloadSound(soundName: introAudioFilename)
+
+        kaliScene.introAtlas = SKTextureAtlas(named: "Kali")
+        kaliScene.sceneDelegate = self
+        kaliScene.preloadIntro()
+    }
+
+    override func willActivate()
+    {
         super.willActivate()
 
         // NOTE: (Ted)  If the app goes intro the background and the intro has not yet loaded, load the intro
         switch sceneState {
         case .loadingIntro:
-
-            guard 
-                let spriteKitScene = spriteKitScene,
-                let kaliScene = KaliScene(fileNamed: "Kali.sks") else
-            {
-                assertionFailure("Expected to load Kali Scene")
-                return
-            }
-        
-            spriteKitScene.preferredFramesPerSecond = 30
-            spriteKitScene.presentScene(kaliScene)
-
-            let defaults = UserDefaults.standard
-            let firstLaunchKey = "FirstLaunch"
-
-            if defaults.bool(forKey: firstLaunchKey) == false
-            {
-                loadStandardIntro()
-                defaults.setValue(true, forKey: firstLaunchKey)
-            } else
-            {
-                let randomNumber = Int(arc4random_uniform(2))
-
-                if randomNumber == 0
-                {
-                    introAtlas = SKTextureAtlas(named: "LetsLearnALetter")
-                    introType = .letsLearnALetter
-                } else if randomNumber == 1
-                {
-                    loadStandardIntro()
-                }
-            }
-
-            var introAudioFilename = String()
-
-            switch introType {
-            case .kali:
-                introAudioFilename = "Kali_Intro_05"
-            case .letsLearnALetter:
-                introAudioFilename = "Kali_LetsLearnALetter_04"
-            }
-
-            preloadSound(soundName: introAudioFilename)
-
-            guard let introAtlas = introAtlas else
-            {
-                assertionFailure("Kali Intro Atlas must be set at startup")
-                return
-            }
-
-            introAtlas.preload(completionHandler: { [weak self] in
-                guard let weakSelf = self else { return }
-                weakSelf.sceneState = .intro
-
-                guard 
-                    let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode,
-                    let backgroundColorNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
-                else
-                {
-                    assertionFailure("The Kali Scene Must have all nodes hooked up in IB")
-                    return
-                }
-
-                guard 
-                    let introLabelsNode = kaliScene.childNode(withName: "IntroLabels"),
-                    let tapToStart = kaliScene.childNode(withName: "TapToStart") else
-                {
-                    assertionFailure("The Kali Scene Must have intro labels node hooked up in IB")
-                    return
-                }
-
-                introLabelsNode.alpha = 0
-                tapToStart.alpha = 1
-
-                kaliScene.backgroundColorNode = backgroundColorNode
-                kaliScene.kaliNode = kaliNode 
-                weakSelf.kaliScene = kaliScene
-            })
-
+            loadIntro()
 
         default: break
         }
@@ -288,7 +236,7 @@ class MainController: WKInterfaceController
         let currentLetter = supportedLetters[letterIndex]
         sceneState = .letter(letter: currentLetter)
 
-        guard let kaliScene = kaliScene else
+        guard let kaliScene = spriteKitScene?.scene as? KaliScene else
         {
             assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
             return
@@ -302,7 +250,7 @@ class MainController: WKInterfaceController
     private func playAnimationInSpriteKitScene(frames: [SKTexture], repeats: Bool = false, 
                                                isLetter: Bool)
     {
-        guard let kaliScene = kaliScene else
+        guard let kaliScene = spriteKitScene?.scene as? KaliScene else
         {
             assertionFailure("Expected Kali Scene and Kali Node to be hooked up")
             return
@@ -319,14 +267,14 @@ class MainController: WKInterfaceController
             sceneState = .playingIntro
 
             guard 
-                let kaliScene = kaliScene,
+                let kaliScene = spriteKitScene?.scene as? KaliScene,
                 let tapToStart = kaliScene.childNode(withName: "TapToStart") else
             {
                 assertionFailure("Expected to load Kali Scene")
                 return
             }
 
-            guard let introAtlas = introAtlas else
+            guard let introAtlas = kaliScene.introAtlas else
             {
                 assertionFailure("Kali Intro atlas should be available and loaded here")
                 return
@@ -392,7 +340,15 @@ class MainController: WKInterfaceController
             kaliScene.animateKali(frames: introFrames, isLetter: false)
 
         case .playingIntro:
-            playCurrentLetter()
+
+            guard let spriteKitScene = spriteKitScene else
+            {
+                assertionFailure("Expected SpriteKit Scene")
+                return
+            }
+
+            spriteKitScene.presentScene(nil)
+            loadIntro()
 
         case .awaitingLetterTap(let letter):
             sceneState = .letterObject(letter: letter)
@@ -487,15 +443,6 @@ extension MainController: AVAudioPlayerDelegate
 
         switch sceneState {
 
-        case .playingIntro:
-            introAtlas = nil
-
-            switch introType {
-            case .kali: break
-            case .letsLearnALetter:
-                playCurrentLetter()
-            }
-
         case .letter(let letter):
             sceneState = .awaitingLetterTap(letter: letter)
 
@@ -522,10 +469,12 @@ extension MainController: AVAudioPlayerDelegate
     }
 }
 
+
 extension MainController: WKCrownDelegate
 {
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double)
     {
+        /*
         guard 
             let kaliScene = kaliScene,
             let kaliNode = kaliScene.kaliNode else
@@ -540,13 +489,75 @@ extension MainController: WKCrownDelegate
             crownRotationEventCount = 0
             kaliNode.zRotation = kaliNode.zRotation + 3.14159
         }
+        */
     }
+    
+}
+
+extension MainController: KaliSceneDelegate
+{
+    func kaliSceneDidLoadIntroTexture()
+    {
+        sceneState = .intro
+    }
+}
+
+protocol KaliSceneDelegate: class
+{
+    func kaliSceneDidLoadIntroTexture()
 }
 
 class KaliScene: SKScene
 {
+    weak var sceneDelegate: KaliSceneDelegate?
     var kaliNode: SKSpriteNode?
     var backgroundColorNode: SKSpriteNode?
+
+    var introAtlas: SKTextureAtlas? 
+
+    func preloadIntro()
+    {
+        guard let introAtlas = introAtlas else
+        {
+            assertionFailure("Intro Atlas must be loaded") 
+            return
+        }
+
+        guard 
+            let kaliNode = childNode(withName: "Kali") as? SKSpriteNode,
+            let backgroundColorNode = childNode(withName: "Background") as? SKSpriteNode
+        else
+        {
+            assertionFailure("The Kali Scene Must have all nodes hooked up in IB")
+            return
+        }
+
+        self.backgroundColorNode = backgroundColorNode
+        self.kaliNode = kaliNode 
+
+        /*
+        introAtlas.preload(completionHandler: { [weak self] in
+            guard let weakSelf = self else { return }
+
+            
+            guard 
+                let introLabelsNode = weakSelf.childNode(withName: "IntroLabels"),
+                let tapToStart = weakSelf.childNode(withName: "TapToStart") else
+            {
+                assertionFailure("The Kali Scene Must have intro labels node hooked up in IB")
+                return
+            }
+
+            introLabelsNode.alpha = 0
+            tapToStart.alpha = 1
+
+            weakSelf.sceneDelegate?.kaliSceneDidLoadIntroTexture()
+        })*/
+
+        introAtlas.preload(completionHandler: { })
+
+        sceneDelegate?.kaliSceneDidLoadIntroTexture()
+    }
 
     func animateKali(frames: [SKTexture], repeats: Bool = false, isLetter: Bool)
     {
@@ -558,42 +569,12 @@ class KaliScene: SKScene
             return
         }
 
-        let backgroundColor: UIColor
-
-        if isLetter
-        {
-            //  Purple Color Hex
-            //  0x493069
-
-            // R   G   B
-            // 73, 48, 105
-            backgroundColor = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
-
-        } else
-        {
-            // Grey Color Hex
-            // 0xDCDCDC
-
-            // RGB == 220 across the board.
-            backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
-        }
-
         let animateAction = SKAction.animate(with: frames,
                                      timePerFrame: 1/30,
                                            resize: false,
                                           restore: false)
 
-        kaliNode.removeAllActions()
-
-        if repeats
-        {
-            kaliNode.run(SKAction.repeatForever(animateAction))
-        } else
-        {
-            kaliNode.run(animateAction)
-        }
-
-        backgroundColorNode.color = backgroundColor
+        kaliNode.run(animateAction)
     }
 }
 
