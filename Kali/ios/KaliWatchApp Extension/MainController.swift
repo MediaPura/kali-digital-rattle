@@ -33,6 +33,9 @@ class MainController: WKInterfaceController
     private var kaliScene: KaliScene?
     private var crownRotationEventCount: Int = 0
 
+    private var audioTrackPlayer: AVAudioPlayer?
+    private var audioTrackPlayerInitialized = false
+
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
 
@@ -198,6 +201,38 @@ class MainController: WKInterfaceController
         }
 
         super.willActivate()
+
+        // TODO: (Ted)  Bring this back once we've got a background audio track that won't
+        //              annoy the crap out of people.
+        /*
+        if !audioTrackPlayerInitialized
+        {
+            guard let backgroundTrackURL = Bundle.main.url(forResource: "Jumpshot",
+                                                           withExtension: "mp3") else
+            {
+                fatalError("All sounds must exist before being loaded")
+            }
+
+            do {
+                audioTrackPlayer = try AVAudioPlayer(contentsOf: backgroundTrackURL)
+                audioTrackPlayer!.volume = 0.2
+                audioTrackPlayer!.play() 
+                audioTrackPlayerInitialized = true
+            } catch
+            {
+                assertionFailure("It should always be possible to create a sound player")
+            }
+        } else
+        {
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
+                guard let audioTrackPlayer = self?.audioTrackPlayer else
+                {
+                    fatalError("Audio track player should be set up by now")
+                }
+
+                audioTrackPlayer.play() 
+            })
+        }*/
 
         // NOTE: (Ted)  If the app goes intro the background and the intro has not yet loaded, load the intro
         switch sceneState {
@@ -408,9 +443,7 @@ class MainController: WKInterfaceController
 
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
-
-        let backgroundColor = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
-        backgroundColorNode.color = backgroundColor
+        backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
     }
            
     private func congratulateIfLoadedIfNotChangeLetter()
