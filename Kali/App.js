@@ -28,7 +28,7 @@ const App: () => React$Node = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Welcome to Kali The Coder!</Text>
               <Text style={styles.sectionDescription}>
-               This is the iPhone companion app. Open the app on your Apple Watch to interact with Kali.
+               This is the iPhone companion app. Open the app on your Apple Watch to interact with Kali. Build Number 32.
               </Text>
             </View>
           </View>
