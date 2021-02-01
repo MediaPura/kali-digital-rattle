@@ -112,6 +112,8 @@ class MainController: WKInterfaceController
     private var letterAtlas = SKTextureAtlas(named: "Letters")
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
 
+    private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
+
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
@@ -264,7 +266,7 @@ class MainController: WKInterfaceController
                         }
 
                         let texture = introAtlas.textureNamed(textureName)
-                        print("Size: \(texture.size())")
+                        print("Kali Intro Size: \(texture.size())")
                         weakSelf.introFrames.append(texture)
                     }
 
@@ -283,7 +285,7 @@ class MainController: WKInterfaceController
                         }
 
                         let texture = introAtlas.textureNamed(textureName)
-                        print("Size: \(texture.size())")
+                        print("Learn Letter Intro Size: \(texture.size())")
                         weakSelf.introFrames.append(texture)
                     }
 
@@ -303,17 +305,7 @@ class MainController: WKInterfaceController
                         return
                     }
 
-                    guard 
-                        let introLabelsNode = kaliScene.childNode(withName: "IntroLabels"),
-                        let tapToStart = kaliScene.childNode(withName: "TapToStart") else
-                    {
-                        assertionFailure("The Kali Scene Must have intro labels node hooked up in IB")
-                        return
-                    }
-
-                    introLabelsNode.alpha = 0
-                    tapToStart.alpha = 1
-
+                    kaliNode.texture = weakSelf.loadingScreensAtlas.textureNamed("Loaded")
                     kaliScene.backgroundColorNode = backgroundColorNode
                     kaliScene.kaliNode = kaliNode 
                     weakSelf.kaliScene = kaliScene
@@ -390,14 +382,11 @@ class MainController: WKInterfaceController
             sceneState = .playingIntro
 
             guard 
-                let kaliScene = kaliScene,
-                let tapToStart = kaliScene.childNode(withName: "TapToStart") else
+                let kaliScene = kaliScene else
             {
                 assertionFailure("Expected to load Kali Scene")
                 return
             }
-
-            tapToStart.alpha = 0
 
             guard let soundPlayer = soundPlayer else
             {

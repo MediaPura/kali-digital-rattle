@@ -153,6 +153,8 @@
 		AC7E5C5B25C0DDE5002C3FC6 /* GoodJobShort.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C5925C0DDE5002C3FC6 /* GoodJobShort.atlas */; };
 		ACA6652F2579555800724299 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA6652E2579555800724299 /* MainController.swift */; };
 		ACA6653725795B4500724299 /* Kali.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA6653625795B4500724299 /* Kali.sks */; };
+		ACBF93FD25C4EC16004C3841 /* LoadingScreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACBF93FC25C4EC16004C3841 /* LoadingScreen.atlas */; };
+		ACBF93FE25C4EC16004C3841 /* LoadingScreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACBF93FC25C4EC16004C3841 /* LoadingScreen.atlas */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -311,6 +313,7 @@
 		AC7E5C5925C0DDE5002C3FC6 /* GoodJobShort.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJobShort.atlas; path = "KaliWatchApp Extension/GoodJobShort.atlas"; sourceTree = SOURCE_ROOT; };
 		ACA6652E2579555800724299 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		ACA6653625795B4500724299 /* Kali.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Kali.sks; sourceTree = "<group>"; };
+		ACBF93FC25C4EC16004C3841 /* LoadingScreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LoadingScreen.atlas; path = "KaliWatchApp Extension/LoadingScreen.atlas"; sourceTree = SOURCE_ROOT; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -452,6 +455,7 @@
 				AC7E5C4A25C0D944002C3FC6 /* GoodJob.atlas */,
 				AC7E5C5925C0DDE5002C3FC6 /* GoodJobShort.atlas */,
 				AC7E5C4125C0D936002C3FC6 /* LetsLearnALetter.atlas */,
+				ACBF93FC25C4EC16004C3841 /* LoadingScreen.atlas */,
 				AC10332C2568194400162259 /* Assets.xcassets */,
 				AC10332E2568194400162259 /* Info.plist */,
 			);
@@ -776,6 +780,7 @@
 				AC7E5B5D25BFB15B002C3FC6 /* LetterK.m4a in Resources */,
 				AC7E5B0725BFB141002C3FC6 /* LetterObjects.atlas in Resources */,
 				AC7E5B9D25BFB15B002C3FC6 /* LetterV.m4a in Resources */,
+				ACBF93FD25C4EC16004C3841 /* LoadingScreen.atlas in Resources */,
 				AC7E5B5F25BFB15B002C3FC6 /* LetterX.m4a in Resources */,
 				AC7E5B8D25BFB15B002C3FC6 /* LetterSObject.m4a in Resources */,
 				AC7E5B8125BFB15B002C3FC6 /* LetterEObject.m4a in Resources */,
@@ -848,6 +853,7 @@
 				AC7E5B5E25BFB15B002C3FC6 /* LetterK.m4a in Resources */,
 				AC7E5B0825BFB141002C3FC6 /* LetterObjects.atlas in Resources */,
 				AC7E5B9E25BFB15B002C3FC6 /* LetterV.m4a in Resources */,
+				ACBF93FE25C4EC16004C3841 /* LoadingScreen.atlas in Resources */,
 				AC7E5B6025BFB15B002C3FC6 /* LetterX.m4a in Resources */,
 				AC7E5B8E25BFB15B002C3FC6 /* LetterSObject.m4a in Resources */,
 				AC7E5B8225BFB15B002C3FC6 /* LetterEObject.m4a in Resources */,
