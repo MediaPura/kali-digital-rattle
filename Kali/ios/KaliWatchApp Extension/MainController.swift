@@ -21,6 +21,7 @@ class MainController: WKInterfaceController
         case playingIntro
         case letter(letter: String)
         case awaitingLetterTap(letter: String)
+        case successDing
         case letterObject(letter: String)
         case awaitingLetterObjectTap(letter: String)
         case goodJob
@@ -111,6 +112,7 @@ class MainController: WKInterfaceController
     let supportedLetters = ["A", "B", "C"]
     private var letterAtlas = SKTextureAtlas(named: "Letters")
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
+    private var lettersHighlightedAtlas = SKTextureAtlas(named: "LettersHighlighted")
 
     private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
 
@@ -328,6 +330,9 @@ class MainController: WKInterfaceController
             case .letter(let letter):
                 weakSelf.playSoundLowAudioSync(soundName: "Letter\(letter)")
 
+            case .successDing:
+                weakSelf.playCurrentLetterObject()
+
             case .letterObject(let letter):
                 weakSelf.playSoundLowAudioSync(soundName: "Letter\(letter)Object")
 
@@ -374,6 +379,15 @@ class MainController: WKInterfaceController
         introFrames.removeAll()
     }
 
+    private func playCurrentLetterObject()
+    {
+        let currentLetter = supportedLetters[letterIndex]
+        sceneState = .letterObject(letter: currentLetter)
+        let frames = [letterObjectsAtlas.textureNamed(currentLetter)]
+        playAnimationInSpriteKitScene(frames: frames, repeats: true, isLetter: true)
+        playSoundLowAudioSync(soundName: "Letter\(currentLetter)Object")
+    }
+
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
@@ -406,10 +420,23 @@ class MainController: WKInterfaceController
             playCurrentLetter()
 
         case .awaitingLetterTap(let letter):
-            sceneState = .letterObject(letter: letter)
-            let frames = [letterObjectsAtlas.textureNamed(letter)]
-            playAnimationInSpriteKitScene(frames: frames, repeats: true, isLetter: true)
-            playSoundLowAudioSync(soundName: "Letter\(letter)Object")
+            sceneState = .successDing
+            let currentLetter = supportedLetters[letterIndex]
+
+            guard 
+                let kaliScene = kaliScene,
+                let kaliNode = kaliScene.kaliNode else 
+            {
+                assertionFailure("Expected to load Kali Scene")
+                return
+            }
+
+            kaliNode.removeAllActions()
+            kaliNode.texture = lettersHighlightedAtlas.textureNamed(currentLetter)
+            playSoundLowAudioSync(soundName: "success_ding")
+
+        case .successDing:
+            playCurrentLetterObject()
 
         case .awaitingLetterObjectTap:
 
@@ -509,6 +536,9 @@ extension MainController: AVAudioPlayerDelegate
 
         case .letter(let letter):
             sceneState = .awaitingLetterTap(letter: letter)
+
+        case .successDing:
+            playCurrentLetterObject()
 
         case .letterObject(let letter):
             sceneState = .awaitingLetterObjectTap(letter: letter)
