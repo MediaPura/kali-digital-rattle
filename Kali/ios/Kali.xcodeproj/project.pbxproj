@@ -25,6 +25,8 @@
 		AC10333D2568194400162259 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC10333C2568194400162259 /* NotificationController.swift */; };
 		AC1033412568194500162259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1033402568194500162259 /* Assets.xcassets */; };
 		AC1033462568194500162259 /* KaliWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC1033272568194300162259 /* KaliWatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC35CA0C25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC35CA0B25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas */; };
+		AC35CA0D25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC35CA0B25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas */; };
 		AC7E5B0725BFB141002C3FC6 /* LetterObjects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B0525BFB141002C3FC6 /* LetterObjects.atlas */; };
 		AC7E5B0825BFB141002C3FC6 /* LetterObjects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B0525BFB141002C3FC6 /* LetterObjects.atlas */; };
 		AC7E5B0925BFB141002C3FC6 /* Letters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B0625BFB141002C3FC6 /* Letters.atlas */; };
@@ -252,6 +254,7 @@
 		AC1033402568194500162259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1033422568194500162259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1033432568194500162259 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		AC35CA0B25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterObjectsHighlighted.atlas; path = "KaliWatchApp Extension/LetterObjectsHighlighted.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5B0525BFB141002C3FC6 /* LetterObjects.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterObjects.atlas; path = "KaliWatchApp Extension/LetterObjects.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5B0625BFB141002C3FC6 /* Letters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Letters.atlas; path = "KaliWatchApp Extension/Letters.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5B1825BFB15B002C3FC6 /* LetterI.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterI.m4a; sourceTree = "<group>"; };
@@ -456,6 +459,7 @@
 			children = (
 				AC1033292568194300162259 /* Interface.storyboard */,
 				AC7E5B0525BFB141002C3FC6 /* LetterObjects.atlas */,
+				AC35CA0B25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas */,
 				ACDCFE3F25C7A63600BC4927 /* LettersHighlighted.atlas */,
 				AC7E5B0625BFB141002C3FC6 /* Letters.atlas */,
 				AC7E5C3225C0D926002C3FC6 /* Kali.atlas */,
@@ -848,6 +852,7 @@
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
 				AC7E5BBF25BFB15B002C3FC6 /* LetterS.m4a in Resources */,
 				AC7E5B7B25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */,
+				AC35CA0C25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +928,7 @@
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
 				AC7E5BC025BFB15B002C3FC6 /* LetterS.m4a in Resources */,
 				AC7E5B7C25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */,
+				AC35CA0D25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
