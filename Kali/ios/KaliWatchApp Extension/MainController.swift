@@ -204,7 +204,7 @@ class MainController: WKInterfaceController
 
         // TODO: (Ted)  Bring this back once we've got a background audio track that won't
         //              annoy the crap out of people.
-        /*
+        
         if !audioTrackPlayerInitialized
         {
             guard let backgroundTrackURL = Bundle.main.url(forResource: "Jumpshot",
@@ -232,7 +232,7 @@ class MainController: WKInterfaceController
 
                 audioTrackPlayer.play() 
             })
-        }*/
+        }
 
         // NOTE: (Ted)  If the app goes intro the background and the intro has not yet loaded, load the intro
         switch sceneState {
