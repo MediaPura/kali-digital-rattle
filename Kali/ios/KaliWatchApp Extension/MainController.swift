@@ -177,10 +177,12 @@ class MainController: WKInterfaceController
             soundIsPlaying = false
         }
 
-        switch sceneState {
+        if let audioTrackPlayer = audioTrackPlayer 
+        {
+            audioTrackPlayer.pause() 
+        }
 
-            case .playingIntro:
-                clearIntroMemory()
+        switch sceneState {
 
             case .awaitingLetterTap: 
                 sceneState = .letter
@@ -240,12 +242,21 @@ class MainController: WKInterfaceController
 
             guard 
                 let spriteKitScene = spriteKitScene,
-                let kaliScene = KaliScene(fileNamed: "Kali.sks") else
+                let kaliScene = KaliScene(fileNamed: "Kali.sks"),
+                let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode else
             {
                 assertionFailure("Expected to load Kali Scene")
                 return
             }
-        
+
+            let currentDevice = WKInterfaceDevice.current()
+            let bounds = currentDevice.screenBounds
+            let dimension = bounds.width - 16
+            kaliNode.size.height = dimension 
+            kaliNode.size.width = dimension 
+            kaliScene.kaliNode = kaliNode 
+            self.kaliScene = kaliScene
+
             spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
 
@@ -341,7 +352,7 @@ class MainController: WKInterfaceController
                     weakSelf.sceneState = .intro
 
                     guard 
-                        let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode,
+                        let kaliNode = kaliScene.kaliNode,
                         let backgroundColorNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
                     else
                     {
@@ -351,8 +362,6 @@ class MainController: WKInterfaceController
 
                     kaliNode.texture = weakSelf.loadingScreensAtlas.textureNamed("Loaded")
                     kaliScene.backgroundColorNode = backgroundColorNode
-                    kaliScene.kaliNode = kaliNode 
-                    weakSelf.kaliScene = kaliScene
                 }
             }
 
@@ -367,6 +376,7 @@ class MainController: WKInterfaceController
             switch weakSelf.sceneState {
 
             case .playingIntro:
+                weakSelf.clearIntroMemory()
                 weakSelf.playCurrentLetter()
 
             case .letter:
