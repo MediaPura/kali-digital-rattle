@@ -19,6 +19,7 @@ class MainController: WKInterfaceController
         case loadingIntro
         case intro
         case playingIntro
+        case awaitingIntroTap
         case letter
         case awaitingLetterTap
         case successDingLetter
@@ -190,6 +191,10 @@ class MainController: WKInterfaceController
             case .awaitingLetterObjectTap:
                 sceneState = .letterObject
 
+
+            case .awaitingIntroTap:
+                sceneState = .playingIntro
+
             default: break
         }
     }
@@ -204,9 +209,6 @@ class MainController: WKInterfaceController
 
         super.willActivate()
 
-        // TODO: (Ted)  Bring this back once we've got a background audio track that won't
-        //              annoy the crap out of people.
-        
         if !audioTrackPlayerInitialized
         {
             guard let backgroundTrackURL = Bundle.main.url(forResource: "Jumpshot",
@@ -218,6 +220,7 @@ class MainController: WKInterfaceController
             do {
                 audioTrackPlayer = try AVAudioPlayer(contentsOf: backgroundTrackURL)
                 audioTrackPlayer!.volume = 0.2
+                audioTrackPlayer!.numberOfLoops = -1
                 audioTrackPlayer!.play() 
                 audioTrackPlayerInitialized = true
             } catch
@@ -232,6 +235,7 @@ class MainController: WKInterfaceController
                     fatalError("Audio track player should be set up by now")
                 }
 
+                audioTrackPlayer.numberOfLoops = -1
                 audioTrackPlayer.play() 
             })
         }
@@ -540,7 +544,7 @@ class MainController: WKInterfaceController
 
             kaliScene.animateKali(frames: introFrames)
 
-        case .playingIntro:
+        case .awaitingIntroTap:
             clearIntroMemory()
             playCurrentLetter()
 
@@ -597,7 +601,8 @@ extension MainController: AVAudioPlayerDelegate
             clearIntroMemory()
 
             switch introType {
-            case .kali: break
+            case .kali: 
+                sceneState = .awaitingIntroTap
             case .letsLearnALetter:
                 playCurrentLetter()
             }
