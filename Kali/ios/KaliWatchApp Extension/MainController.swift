@@ -114,7 +114,9 @@ class MainController: WKInterfaceController
 
     // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
     var letterIndex = 0
-    let supportedLetters = ["A", "B", "C"]
+    let supportedLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+                            "T", "U", "V", "W", "X", "Y", "Z"]
+
     private var letterAtlas = SKTextureAtlas(named: "Letters")
     private var lettersHighlightedAtlas = SKTextureAtlas(named: "LettersHighlighted")
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
