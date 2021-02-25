@@ -106,6 +106,7 @@ class MainController: WKInterfaceController
     }
 
     private var congratulationType: CongratulationType = .long
+    private var isAnimatedCongratulation = false
 
     var goodJobAtlas: SKTextureAtlas?
     var goodJobAtlasLoaded = false
@@ -121,6 +122,7 @@ class MainController: WKInterfaceController
     private var lettersHighlightedAtlas = SKTextureAtlas(named: "LettersHighlighted")
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
     private var letterObjectsHighlightedAtlas = SKTextureAtlas(named: "LetterObjectsHighlighted")
+    private var goodJobStillsAtlas = SKTextureAtlas(named: "GoodJobStills")
 
     private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
 
@@ -510,7 +512,20 @@ class MainController: WKInterfaceController
                 audioFilename = "Kali_GoodJob_04b"
             }
 
-            playAnimationInSpriteKitScene(frames: frames)
+            let randomNumber = Int(arc4random_uniform(8))
+
+            if randomNumber < 7
+            {
+                // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
+                audioFilename = "Kali_KeepGoing_04"
+                displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"))
+                isAnimatedCongratulation = false
+            } else
+            {
+                playAnimationInSpriteKitScene(frames: frames)
+                isAnimatedCongratulation = true
+            }
+
             playSoundLowAudioSync(soundName: audioFilename)
 
         } else
@@ -629,11 +644,16 @@ extension MainController: AVAudioPlayerDelegate
 
         case .goodJob:
 
-            switch congratulationType {
-            case .long: break
-            case .short:
-                playCurrentLetter()
+            if isAnimatedCongratulation
+            {
+                switch congratulationType {
+                case .long: break
+                case .short:
+                    playCurrentLetter()
+                }
             }
+
+            isAnimatedCongratulation = false
 
         default: break
         }
