@@ -446,7 +446,13 @@ class MainController: WKInterfaceController
         playSoundLowAudioSync(soundName: "Letter\(currentLetter)Object")
     }
 
-    private func displayStaticContent(texture: SKTexture)
+    enum BackgroundColor
+    {
+        case purple
+        case grey
+    }
+
+    private func displayStaticContent(texture: SKTexture, backgroundColor: BackgroundColor = .purple)
     {
         guard 
             let kaliScene = kaliScene,
@@ -459,9 +465,18 @@ class MainController: WKInterfaceController
             return
         }
 
+        // NOTE: (Ted)  Grey Color is 218, 218, 218.
+
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
-        backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
+
+        switch backgroundColor {
+        case .purple:
+            backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
+        case .grey:
+            backgroundColorNode.color = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+        }
+
     }
            
     private func congratulateIfLoadedIfNotChangeLetter()
@@ -512,13 +527,14 @@ class MainController: WKInterfaceController
                 audioFilename = "Kali_GoodJob_04b"
             }
 
-            let randomNumber = Int(arc4random_uniform(8))
+            let randomNumber = Int(arc4random_uniform(7))
 
-            if randomNumber < 7
+            if randomNumber < 6
             {
                 // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
                 audioFilename = "Kali_KeepGoing_04"
-                displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"))
+                displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
+                                     backgroundColor: .grey)
                 isAnimatedCongratulation = false
             } else
             {
@@ -649,7 +665,7 @@ extension MainController: AVAudioPlayerDelegate
                 switch congratulationType {
                 case .long: break
                 case .short:
-                    playCurrentLetter()
+                    changeLetterAndPlayIt()
                 }
             }
 
