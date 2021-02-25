@@ -578,14 +578,13 @@ class MainController: WKInterfaceController
 
     private func changeLetterAndPlayIt()
     {
-        var randomNumber = 0 
+        letterIndex += 1
+     
+        if letterIndex > 25
+        {
+            letterIndex = 0
+        }
 
-        repeat {
-            randomNumber = Int(arc4random_uniform(3))
-        } while randomNumber == letterIndex
-
-        letterIndex = randomNumber
-      
         playCurrentLetter()
     }
 }
