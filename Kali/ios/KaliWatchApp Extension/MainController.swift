@@ -113,8 +113,7 @@ class MainController: WKInterfaceController
 
     private var lessonCount = 0
 
-    // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
-    var letterIndex = 0
+    var letterIndex = 0 
     let supportedLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
                             "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -527,7 +526,7 @@ class MainController: WKInterfaceController
                 audioFilename = "Kali_GoodJob_04b"
             }
 
-            let randomNumber = Int(arc4random_uniform(7))
+            let randomNumber = Int.random(in: 0...6)
 
             if randomNumber < 6
             {

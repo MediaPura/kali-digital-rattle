@@ -163,6 +163,8 @@
 		ACE4331725E8288800489CFB /* LetterMObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACE432BD25E8288800489CFB /* LetterMObject.m4a */; };
 		ACE4331F25E82DA600489CFB /* GoodJobStills.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACE4331E25E82DA600489CFB /* GoodJobStills.atlas */; };
 		ACE4332025E82DA600489CFB /* GoodJobStills.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACE4331E25E82DA600489CFB /* GoodJobStills.atlas */; };
+		ACE4332825E8AA3200489CFB /* LetterZObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACE4332725E8AA3200489CFB /* LetterZObject.m4a */; };
+		ACE4332925E8AA3200489CFB /* LetterZObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACE4332725E8AA3200489CFB /* LetterZObject.m4a */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -326,6 +328,7 @@
 		ACE432BC25E8288800489CFB /* LetterL.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterL.m4a; sourceTree = "<group>"; };
 		ACE432BD25E8288800489CFB /* LetterMObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterMObject.m4a; sourceTree = "<group>"; };
 		ACE4331E25E82DA600489CFB /* GoodJobStills.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJobStills.atlas; path = "KaliWatchApp Extension/GoodJobStills.atlas"; sourceTree = SOURCE_ROOT; };
+		ACE4332725E8AA3200489CFB /* LetterZObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterZObject.m4a; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -553,6 +556,7 @@
 				ACE432A225E8288700489CFB /* LetterY.m4a */,
 				ACE432A025E8288700489CFB /* LetterYObject.m4a */,
 				ACE4329225E8288600489CFB /* LetterZ.m4a */,
+				ACE4332725E8AA3200489CFB /* LetterZObject.m4a */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -851,6 +855,7 @@
 				ACE4330C25E8288800489CFB /* LetterK.m4a in Resources */,
 				ACE432F625E8288800489CFB /* LetterR.m4a in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
+				ACE4332825E8AA3200489CFB /* LetterZObject.m4a in Resources */,
 				ACE432E625E8288800489CFB /* LetterQ.m4a in Resources */,
 				ACE432EC25E8288800489CFB /* LetterP.m4a in Resources */,
 				AC7E5B7B25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */,
@@ -928,6 +933,7 @@
 				ACE4330D25E8288800489CFB /* LetterK.m4a in Resources */,
 				ACE432F725E8288800489CFB /* LetterR.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
+				ACE4332925E8AA3200489CFB /* LetterZObject.m4a in Resources */,
 				ACE432E725E8288800489CFB /* LetterQ.m4a in Resources */,
 				ACE432ED25E8288800489CFB /* LetterP.m4a in Resources */,
 				AC7E5B7C25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */,
