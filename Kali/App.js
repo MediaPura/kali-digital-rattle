@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {
+  Image,
   SafeAreaView,
   StyleSheet,
   ScrollView,
@@ -23,17 +24,30 @@ const App: () => React$Node = () => {
       >
         <Text style = { 
                         { paddingTop: 20, paddingLeft: 20, paddingRight: 20, lineHeight: 46,
-                          textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 64, color: '#24b4c1' } 
+                          textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 64, color: KaliColors.textTurquoise } 
                       }>
-        KALI THE CODER
+            KALI THE CODER
         </Text>
         <View style = { { height: 20 } }/>
         <Text style = { 
                         { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
                           lineHeight: 24} 
                       }>
-        LEARN THE ABC's 
+            LEARN THE ABC's 
         </Text>
+        <View style = { { height: 20 } }/>
+        <Image source = {require('./assets/images/group-100.png')}
+               style = { { alignSelf: 'center', width: 240, height: 280, resizeMode: 'contain' } } 
+        />
+        <View style = { { height: 20 } }/>
+        <View style = { { backgroundColor: '#FFFFFF', width: 300, height: 100, alignSelf: 'center'  } } >
+            <Text style = { { textAlign: 'center', fontFamily: KaliFonts.pusab, fontSize: 24, color: KaliColors.textTurquoise,
+                              lineHeight: 24, paddingTop: 10 } } >
+                USING THE APP
+            </Text>
+            <View style = { { height: 10 } } />
+            
+        </View>
       </SafeAreaView>
     </>
   );
@@ -44,7 +58,8 @@ const KaliFonts = {
 }
 
 const KaliColors = {
-    creamBackground: '#FFF7E7'
+    creamBackground: '#FFF7E7',
+    textTurquoise: '#24b4c1'
 }
 
 const styles = StyleSheet.create({
