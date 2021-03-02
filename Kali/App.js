@@ -45,8 +45,12 @@ const App: () => React$Node = () => {
                               lineHeight: 24, paddingTop: 10 } } >
                 USING THE APP
             </Text>
-            <View style = { { height: 10 } } />
-            
+            <Text style = { {  textAlign: 'center', fontFamily: 'FreightSansProMedium-Regular', fontSize: 14, 
+                               color: KaliColors.textTurquoise, lineHeight: 16, paddingTop: 10 } }>
+                Be sure to enable sound on your Apple Watch.
+                Twisting the digital crown will rotate Kali for
+                other viewing options.
+            </Text>
         </View>
       </SafeAreaView>
     </>
