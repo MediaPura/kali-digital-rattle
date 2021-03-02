@@ -46,7 +46,7 @@ const App: () => React$Node = () => {
                    style = { { alignSelf: 'center', width: 240, height: 280, resizeMode: 'contain' } } 
             />
             <View style = { { height: 20 } }/>
-            <View style = { { backgroundColor: '#FFFFFF', width: 300, height: 100, alignSelf: 'center', borderRadius: 15  } } >
+            <View style = { { backgroundColor: KaliColors.white, width: 300, height: 100, alignSelf: 'center', borderRadius: 15  } } >
                 <Text style = { { textAlign: 'center', fontFamily: KaliFonts.pusab, fontSize: 24, color: KaliColors.textTurquoise,
                                   lineHeight: 24, paddingTop: 10 } } >
                     USING THE APP
@@ -61,7 +61,8 @@ const App: () => React$Node = () => {
             <View style = { { height: 20 } }/>
             <Text style = { 
                             { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
-                              lineHeight: 24} 
+                                    lineHeight: 24, textShadowColor: KaliColors.white, 
+                                     textShadowOffset: { width: 1.5, height: 1.5 }, textShadowRadius: 1} 
                           }>
                 THANK YOU FOR LEARNING WITH US! 
             </Text>
@@ -84,6 +85,7 @@ const KaliFonts = {
 }
 
 const KaliColors = {
+    white: '#FFFFFF',
     creamBackground: '#FFF7E7',
     textTurquoise: '#24b4c1'
 }
