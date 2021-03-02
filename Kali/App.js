@@ -11,7 +11,10 @@ import {
   View,
   Text,
   StatusBar,
+  Dimensions
 } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
 
 const App: () => React$Node = () => {
   return (
@@ -23,6 +26,8 @@ const App: () => React$Node = () => {
                 }
       >
         <ScrollView>
+            <Image source = { require('./assets/images/rainbow.png') }
+                   style = { { position: 'absolute', left: -12, top: 418, width: (windowWidth + 20), height: 300 } }/>
             <Text style = { 
                             { paddingTop: 20, paddingLeft: 20, paddingRight: 20, lineHeight: 46,
                               textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 64, color: KaliColors.textTurquoise } 
