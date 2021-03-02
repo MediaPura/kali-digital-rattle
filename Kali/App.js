@@ -12,10 +12,6 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
 const App: () => React$Node = () => {
   return (
     <>
@@ -26,7 +22,7 @@ const App: () => React$Node = () => {
                 }
       >
         <Text style = { 
-                        { marginTop: 10, fontFamily: 'Pusab', fontSize: 32, color: '#24b4c1' } 
+                        { paddingTop: 20, fontFamily: 'Pusab', fontSize: 64, color: '#24b4c1' } 
                       }>
         Kali The Coder
         </Text>
