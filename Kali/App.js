@@ -18,18 +18,30 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView
         style = { 
-                    { flex: 1, flexDirection: "row", backgroundColor: KaliColors.creamBackground } 
+                    { backgroundColor: KaliColors.creamBackground } 
                 }
       >
         <Text style = { 
-                        { paddingTop: 20, fontFamily: 'Pusab', fontSize: 64, color: '#24b4c1' } 
+                        { paddingTop: 20, paddingLeft: 20, paddingRight: 20, lineHeight: 46,
+                          textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 64, color: '#24b4c1' } 
                       }>
-        Kali The Coder
+        KALI THE CODER
+        </Text>
+        <View style = { { height: 20 } }/>
+        <Text style = { 
+                        { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
+                          lineHeight: 24} 
+                      }>
+        LEARN THE ABC's 
         </Text>
       </SafeAreaView>
     </>
   );
 };
+
+const KaliFonts = {
+    pusab: 'Pusab'
+}
 
 const KaliColors = {
     creamBackground: '#FFF7E7'
