@@ -40,10 +40,25 @@ class MainController: WKInterfaceController
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
 
-    private func getSoundURLForM4aFile(soundName: String) -> URL
+    enum SoundFileType
     {
+        case mp3
+        case m4a
+    }
+
+    private func getSoundURL(soundName: String, fileType: SoundFileType) -> URL
+    {
+        var fileTypeString = String()
+
+        switch fileType {
+        case .mp3:
+            fileTypeString = "mp3"
+        case .m4a:
+            fileTypeString = "m4a"
+        }
+
         guard let soundURL = Bundle.main.url(forResource: soundName,
-                                             withExtension: "m4a") else
+                                             withExtension: fileTypeString) else
         {
             fatalError("All sounds must exist before being loaded")
         }
@@ -54,9 +69,9 @@ class MainController: WKInterfaceController
     // NOTE: (Ted)  This is purely a convenience, meant only for situations
     //              when we don't really care if the sound syncs with any
     //              given animations.
-    private func playSoundLowAudioSync(soundName: String)
+    private func playSoundLowAudioSync(soundName: String, fileType: SoundFileType = .m4a)
     {
-        let soundURL = getSoundURLForM4aFile(soundName: soundName)
+        let soundURL = getSoundURL(soundName: soundName, fileType: fileType)
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
@@ -72,7 +87,7 @@ class MainController: WKInterfaceController
 
     private func preloadSound(soundName: String)
     {
-        let soundURL = getSoundURLForM4aFile(soundName: soundName)
+        let soundURL = getSoundURL(soundName: soundName, fileType: .m4a)
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
@@ -106,19 +121,22 @@ class MainController: WKInterfaceController
     }
 
     private var congratulationType: CongratulationType = .long
+    private var isAnimatedCongratulation = false
 
     var goodJobAtlas: SKTextureAtlas?
     var goodJobAtlasLoaded = false
 
     private var lessonCount = 0
 
-    // TODO: (Ted)  Get rid of letter and letter object atlases. Replace with straight textures.
-    var letterIndex = 0
-    let supportedLetters = ["A", "B", "C"]
+    var letterIndex = 0 
+    let supportedLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+                            "T", "U", "V", "W", "X", "Y", "Z"]
+
     private var letterAtlas = SKTextureAtlas(named: "Letters")
     private var lettersHighlightedAtlas = SKTextureAtlas(named: "LettersHighlighted")
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
     private var letterObjectsHighlightedAtlas = SKTextureAtlas(named: "LetterObjectsHighlighted")
+    private var goodJobStillsAtlas = SKTextureAtlas(named: "GoodJobStills")
 
     private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
 
@@ -211,7 +229,7 @@ class MainController: WKInterfaceController
 
         if !audioTrackPlayerInitialized
         {
-            guard let backgroundTrackURL = Bundle.main.url(forResource: "Jumpshot",
+            guard let backgroundTrackURL = Bundle.main.url(forResource: "BackgroundMusic",
                                                            withExtension: "mp3") else
             {
                 fatalError("All sounds must exist before being loaded")
@@ -442,7 +460,13 @@ class MainController: WKInterfaceController
         playSoundLowAudioSync(soundName: "Letter\(currentLetter)Object")
     }
 
-    private func displayStaticContent(texture: SKTexture)
+    enum BackgroundColor
+    {
+        case purple
+        case grey
+    }
+
+    private func displayStaticContent(texture: SKTexture, backgroundColor: BackgroundColor = .purple)
     {
         guard 
             let kaliScene = kaliScene,
@@ -455,9 +479,18 @@ class MainController: WKInterfaceController
             return
         }
 
+        // NOTE: (Ted)  Grey Color is 218, 218, 218.
+
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
-        backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
+
+        switch backgroundColor {
+        case .purple:
+            backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
+        case .grey:
+            backgroundColorNode.color = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+        }
+
     }
            
     private func congratulateIfLoadedIfNotChangeLetter()
@@ -508,7 +541,21 @@ class MainController: WKInterfaceController
                 audioFilename = "Kali_GoodJob_04b"
             }
 
-            playAnimationInSpriteKitScene(frames: frames)
+            let randomNumber = Int.random(in: 0...6)
+
+            if randomNumber < 6
+            {
+                // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
+                audioFilename = "Kali_KeepGoing_04"
+                displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
+                                     backgroundColor: .grey)
+                isAnimatedCongratulation = false
+            } else
+            {
+                playAnimationInSpriteKitScene(frames: frames)
+                isAnimatedCongratulation = true
+            }
+
             playSoundLowAudioSync(soundName: audioFilename)
 
         } else
@@ -516,6 +563,8 @@ class MainController: WKInterfaceController
             changeLetterAndPlayIt()
         }
     }
+
+    private let successSoundName = "TapLetter"
 
     @IBAction func didTapWatchFace()
     {
@@ -552,7 +601,7 @@ class MainController: WKInterfaceController
             sceneState = .successDingLetter
             let currentLetter = supportedLetters[letterIndex]
             displayStaticContent(texture: lettersHighlightedAtlas.textureNamed(currentLetter))
-            playSoundLowAudioSync(soundName: "success_ding")
+            playSoundLowAudioSync(soundName: successSoundName, fileType: .mp3)
 
         case .successDingLetter:
             playCurrentLetterObject()
@@ -561,7 +610,7 @@ class MainController: WKInterfaceController
             sceneState = .successDingLetterObject
             let currentLetter = supportedLetters[letterIndex]
             displayStaticContent(texture: letterObjectsHighlightedAtlas.textureNamed(currentLetter))
-            playSoundLowAudioSync(soundName: "success_ding")
+            playSoundLowAudioSync(soundName: successSoundName, fileType: .mp3)
 
         case .successDingLetterObject:
             congratulateIfLoadedIfNotChangeLetter()
@@ -576,14 +625,13 @@ class MainController: WKInterfaceController
 
     private func changeLetterAndPlayIt()
     {
-        var randomNumber = 0 
+        letterIndex += 1
+     
+        if letterIndex > 25
+        {
+            letterIndex = 0
+        }
 
-        repeat {
-            randomNumber = Int(arc4random_uniform(3))
-        } while randomNumber == letterIndex
-
-        letterIndex = randomNumber
-      
         playCurrentLetter()
     }
 }
@@ -628,11 +676,16 @@ extension MainController: AVAudioPlayerDelegate
 
         case .goodJob:
 
-            switch congratulationType {
-            case .long: break
-            case .short:
-                playCurrentLetter()
+            if isAnimatedCongratulation
+            {
+                switch congratulationType {
+                case .long: break
+                case .short:
+                    changeLetterAndPlayIt()
+                }
             }
+
+            isAnimatedCongratulation = false
 
         default: break
         }

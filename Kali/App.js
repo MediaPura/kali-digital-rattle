@@ -4,73 +4,97 @@
 
 import React from 'react';
 import {
+  Image,
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
   StatusBar,
+  Dimensions
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+const windowWidth = Dimensions.get('window').width;
 
 const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Welcome to Kali The Coder!</Text>
-              <Text style={styles.sectionDescription}>
-               This is the iPhone companion app. Open the app on your Apple Watch to interact with Kali. Build Number 34.
-              </Text>
+      <SafeAreaView
+        style = { 
+                    { backgroundColor: KaliColors.creamBackground } 
+                }
+      >
+        <ScrollView>
+            <Image source = { require('./assets/images/rainbow.png') }
+                   style = { { position: 'absolute', left: -12, top: 418, width: (windowWidth + 20), height: 300, 
+                               resizeMode: 'stretch' } }/>
+            <Text style = { 
+                            { paddingTop: 20, paddingLeft: 20, paddingRight: 20, lineHeight: 46,
+                              textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 64, color: KaliColors.textTurquoise } 
+                          }>
+                KALI THE CODER
+            </Text>
+            <View style = { { height: 20 } }/>
+            <Text style = { 
+                            { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
+                              lineHeight: 24} 
+                          }>
+                LEARN THE ABC's 
+            </Text>
+            <View style = { { height: 20 } }/>
+            <Image source = {require('./assets/images/group-100.png')}
+                   style = { { alignSelf: 'center', width: 240, height: 280, resizeMode: 'contain' } } 
+            />
+            <View style = { { height: 20 } }/>
+            <View style = { { backgroundColor: KaliColors.white, width: 300, height: 100, alignSelf: 'center', borderRadius: 15  } } >
+                <Text style = { { textAlign: 'center', fontFamily: KaliFonts.pusab, fontSize: 24, color: KaliColors.textTurquoise,
+                                  lineHeight: 24, paddingTop: 10 } } >
+                    USING THE APP
+                </Text>
+                <Text style = { {  textAlign: 'center', fontFamily: 'FreightSansProMedium-Regular', fontSize: 14, 
+                                   color: KaliColors.textTurquoise, lineHeight: 16, paddingTop: 10 } }>
+                    Be sure to enable sound on your Apple Watch.
+                    Twisting the digital crown will rotate Kali for
+                    other viewing options.
+                </Text>
             </View>
-          </View>
+            <View style = { { height: 20 } }/>
+            <Text style = { 
+                            { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
+                                    paddingLeft: 16, paddingRight: 16, lineHeight: 24, textShadowColor: KaliColors.white, 
+                              textShadowOffset: { width: 1.5, height: 1.5 }, textShadowRadius: 1} 
+                          }>
+                THANK YOU FOR LEARNING WITH US! 
+            </Text>
+            <View style = { { height: 30 } }/>
+            <Text style = { styles.footerText }>
+                Questions or Support:
+            </Text>
+            <Text style = { styles.footerText }>
+                email@kalithecoder.com | kalithecoder.com
+            </Text>
+            <View style = { { height: 400 } }/>
         </ScrollView>
       </SafeAreaView>
     </>
   );
 };
 
+const KaliFonts = {
+    pusab: 'Pusab'
+}
+
+const KaliColors = {
+    white: '#FFFFFF',
+    creamBackground: '#FFF7E7',
+    textTurquoise: '#24b4c1'
+}
+
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+    footerText: {  textAlign: 'center', fontFamily: 'FreightSansProMedium-Regular', fontSize: 16, 
+                   color: KaliColors.textTurquoise, lineHeight: 22
+    }
 });
 
 export default App;
