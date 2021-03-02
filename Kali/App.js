@@ -27,7 +27,8 @@ const App: () => React$Node = () => {
       >
         <ScrollView>
             <Image source = { require('./assets/images/rainbow.png') }
-                   style = { { position: 'absolute', left: -12, top: 418, width: (windowWidth + 20), height: 300 } }/>
+                   style = { { position: 'absolute', left: -12, top: 418, width: (windowWidth + 20), height: 300, 
+                               resizeMode: 'stretch' } }/>
             <Text style = { 
                             { paddingTop: 20, paddingLeft: 20, paddingRight: 20, lineHeight: 46,
                               textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 64, color: KaliColors.textTurquoise } 
@@ -61,19 +62,19 @@ const App: () => React$Node = () => {
             <View style = { { height: 20 } }/>
             <Text style = { 
                             { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
-                                    lineHeight: 24, textShadowColor: KaliColors.white, 
-                                     textShadowOffset: { width: 1.5, height: 1.5 }, textShadowRadius: 1} 
+                                    paddingLeft: 16, paddingRight: 16, lineHeight: 24, textShadowColor: KaliColors.white, 
+                              textShadowOffset: { width: 1.5, height: 1.5 }, textShadowRadius: 1} 
                           }>
                 THANK YOU FOR LEARNING WITH US! 
             </Text>
-            <View style = { { height: 20 } }/>
+            <View style = { { height: 30 } }/>
             <Text style = { styles.footerText }>
                 Questions or Support:
             </Text>
             <Text style = { styles.footerText }>
                 email@kalithecoder.com | kalithecoder.com
             </Text>
-            <View style = { { height: 20 } }/>
+            <View style = { { height: 400 } }/>
         </ScrollView>
       </SafeAreaView>
     </>
