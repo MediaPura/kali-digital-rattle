@@ -40,7 +40,7 @@ const App: () => React$Node = () => {
                style = { { alignSelf: 'center', width: 240, height: 280, resizeMode: 'contain' } } 
         />
         <View style = { { height: 20 } }/>
-        <View style = { { backgroundColor: '#FFFFFF', width: 300, height: 100, alignSelf: 'center'  } } >
+        <View style = { { backgroundColor: '#FFFFFF', width: 300, height: 100, alignSelf: 'center', borderRadius: 15  } } >
             <Text style = { { textAlign: 'center', fontFamily: KaliFonts.pusab, fontSize: 24, color: KaliColors.textTurquoise,
                               lineHeight: 24, paddingTop: 10 } } >
                 USING THE APP
@@ -52,6 +52,23 @@ const App: () => React$Node = () => {
                 other viewing options.
             </Text>
         </View>
+        <View style = { { height: 20 } }/>
+        <Text style = { 
+                        { textAlign: "center", fontFamily: KaliFonts.pusab, fontSize: 24, color: '#ff8f0d',
+                          lineHeight: 24} 
+                      }>
+            THANK YOU FOR LEARNING WITH US! 
+        </Text>
+        <View style = { { height: 20 } }/>
+        <Text style = { {  textAlign: 'center', fontFamily: 'FreightSansProMedium-Regular', fontSize: 20, 
+                           color: KaliColors.textTurquoise, lineHeight: 20, } }>
+            Questions or Support:
+        </Text>
+        <Text style = { {  textAlign: 'center', fontFamily: 'FreightSansProMedium-Regular', fontSize: 20, 
+                           color: KaliColors.textTurquoise, lineHeight: 20, } }>
+            email@kalithecoder.com | kalithecoder.com
+        </Text>
+
       </SafeAreaView>
     </>
   );
@@ -67,6 +84,7 @@ const KaliColors = {
 }
 
 const styles = StyleSheet.create({
+    
 });
 
 export default App;
