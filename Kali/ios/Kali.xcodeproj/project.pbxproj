@@ -165,6 +165,7 @@
 		ACE4332025E82DA600489CFB /* GoodJobStills.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACE4331E25E82DA600489CFB /* GoodJobStills.atlas */; };
 		ACE4332825E8AA3200489CFB /* LetterZObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACE4332725E8AA3200489CFB /* LetterZObject.m4a */; };
 		ACE4332925E8AA3200489CFB /* LetterZObject.m4a in Resources */ = {isa = PBXBuildFile; fileRef = ACE4332725E8AA3200489CFB /* LetterZObject.m4a */; };
+		ACE4333125EDBCA200489CFB /* PUSAB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACE4333025EDBCA200489CFB /* PUSAB.otf */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -329,6 +330,7 @@
 		ACE432BD25E8288800489CFB /* LetterMObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterMObject.m4a; sourceTree = "<group>"; };
 		ACE4331E25E82DA600489CFB /* GoodJobStills.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJobStills.atlas; path = "KaliWatchApp Extension/GoodJobStills.atlas"; sourceTree = SOURCE_ROOT; };
 		ACE4332725E8AA3200489CFB /* LetterZObject.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetterZObject.m4a; sourceTree = "<group>"; };
+		ACE4333025EDBCA200489CFB /* PUSAB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PUSAB.otf; path = ../assets/fonts/PUSAB.otf; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -406,6 +408,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				ACE4333025EDBCA200489CFB /* PUSAB.otf */,
 			);
 			name = Kali;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				ACE4333125EDBCA200489CFB /* PUSAB.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
