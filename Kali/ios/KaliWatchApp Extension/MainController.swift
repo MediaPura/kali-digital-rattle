@@ -40,10 +40,25 @@ class MainController: WKInterfaceController
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
 
-    private func getSoundURLForM4aFile(soundName: String) -> URL
+    enum SoundFileType
     {
+        case mp3
+        case m4a
+    }
+
+    private func getSoundURL(soundName: String, fileType: SoundFileType) -> URL
+    {
+        var fileTypeString = String()
+
+        switch fileType {
+        case .mp3:
+            fileTypeString = "mp3"
+        case .m4a:
+            fileTypeString = "m4a"
+        }
+
         guard let soundURL = Bundle.main.url(forResource: soundName,
-                                             withExtension: "m4a") else
+                                             withExtension: fileTypeString) else
         {
             fatalError("All sounds must exist before being loaded")
         }
@@ -54,9 +69,9 @@ class MainController: WKInterfaceController
     // NOTE: (Ted)  This is purely a convenience, meant only for situations
     //              when we don't really care if the sound syncs with any
     //              given animations.
-    private func playSoundLowAudioSync(soundName: String)
+    private func playSoundLowAudioSync(soundName: String, fileType: SoundFileType = .m4a)
     {
-        let soundURL = getSoundURLForM4aFile(soundName: soundName)
+        let soundURL = getSoundURL(soundName: soundName, fileType: fileType)
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
@@ -72,7 +87,7 @@ class MainController: WKInterfaceController
 
     private func preloadSound(soundName: String)
     {
-        let soundURL = getSoundURLForM4aFile(soundName: soundName)
+        let soundURL = getSoundURL(soundName: soundName, fileType: .m4a)
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: soundURL)
@@ -214,7 +229,7 @@ class MainController: WKInterfaceController
 
         if !audioTrackPlayerInitialized
         {
-            guard let backgroundTrackURL = Bundle.main.url(forResource: "Jumpshot",
+            guard let backgroundTrackURL = Bundle.main.url(forResource: "BackgroundMusic",
                                                            withExtension: "mp3") else
             {
                 fatalError("All sounds must exist before being loaded")
@@ -549,6 +564,8 @@ class MainController: WKInterfaceController
         }
     }
 
+    private let successSoundName = "TapLetter"
+
     @IBAction func didTapWatchFace()
     {
         switch sceneState {
@@ -584,7 +601,7 @@ class MainController: WKInterfaceController
             sceneState = .successDingLetter
             let currentLetter = supportedLetters[letterIndex]
             displayStaticContent(texture: lettersHighlightedAtlas.textureNamed(currentLetter))
-            playSoundLowAudioSync(soundName: "success_ding")
+            playSoundLowAudioSync(soundName: successSoundName, fileType: .mp3)
 
         case .successDingLetter:
             playCurrentLetterObject()
@@ -593,7 +610,7 @@ class MainController: WKInterfaceController
             sceneState = .successDingLetterObject
             let currentLetter = supportedLetters[letterIndex]
             displayStaticContent(texture: letterObjectsHighlightedAtlas.textureNamed(currentLetter))
-            playSoundLowAudioSync(soundName: "success_ding")
+            playSoundLowAudioSync(soundName: successSoundName, fileType: .mp3)
 
         case .successDingLetterObject:
             congratulateIfLoadedIfNotChangeLetter()
