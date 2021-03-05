@@ -137,6 +137,7 @@ class MainController: WKInterfaceController
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
     private var letterObjectsHighlightedAtlas = SKTextureAtlas(named: "LetterObjectsHighlighted")
     private var goodJobStillsAtlas = SKTextureAtlas(named: "GoodJobStills")
+    private var miscellaneousAtlas = SKTextureAtlas(named: "Miscellaneous")
 
     private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
 
@@ -460,18 +461,19 @@ class MainController: WKInterfaceController
         playSoundLowAudioSync(soundName: "Letter\(currentLetter)Object")
     }
 
-    enum BackgroundColor
+    enum StaticContentMode
     {
-        case purple
-        case grey
+        case letterOrLetterObject
+        case goodJobScene
     }
 
-    private func displayStaticContent(texture: SKTexture, backgroundColor: BackgroundColor = .purple)
+
+    private func displayStaticContent(texture: SKTexture, staticContentMode: StaticContentMode = .letterOrLetterObject)
     {
         guard 
             let kaliScene = kaliScene,
             let kaliNode = kaliScene.kaliNode,
-            let backgroundColorNode = kaliScene.backgroundColorNode 
+            let backgroundNode = kaliScene.backgroundColorNode 
             
             else 
         {
@@ -479,18 +481,18 @@ class MainController: WKInterfaceController
             return
         }
 
-        // NOTE: (Ted)  Grey Color is 218, 218, 218.
-
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
 
-        switch backgroundColor {
-        case .purple:
-            backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
-        case .grey:
-            backgroundColorNode.color = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
-        }
+        switch staticContentMode {
+        case .letterOrLetterObject:
+            backgroundNode.texture = miscellaneousAtlas.textureNamed("Background")
+            backgroundNode.color = UIColor.clear
 
+        case .goodJobScene:
+            backgroundNode.texture = nil
+            backgroundNode.color = UIColor(red: 225/255, green: 248/255, blue: 232/255, alpha: 1)
+        }
     }
            
     private func congratulateIfLoadedIfNotChangeLetter()
@@ -548,7 +550,7 @@ class MainController: WKInterfaceController
                 // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
                 audioFilename = "Kali_KeepGoing_04"
                 displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
-                                     backgroundColor: .grey)
+                                     staticContentMode: .goodJobScene)
                 isAnimatedCongratulation = false
             } else
             {
