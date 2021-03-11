@@ -384,7 +384,7 @@ class MainController: WKInterfaceController
 
                     guard 
                         let kaliNode = kaliScene.kaliNode,
-                        let backgroundColorNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
+                        let backgroundNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
                     else
                     {
                         assertionFailure("The Kali Scene Must have all nodes hooked up in IB")
@@ -392,7 +392,7 @@ class MainController: WKInterfaceController
                     }
 
                     kaliNode.texture = weakSelf.loadingScreensAtlas.textureNamed("Loaded")
-                    kaliScene.backgroundColorNode = backgroundColorNode
+                    kaliScene.backgroundNode = backgroundNode
                 }
             }
 
@@ -453,7 +453,8 @@ class MainController: WKInterfaceController
             return
         }
 
-        kaliScene.animateKali(frames: frames)
+        kaliScene.animateKali(frames: frames, 
+                              backgroundTexture: miscellaneousAtlas.textureNamed("Background"))
     }
 
     private func clearIntroMemory()
@@ -481,7 +482,7 @@ class MainController: WKInterfaceController
         guard 
             let kaliScene = kaliScene,
             let kaliNode = kaliScene.kaliNode,
-            let backgroundNode = kaliScene.backgroundColorNode 
+            let backgroundNode = kaliScene.backgroundNode 
             
             else 
         {
@@ -491,6 +492,7 @@ class MainController: WKInterfaceController
 
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
+        kaliNode.color = UIColor.clear
 
         switch staticContentMode {
         case .letterOrLetterObject:
@@ -601,7 +603,8 @@ class MainController: WKInterfaceController
             soundPlayer.play() 
             soundIsPlaying = true
 
-            kaliScene.animateKali(frames: introFrames)
+            kaliScene.animateKali(frames: introFrames, 
+                                  backgroundTexture: miscellaneousAtlas.textureNamed("Background"))
 
         case .awaitingIntroTap:
             clearIntroMemory()
@@ -726,23 +729,17 @@ extension MainController: WKCrownDelegate
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
-    var backgroundColorNode: SKSpriteNode?
+    var backgroundNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture])
+    func animateKali(frames: [SKTexture], backgroundTexture: SKTexture)
     {
         guard 
             let kaliNode = kaliNode,
-            let backgroundColorNode = backgroundColorNode else
+            let backgroundNode = backgroundNode else
         {
             assertionFailure("Unable to find Kali Node in SpriteKit Scene")
             return
         }
-
-        // Grey Color Hex
-        // 0xDCDCDC
-
-        // RGB == 220 across the board.
-        let backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
 
         let animateAction = SKAction.animate(with: frames,
                                      timePerFrame: 1/30,
@@ -752,7 +749,8 @@ class KaliScene: SKScene
         kaliNode.removeAllActions()
         kaliNode.run(animateAction)
 
-        backgroundColorNode.color = backgroundColor
+        backgroundNode.texture = backgroundTexture 
+        backgroundNode.color = UIColor.clear
     }
 }
 
