@@ -342,13 +342,13 @@ class MainController: WKInterfaceController
 
                         if (frameNumber < 10)
                         {
-                            textureName = "Kali_Intro_05_0000\(frameNumber)"
+                            textureName = "Kali_Intro_06_0000\(frameNumber)"
                         } else if (frameNumber < 100)
                         {
-                            textureName = "Kali_Intro_05_000\(frameNumber)"
+                            textureName = "Kali_Intro_06_000\(frameNumber)"
                         } else
                         {
-                            textureName = "Kali_Intro_05_00\(frameNumber)"
+                            textureName = "Kali_Intro_06_00\(frameNumber)"
                         }
 
                         let texture = introAtlas.textureNamed(textureName)
@@ -364,10 +364,10 @@ class MainController: WKInterfaceController
 
                         if frameNumber < 100
                         {
-                            textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
+                            textureName = "Kali_LetsLearnALetter_05_000\(frameNumber)"
                         } else if frameNumber >= 100
                         {
-                            textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
+                            textureName = "Kali_LetsLearnALetter_05_00\(frameNumber)"
                         }
 
                         let texture = introAtlas.textureNamed(textureName)
@@ -527,13 +527,13 @@ class MainController: WKInterfaceController
 
                     if frameNumber < 10
                     {
-                        textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
+                        textureName = "Kali_KeepGoing_05_0000\(frameNumber)"
                     } else if frameNumber < 100
                     {
-                        textureName = "Kali_KeepGoing_04_000\(frameNumber)"
+                        textureName = "Kali_KeepGoing_05_000\(frameNumber)"
                     } else if frameNumber >= 100
                     {
-                        textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                        textureName = "Kali_KeepGoing_05_00\(frameNumber)"
                     }
 
                     frames.append(goodJobAtlas.textureNamed(textureName))
