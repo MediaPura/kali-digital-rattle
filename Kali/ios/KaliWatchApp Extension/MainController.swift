@@ -146,6 +146,13 @@ class MainController: WKInterfaceController
         super.awake(withContext: context)
         crownSequencer.delegate = self
         crownSequencer.focus()
+
+        var size: size_t = 0
+        sysctlbyname("hw.machine", nil, &size, nil, 0);
+        var machine = CChar()
+        sysctlbyname("hw.machine", &machine, &size, nil, 0);
+        let model = String(cString: &machine, encoding: String.Encoding.utf8)
+        print(model)
     }
 
     private func loadGoodJobAnimation()
