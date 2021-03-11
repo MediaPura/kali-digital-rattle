@@ -147,6 +147,7 @@ class MainController: WKInterfaceController
         crownSequencer.delegate = self
         crownSequencer.focus()
 
+        // NOTE: (Ted)  Detect Watch OS version and possibly do something about it.
         var size: size_t = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0);
         var machine = CChar()
