@@ -141,6 +141,8 @@ class MainController: WKInterfaceController
 
     private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
 
+    private let tanColor = UIColor(red: 225/255, green: 248/255, blue: 232/255, alpha: 1)
+
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
@@ -280,13 +282,12 @@ class MainController: WKInterfaceController
                 return
             }
 
-            let currentDevice = WKInterfaceDevice.current()
-            let bounds = currentDevice.screenBounds
-            let dimension = bounds.width - 16
-            kaliNode.size.height = dimension 
-            kaliNode.size.width = dimension 
+
             kaliScene.kaliNode = kaliNode 
             self.kaliScene = kaliScene
+
+            kaliScene.backgroundColor = tanColor
+            kaliScene.resize(sizeMode: .letterboxed)
 
             spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
@@ -490,6 +491,8 @@ class MainController: WKInterfaceController
             return
         }
 
+        kaliScene.resize(sizeMode: .fit)
+
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
         kaliNode.color = UIColor.clear
@@ -501,7 +504,7 @@ class MainController: WKInterfaceController
 
         case .goodJobScene:
             backgroundNode.texture = nil
-            backgroundNode.color = UIColor(red: 225/255, green: 248/255, blue: 232/255, alpha: 1)
+            backgroundNode.color = tanColor
         }
     }
            
@@ -726,13 +729,45 @@ extension MainController: WKCrownDelegate
     }
 }
 
+enum DeviceSizeMode
+{
+    case letterboxed
+    case fit
+}
+
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
     var backgroundNode: SKSpriteNode?
 
+    func resize(sizeMode: DeviceSizeMode)
+    {
+        guard let kaliNode = kaliNode else
+        {
+            assertionFailure("Unable to find Kali Node in SpriteKit Scene")
+            return
+        }
+
+        let currentDevice = WKInterfaceDevice.current()
+        let bounds = currentDevice.screenBounds
+
+        switch sizeMode {
+        case .letterboxed:
+            let dimension = bounds.width - 16
+            kaliNode.size.height = dimension 
+            kaliNode.size.width = dimension 
+        case .fit:
+            let dimension = bounds.width
+            kaliNode.size.height = dimension 
+            kaliNode.size.width = dimension 
+
+        }
+    }
+
     func animateKali(frames: [SKTexture], backgroundTexture: SKTexture)
     {
+        resize(sizeMode: .letterboxed)
+
         guard 
             let kaliNode = kaliNode,
             let backgroundNode = backgroundNode else
