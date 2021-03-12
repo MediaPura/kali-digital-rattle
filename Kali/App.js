@@ -11,7 +11,8 @@ import {
   View,
   Text,
   StatusBar,
-  Dimensions
+  Dimensions,
+  Linking
 } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -72,7 +73,8 @@ const App: () => React$Node = () => {
                 Questions or Support:
             </Text>
             <Text style = { styles.footerText }>
-                email@kalithecoder.com | kalithecoder.com
+                <Text onPress={() => Linking.openURL('mailto:email@kalithecoder.com')}>email@kalithecoder.com | </Text>  
+                <Text onPress={() => Linking.openURL('http://www.kalithecoder.com')}>kalithecoder.com</Text>
             </Text>
             <View style = { { height: 400 } }/>
         </ScrollView>

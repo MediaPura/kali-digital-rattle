@@ -137,14 +137,25 @@ class MainController: WKInterfaceController
     private var letterObjectsAtlas = SKTextureAtlas(named: "LetterObjects")
     private var letterObjectsHighlightedAtlas = SKTextureAtlas(named: "LetterObjectsHighlighted")
     private var goodJobStillsAtlas = SKTextureAtlas(named: "GoodJobStills")
+    private var miscellaneousAtlas = SKTextureAtlas(named: "Miscellaneous")
 
     private var loadingScreensAtlas = SKTextureAtlas(named: "LoadingScreen")
+
+    private let tanColor = UIColor(red: 225/255, green: 248/255, blue: 232/255, alpha: 1)
 
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
         crownSequencer.delegate = self
         crownSequencer.focus()
+
+        // NOTE: (Ted)  Detect Watch OS version and possibly do something about it.
+        var size: size_t = 0
+        sysctlbyname("hw.machine", nil, &size, nil, 0);
+        var machine = CChar()
+        sysctlbyname("hw.machine", &machine, &size, nil, 0);
+        let model = String(cString: &machine, encoding: String.Encoding.utf8)
+        print(model)
     }
 
     private func loadGoodJobAnimation()
@@ -271,13 +282,12 @@ class MainController: WKInterfaceController
                 return
             }
 
-            let currentDevice = WKInterfaceDevice.current()
-            let bounds = currentDevice.screenBounds
-            let dimension = bounds.width - 16
-            kaliNode.size.height = dimension 
-            kaliNode.size.width = dimension 
+
             kaliScene.kaliNode = kaliNode 
             self.kaliScene = kaliScene
+
+            kaliScene.backgroundColor = tanColor
+            kaliScene.resize(sizeMode: .letterboxed)
 
             spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
@@ -333,13 +343,13 @@ class MainController: WKInterfaceController
 
                         if (frameNumber < 10)
                         {
-                            textureName = "Kali_Intro_05_0000\(frameNumber)"
+                            textureName = "Kali_Intro_06_0000\(frameNumber)"
                         } else if (frameNumber < 100)
                         {
-                            textureName = "Kali_Intro_05_000\(frameNumber)"
+                            textureName = "Kali_Intro_06_000\(frameNumber)"
                         } else
                         {
-                            textureName = "Kali_Intro_05_00\(frameNumber)"
+                            textureName = "Kali_Intro_06_00\(frameNumber)"
                         }
 
                         let texture = introAtlas.textureNamed(textureName)
@@ -355,10 +365,10 @@ class MainController: WKInterfaceController
 
                         if frameNumber < 100
                         {
-                            textureName = "Kali_LetsLearnALetter_04_000\(frameNumber)"
+                            textureName = "Kali_LetsLearnALetter_05_000\(frameNumber)"
                         } else if frameNumber >= 100
                         {
-                            textureName = "Kali_LetsLearnALetter_04_00\(frameNumber)"
+                            textureName = "Kali_LetsLearnALetter_05_00\(frameNumber)"
                         }
 
                         let texture = introAtlas.textureNamed(textureName)
@@ -375,7 +385,7 @@ class MainController: WKInterfaceController
 
                     guard 
                         let kaliNode = kaliScene.kaliNode,
-                        let backgroundColorNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
+                        let backgroundNode = kaliScene.childNode(withName: "Background") as? SKSpriteNode
                     else
                     {
                         assertionFailure("The Kali Scene Must have all nodes hooked up in IB")
@@ -383,7 +393,7 @@ class MainController: WKInterfaceController
                     }
 
                     kaliNode.texture = weakSelf.loadingScreensAtlas.textureNamed("Loaded")
-                    kaliScene.backgroundColorNode = backgroundColorNode
+                    kaliScene.backgroundNode = backgroundNode
                 }
             }
 
@@ -444,7 +454,8 @@ class MainController: WKInterfaceController
             return
         }
 
-        kaliScene.animateKali(frames: frames)
+        kaliScene.animateKali(frames: frames, 
+                              backgroundTexture: miscellaneousAtlas.textureNamed("Background"))
     }
 
     private func clearIntroMemory()
@@ -460,18 +471,19 @@ class MainController: WKInterfaceController
         playSoundLowAudioSync(soundName: "Letter\(currentLetter)Object")
     }
 
-    enum BackgroundColor
+    enum StaticContentMode
     {
-        case purple
-        case grey
+        case letterOrLetterObject
+        case goodJobScene
     }
 
-    private func displayStaticContent(texture: SKTexture, backgroundColor: BackgroundColor = .purple)
+
+    private func displayStaticContent(texture: SKTexture, staticContentMode: StaticContentMode = .letterOrLetterObject)
     {
         guard 
             let kaliScene = kaliScene,
             let kaliNode = kaliScene.kaliNode,
-            let backgroundColorNode = kaliScene.backgroundColorNode 
+            let backgroundNode = kaliScene.backgroundNode 
             
             else 
         {
@@ -479,18 +491,21 @@ class MainController: WKInterfaceController
             return
         }
 
-        // NOTE: (Ted)  Grey Color is 218, 218, 218.
+        kaliScene.resize(sizeMode: .fit)
 
         kaliNode.removeAllActions()
         kaliNode.texture = texture 
+        kaliNode.color = UIColor.clear
 
-        switch backgroundColor {
-        case .purple:
-            backgroundColorNode.color = UIColor(red: 73/255, green: 48/255, blue: 105/255, alpha: 1)
-        case .grey:
-            backgroundColorNode.color = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
+        switch staticContentMode {
+        case .letterOrLetterObject:
+            backgroundNode.texture = miscellaneousAtlas.textureNamed("Background")
+            backgroundNode.color = UIColor.clear
+
+        case .goodJobScene:
+            backgroundNode.texture = nil
+            backgroundNode.color = tanColor
         }
-
     }
            
     private func congratulateIfLoadedIfNotChangeLetter()
@@ -517,13 +532,13 @@ class MainController: WKInterfaceController
 
                     if frameNumber < 10
                     {
-                        textureName = "Kali_KeepGoing_04_0000\(frameNumber)"
+                        textureName = "Kali_KeepGoing_05_0000\(frameNumber)"
                     } else if frameNumber < 100
                     {
-                        textureName = "Kali_KeepGoing_04_000\(frameNumber)"
+                        textureName = "Kali_KeepGoing_05_000\(frameNumber)"
                     } else if frameNumber >= 100
                     {
-                        textureName = "Kali_KeepGoing_04_00\(frameNumber)"
+                        textureName = "Kali_KeepGoing_05_00\(frameNumber)"
                     }
 
                     frames.append(goodJobAtlas.textureNamed(textureName))
@@ -548,7 +563,7 @@ class MainController: WKInterfaceController
                 // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
                 audioFilename = "Kali_KeepGoing_04"
                 displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
-                                     backgroundColor: .grey)
+                                     staticContentMode: .goodJobScene)
                 isAnimatedCongratulation = false
             } else
             {
@@ -591,7 +606,8 @@ class MainController: WKInterfaceController
             soundPlayer.play() 
             soundIsPlaying = true
 
-            kaliScene.animateKali(frames: introFrames)
+            kaliScene.animateKali(frames: introFrames, 
+                                  backgroundTexture: miscellaneousAtlas.textureNamed("Background"))
 
         case .awaitingIntroTap:
             clearIntroMemory()
@@ -713,26 +729,52 @@ extension MainController: WKCrownDelegate
     }
 }
 
+enum DeviceSizeMode
+{
+    case letterboxed
+    case fit
+}
+
 class KaliScene: SKScene
 {
     var kaliNode: SKSpriteNode?
-    var backgroundColorNode: SKSpriteNode?
+    var backgroundNode: SKSpriteNode?
 
-    func animateKali(frames: [SKTexture])
+    func resize(sizeMode: DeviceSizeMode)
     {
-        guard 
-            let kaliNode = kaliNode,
-            let backgroundColorNode = backgroundColorNode else
+        guard let kaliNode = kaliNode else
         {
             assertionFailure("Unable to find Kali Node in SpriteKit Scene")
             return
         }
 
-        // Grey Color Hex
-        // 0xDCDCDC
+        let currentDevice = WKInterfaceDevice.current()
+        let bounds = currentDevice.screenBounds
 
-        // RGB == 220 across the board.
-        let backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        switch sizeMode {
+        case .letterboxed:
+            let dimension = bounds.width - 16
+            kaliNode.size.height = dimension 
+            kaliNode.size.width = dimension 
+        case .fit:
+            let dimension = bounds.width
+            kaliNode.size.height = dimension 
+            kaliNode.size.width = dimension 
+
+        }
+    }
+
+    func animateKali(frames: [SKTexture], backgroundTexture: SKTexture)
+    {
+        resize(sizeMode: .letterboxed)
+
+        guard 
+            let kaliNode = kaliNode,
+            let backgroundNode = backgroundNode else
+        {
+            assertionFailure("Unable to find Kali Node in SpriteKit Scene")
+            return
+        }
 
         let animateAction = SKAction.animate(with: frames,
                                      timePerFrame: 1/30,
@@ -742,7 +784,8 @@ class KaliScene: SKScene
         kaliNode.removeAllActions()
         kaliNode.run(animateAction)
 
-        backgroundColorNode.color = backgroundColor
+        backgroundNode.texture = backgroundTexture 
+        backgroundNode.color = UIColor.clear
     }
 }
 
