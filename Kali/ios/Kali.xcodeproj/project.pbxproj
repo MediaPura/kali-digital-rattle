@@ -33,16 +33,8 @@
 		AC7E5B0825BFB141002C3FC6 /* LetterObjects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B0525BFB141002C3FC6 /* LetterObjects.atlas */; };
 		AC7E5B0925BFB141002C3FC6 /* Letters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B0625BFB141002C3FC6 /* Letters.atlas */; };
 		AC7E5B0A25BFB141002C3FC6 /* Letters.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B0625BFB141002C3FC6 /* Letters.atlas */; };
-		AC7E5B6325BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2125BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a */; };
-		AC7E5B6425BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2125BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a */; };
-		AC7E5B6725BFB15B002C3FC6 /* Kali_Intro_05.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2325BFB15B002C3FC6 /* Kali_Intro_05.m4a */; };
-		AC7E5B6825BFB15B002C3FC6 /* Kali_Intro_05.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2325BFB15B002C3FC6 /* Kali_Intro_05.m4a */; };
 		AC7E5B7525BFB15B002C3FC6 /* LetsLearnALetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2A25BFB15B002C3FC6 /* LetsLearnALetter.m4a */; };
 		AC7E5B7625BFB15B002C3FC6 /* LetsLearnALetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2A25BFB15B002C3FC6 /* LetsLearnALetter.m4a */; };
-		AC7E5B7B25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2D25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a */; };
-		AC7E5B7C25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B2D25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a */; };
-		AC7E5B9925BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B3C25BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a */; };
-		AC7E5B9A25BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5B3C25BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a */; };
 		AC7E5C3325C0D926002C3FC6 /* Kali.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C3225C0D926002C3FC6 /* Kali.atlas */; };
 		AC7E5C3425C0D926002C3FC6 /* Kali.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C3225C0D926002C3FC6 /* Kali.atlas */; };
 		AC7E5C4225C0D936002C3FC6 /* LetsLearnALetter.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C4125C0D936002C3FC6 /* LetsLearnALetter.atlas */; };
@@ -51,6 +43,14 @@
 		AC7E5C4C25C0D944002C3FC6 /* GoodJob.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C4A25C0D944002C3FC6 /* GoodJob.atlas */; };
 		AC7E5C5A25C0DDE5002C3FC6 /* GoodJobShort.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C5925C0DDE5002C3FC6 /* GoodJobShort.atlas */; };
 		AC7E5C5B25C0DDE5002C3FC6 /* GoodJobShort.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AC7E5C5925C0DDE5002C3FC6 /* GoodJobShort.atlas */; };
+		AC9FCCCE2602C1CB00CA312D /* Kali_GoodJob_07.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCCB2602C1CB00CA312D /* Kali_GoodJob_07.m4a */; };
+		AC9FCCCF2602C1CB00CA312D /* Kali_GoodJob_07.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCCB2602C1CB00CA312D /* Kali_GoodJob_07.m4a */; };
+		AC9FCCD02602C1CB00CA312D /* Kali_KeepGoing_07.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCCC2602C1CB00CA312D /* Kali_KeepGoing_07.m4a */; };
+		AC9FCCD12602C1CB00CA312D /* Kali_KeepGoing_07.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCCC2602C1CB00CA312D /* Kali_KeepGoing_07.m4a */; };
+		AC9FCCD22602C1CB00CA312D /* Kali_Intro_07.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCCD2602C1CB00CA312D /* Kali_Intro_07.m4a */; };
+		AC9FCCD32602C1CB00CA312D /* Kali_Intro_07.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCCD2602C1CB00CA312D /* Kali_Intro_07.m4a */; };
+		AC9FCCDB2602C1D500CA312D /* TapLetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCDA2602C1D500CA312D /* TapLetter.m4a */; };
+		AC9FCCDC2602C1D500CA312D /* TapLetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AC9FCCDA2602C1D500CA312D /* TapLetter.m4a */; };
 		ACA6652F2579555800724299 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA6652E2579555800724299 /* MainController.swift */; };
 		ACA6653725795B4500724299 /* Kali.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA6653625795B4500724299 /* Kali.sks */; };
 		ACBF93FD25C4EC16004C3841 /* LoadingScreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = ACBF93FC25C4EC16004C3841 /* LoadingScreen.atlas */; };
@@ -167,8 +167,6 @@
 		ACE4333925EDD4B200489CFB /* FreightSansProMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACE4333825EDD4B200489CFB /* FreightSansProMedium.otf */; };
 		ACE4334125EED2CA00489CFB /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ACE4334025EED2CA00489CFB /* BackgroundMusic.mp3 */; };
 		ACE4334225EED2CA00489CFB /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ACE4334025EED2CA00489CFB /* BackgroundMusic.mp3 */; };
-		ACE4334A25EED3D900489CFB /* TapLetter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ACE4334925EED3D900489CFB /* TapLetter.mp3 */; };
-		ACE4334B25EED3D900489CFB /* TapLetter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ACE4334925EED3D900489CFB /* TapLetter.mp3 */; };
 		D4F132E2796FD9F46A3F71FE /* libPods-Kali.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8159A333886B6A2CECA9B412 /* libPods-Kali.a */; };
 		F27059B0422C047AD8F97A8F /* libPods-Kali-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6768150A79A5C4B4BB781C1F /* libPods-Kali-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -266,15 +264,15 @@
 		AC4FB69425F1ABA80064DB7E /* Miscellaneous.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Miscellaneous.atlas; path = "KaliWatchApp Extension/Miscellaneous.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5B0525BFB141002C3FC6 /* LetterObjects.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetterObjects.atlas; path = "KaliWatchApp Extension/LetterObjects.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5B0625BFB141002C3FC6 /* Letters.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Letters.atlas; path = "KaliWatchApp Extension/Letters.atlas"; sourceTree = SOURCE_ROOT; };
-		AC7E5B2125BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_LetsLearnALetter_04.m4a; sourceTree = "<group>"; };
-		AC7E5B2325BFB15B002C3FC6 /* Kali_Intro_05.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_Intro_05.m4a; sourceTree = "<group>"; };
 		AC7E5B2A25BFB15B002C3FC6 /* LetsLearnALetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = LetsLearnALetter.m4a; sourceTree = "<group>"; };
-		AC7E5B2D25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_KeepGoing_04.m4a; sourceTree = "<group>"; };
-		AC7E5B3C25BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_GoodJob_04b.m4a; sourceTree = "<group>"; };
 		AC7E5C3225C0D926002C3FC6 /* Kali.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Kali.atlas; sourceTree = "<group>"; };
 		AC7E5C4125C0D936002C3FC6 /* LetsLearnALetter.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LetsLearnALetter.atlas; path = "KaliWatchApp Extension/LetsLearnALetter.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5C4A25C0D944002C3FC6 /* GoodJob.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJob.atlas; path = "KaliWatchApp Extension/GoodJob.atlas"; sourceTree = SOURCE_ROOT; };
 		AC7E5C5925C0DDE5002C3FC6 /* GoodJobShort.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GoodJobShort.atlas; path = "KaliWatchApp Extension/GoodJobShort.atlas"; sourceTree = SOURCE_ROOT; };
+		AC9FCCCB2602C1CB00CA312D /* Kali_GoodJob_07.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_GoodJob_07.m4a; sourceTree = "<group>"; };
+		AC9FCCCC2602C1CB00CA312D /* Kali_KeepGoing_07.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_KeepGoing_07.m4a; sourceTree = "<group>"; };
+		AC9FCCCD2602C1CB00CA312D /* Kali_Intro_07.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kali_Intro_07.m4a; sourceTree = "<group>"; };
+		AC9FCCDA2602C1D500CA312D /* TapLetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = TapLetter.m4a; sourceTree = "<group>"; };
 		ACA6652E2579555800724299 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		ACA6653625795B4500724299 /* Kali.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Kali.sks; sourceTree = "<group>"; };
 		ACBF93FC25C4EC16004C3841 /* LoadingScreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = LoadingScreen.atlas; path = "KaliWatchApp Extension/LoadingScreen.atlas"; sourceTree = SOURCE_ROOT; };
@@ -335,7 +333,6 @@
 		ACE4333025EDBCA200489CFB /* PUSAB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PUSAB.otf; path = ../assets/fonts/PUSAB.otf; sourceTree = "<group>"; };
 		ACE4333825EDD4B200489CFB /* FreightSansProMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FreightSansProMedium.otf; path = ../assets/fonts/FreightSansProMedium.otf; sourceTree = "<group>"; };
 		ACE4334025EED2CA00489CFB /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
-		ACE4334925EED3D900489CFB /* TapLetter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TapLetter.mp3; sourceTree = "<group>"; };
 		AE765ACBEF63995ABB520328 /* Pods-Kali-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Kali-tvOS/Pods-Kali-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CA5C13BF01AA2F23DF0410A9 /* Pods-Kali-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kali-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Kali-tvOSTests/Pods-Kali-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -508,15 +505,14 @@
 		AC7E5B1725BFB15B002C3FC6 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				ACE4334925EED3D900489CFB /* TapLetter.mp3 */,
+				AC9FCCCB2602C1CB00CA312D /* Kali_GoodJob_07.m4a */,
+				AC9FCCCD2602C1CB00CA312D /* Kali_Intro_07.m4a */,
+				AC9FCCCC2602C1CB00CA312D /* Kali_KeepGoing_07.m4a */,
 				ACE4334025EED2CA00489CFB /* BackgroundMusic.mp3 */,
-				AC7E5B2125BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a */,
-				AC7E5B2325BFB15B002C3FC6 /* Kali_Intro_05.m4a */,
 				AC7E5B2A25BFB15B002C3FC6 /* LetsLearnALetter.m4a */,
-				AC7E5B2D25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a */,
-				AC7E5B3C25BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a */,
 				ACE431F425E8264300489CFB /* LetterA.m4a */,
 				ACE4321C25E8264500489CFB /* LetterAObject.m4a */,
+				AC9FCCDA2602C1D500CA312D /* TapLetter.m4a */,
 				ACE4321625E8264500489CFB /* LetterB.m4a */,
 				ACE431F825E8264300489CFB /* LetterBObject.m4a */,
 				ACE431FE25E8264400489CFB /* LetterC.m4a */,
@@ -809,6 +805,7 @@
 				AC4FB69525F1ABA80064DB7E /* Miscellaneous.atlas in Resources */,
 				ACE4323B25E8264500489CFB /* LetterBObject.m4a in Resources */,
 				AC7E5C4B25C0D944002C3FC6 /* GoodJob.atlas in Resources */,
+				AC9FCCCE2602C1CB00CA312D /* Kali_GoodJob_07.m4a in Resources */,
 				AC7E5B0725BFB141002C3FC6 /* LetterObjects.atlas in Resources */,
 				ACBF93FD25C4EC16004C3841 /* LoadingScreen.atlas in Resources */,
 				ACE432E025E8288800489CFB /* LetterY.m4a in Resources */,
@@ -822,7 +819,9 @@
 				ACE4330425E8288800489CFB /* LetterJObject.m4a in Resources */,
 				ACE4331625E8288800489CFB /* LetterMObject.m4a in Resources */,
 				ACE432D625E8288800489CFB /* LetterUObject.m4a in Resources */,
+				AC9FCCD22602C1CB00CA312D /* Kali_Intro_07.m4a in Resources */,
 				ACE4331F25E82DA600489CFB /* GoodJobStills.atlas in Resources */,
+				AC9FCCD02602C1CB00CA312D /* Kali_KeepGoing_07.m4a in Resources */,
 				ACE4328325E8264500489CFB /* LetterAObject.m4a in Resources */,
 				ACE432D825E8288800489CFB /* LetterS.m4a in Resources */,
 				ACE432FE25E8288800489CFB /* LetterNObject.m4a in Resources */,
@@ -836,7 +835,6 @@
 				ACE432FA25E8288800489CFB /* LetterU.m4a in Resources */,
 				ACE4324725E8264500489CFB /* LetterC.m4a in Resources */,
 				AC10332D2568194400162259 /* Assets.xcassets in Resources */,
-				ACE4334A25EED3D900489CFB /* TapLetter.mp3 in Resources */,
 				ACE4330225E8288800489CFB /* LetterTObject.m4a in Resources */,
 				ACDCFE4025C7A63700BC4927 /* LettersHighlighted.atlas in Resources */,
 				ACE432C425E8288800489CFB /* LetterEObject.m4a in Resources */,
@@ -857,21 +855,18 @@
 				ACE4330E25E8288800489CFB /* LetterW.m4a in Resources */,
 				ACE432CE25E8288800489CFB /* LetterV.m4a in Resources */,
 				AC7E5B7525BFB15B002C3FC6 /* LetsLearnALetter.m4a in Resources */,
+				AC9FCCDB2602C1D500CA312D /* TapLetter.m4a in Resources */,
 				AC7E5C3325C0D926002C3FC6 /* Kali.atlas in Resources */,
 				ACE4327725E8264500489CFB /* LetterB.m4a in Resources */,
 				AC7E5C5A25C0DDE5002C3FC6 /* GoodJobShort.atlas in Resources */,
-				AC7E5B6725BFB15B002C3FC6 /* Kali_Intro_05.m4a in Resources */,
-				AC7E5B9925BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a in Resources */,
 				ACE432CC25E8288800489CFB /* LetterQObject.m4a in Resources */,
 				ACE432EA25E8288800489CFB /* LetterOObject.m4a in Resources */,
-				AC7E5B6325BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a in Resources */,
 				ACE4330C25E8288800489CFB /* LetterK.m4a in Resources */,
 				ACE432F625E8288800489CFB /* LetterR.m4a in Resources */,
 				AC10332B2568194300162259 /* Interface.storyboard in Resources */,
 				ACE4332825E8AA3200489CFB /* LetterZObject.m4a in Resources */,
 				ACE432E625E8288800489CFB /* LetterQ.m4a in Resources */,
 				ACE432EC25E8288800489CFB /* LetterP.m4a in Resources */,
-				AC7E5B7B25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */,
 				AC35CA0C25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas in Resources */,
 				ACE432F025E8288800489CFB /* LetterWObject.m4a in Resources */,
 				ACE432C025E8288800489CFB /* LetterZ.m4a in Resources */,
@@ -888,6 +883,7 @@
 				AC4FB69625F1ABA80064DB7E /* Miscellaneous.atlas in Resources */,
 				ACE4323C25E8264500489CFB /* LetterBObject.m4a in Resources */,
 				AC7E5C4C25C0D944002C3FC6 /* GoodJob.atlas in Resources */,
+				AC9FCCCF2602C1CB00CA312D /* Kali_GoodJob_07.m4a in Resources */,
 				AC7E5B0825BFB141002C3FC6 /* LetterObjects.atlas in Resources */,
 				ACBF93FE25C4EC16004C3841 /* LoadingScreen.atlas in Resources */,
 				ACE432E125E8288800489CFB /* LetterY.m4a in Resources */,
@@ -901,7 +897,9 @@
 				ACE4330525E8288800489CFB /* LetterJObject.m4a in Resources */,
 				ACE4331725E8288800489CFB /* LetterMObject.m4a in Resources */,
 				ACE432D725E8288800489CFB /* LetterUObject.m4a in Resources */,
+				AC9FCCD32602C1CB00CA312D /* Kali_Intro_07.m4a in Resources */,
 				ACE4332025E82DA600489CFB /* GoodJobStills.atlas in Resources */,
+				AC9FCCD12602C1CB00CA312D /* Kali_KeepGoing_07.m4a in Resources */,
 				ACE4328425E8264500489CFB /* LetterAObject.m4a in Resources */,
 				ACE432D925E8288800489CFB /* LetterS.m4a in Resources */,
 				ACE432FF25E8288800489CFB /* LetterNObject.m4a in Resources */,
@@ -915,7 +913,6 @@
 				ACE432FB25E8288800489CFB /* LetterU.m4a in Resources */,
 				ACE4324825E8264500489CFB /* LetterC.m4a in Resources */,
 				ACA6653725795B4500724299 /* Kali.sks in Resources */,
-				ACE4334B25EED3D900489CFB /* TapLetter.mp3 in Resources */,
 				ACE4330325E8288800489CFB /* LetterTObject.m4a in Resources */,
 				ACDCFE4125C7A63700BC4927 /* LettersHighlighted.atlas in Resources */,
 				ACE432C525E8288800489CFB /* LetterEObject.m4a in Resources */,
@@ -936,21 +933,18 @@
 				ACE4330F25E8288800489CFB /* LetterW.m4a in Resources */,
 				ACE432CF25E8288800489CFB /* LetterV.m4a in Resources */,
 				AC7E5B7625BFB15B002C3FC6 /* LetsLearnALetter.m4a in Resources */,
+				AC9FCCDC2602C1D500CA312D /* TapLetter.m4a in Resources */,
 				AC7E5C3425C0D926002C3FC6 /* Kali.atlas in Resources */,
 				ACE4327825E8264500489CFB /* LetterB.m4a in Resources */,
 				AC7E5C5B25C0DDE5002C3FC6 /* GoodJobShort.atlas in Resources */,
-				AC7E5B6825BFB15B002C3FC6 /* Kali_Intro_05.m4a in Resources */,
-				AC7E5B9A25BFB15B002C3FC6 /* Kali_GoodJob_04b.m4a in Resources */,
 				ACE432CD25E8288800489CFB /* LetterQObject.m4a in Resources */,
 				ACE432EB25E8288800489CFB /* LetterOObject.m4a in Resources */,
-				AC7E5B6425BFB15B002C3FC6 /* Kali_LetsLearnALetter_04.m4a in Resources */,
 				ACE4330D25E8288800489CFB /* LetterK.m4a in Resources */,
 				ACE432F725E8288800489CFB /* LetterR.m4a in Resources */,
 				AC1033412568194500162259 /* Assets.xcassets in Resources */,
 				ACE4332925E8AA3200489CFB /* LetterZObject.m4a in Resources */,
 				ACE432E725E8288800489CFB /* LetterQ.m4a in Resources */,
 				ACE432ED25E8288800489CFB /* LetterP.m4a in Resources */,
-				AC7E5B7C25BFB15B002C3FC6 /* Kali_KeepGoing_04.m4a in Resources */,
 				AC35CA0D25C898BE00CF8CF9 /* LetterObjectsHighlighted.atlas in Resources */,
 				ACE432F125E8288800489CFB /* LetterWObject.m4a in Resources */,
 				ACE432C125E8288800489CFB /* LetterZ.m4a in Resources */,
