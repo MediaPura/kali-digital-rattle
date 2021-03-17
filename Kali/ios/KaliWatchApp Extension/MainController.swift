@@ -317,9 +317,9 @@ class MainController: WKInterfaceController
 
             switch introType {
             case .kali:
-                introAudioFilename = "Kali_Intro_05"
+                introAudioFilename = "Kali_Intro_07"
             case .letsLearnALetter:
-                introAudioFilename = "Kali_LetsLearnALetter_04"
+                introAudioFilename = "LetsLearnALetter"
             }
 
             preloadSound(soundName: introAudioFilename)
@@ -544,7 +544,7 @@ class MainController: WKInterfaceController
                     frames.append(goodJobAtlas.textureNamed(textureName))
                 }
 
-                audioFilename = "Kali_KeepGoing_04"
+                audioFilename = "Kali_KeepGoing_07"
 
             case .short:
 
@@ -553,7 +553,7 @@ class MainController: WKInterfaceController
                     frames.append(goodJobAtlas.textureNamed("\(frameNumber)"))
                 }
 
-                audioFilename = "Kali_GoodJob_04b"
+                audioFilename = "Kali_GoodJob_07"
             }
 
             let randomNumber = Int.random(in: 0...6)
@@ -561,7 +561,7 @@ class MainController: WKInterfaceController
             if randomNumber < 6
             {
                 // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
-                audioFilename = "Kali_KeepGoing_04"
+                audioFilename = "Kali_KeepGoing_07"
                 displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
                                      staticContentMode: .goodJobScene)
                 isAnimatedCongratulation = false
@@ -617,7 +617,7 @@ class MainController: WKInterfaceController
             sceneState = .successDingLetter
             let currentLetter = supportedLetters[letterIndex]
             displayStaticContent(texture: lettersHighlightedAtlas.textureNamed(currentLetter))
-            playSoundLowAudioSync(soundName: successSoundName, fileType: .mp3)
+            playSoundLowAudioSync(soundName: successSoundName, fileType: .m4a)
 
         case .successDingLetter:
             playCurrentLetterObject()
@@ -626,7 +626,7 @@ class MainController: WKInterfaceController
             sceneState = .successDingLetterObject
             let currentLetter = supportedLetters[letterIndex]
             displayStaticContent(texture: letterObjectsHighlightedAtlas.textureNamed(currentLetter))
-            playSoundLowAudioSync(soundName: successSoundName, fileType: .mp3)
+            playSoundLowAudioSync(soundName: successSoundName, fileType: .m4a)
 
         case .successDingLetterObject:
             congratulateIfLoadedIfNotChangeLetter()
