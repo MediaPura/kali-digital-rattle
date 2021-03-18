@@ -27,6 +27,7 @@ class MainController: WKInterfaceController
         case successDingLetterObject
         case awaitingLetterObjectTap
         case goodJob
+        case awaitingGoodJobTap
     }
 
     private var sceneState: SceneState = .loadingIntro
@@ -421,10 +422,10 @@ class MainController: WKInterfaceController
                 weakSelf.playSoundLowAudioSync(soundName: "Letter\(weakSelf.currentLetter)Object")
 
             case .successDingLetterObject:
-                weakSelf.congratulateIfLoadedIfNotChangeLetter()
+                weakSelf.congratulate()
 
-            case .goodJob:
-                weakSelf.playCurrentLetter()
+            case .goodJob, .awaitingGoodJobTap:
+                weakSelf.changeLetterAndPlayIt()
 
             default: break
             }
@@ -477,7 +478,6 @@ class MainController: WKInterfaceController
         case goodJobScene
     }
 
-
     private func displayStaticContent(texture: SKTexture, staticContentMode: StaticContentMode = .letterOrLetterObject)
     {
         guard 
@@ -508,8 +508,14 @@ class MainController: WKInterfaceController
         }
     }
            
-    private func congratulateIfLoadedIfNotChangeLetter()
+    private func congratulate()
     {
+        sceneState = .goodJob
+
+        var frames: [SKTexture] = []
+        var randomNumber: Int = 0
+        var audioFilename = String()
+
         if goodJobAtlasLoaded
         {
             guard let goodJobAtlas = goodJobAtlas else
@@ -517,11 +523,6 @@ class MainController: WKInterfaceController
                 assertionFailure("Good job atlas must be loaded and set before it is used")
                 return
             }
-
-            sceneState = .goodJob
-
-            var frames: [SKTexture] = []
-            var audioFilename = String()
 
             switch congratulationType {
             case .long:
@@ -556,27 +557,27 @@ class MainController: WKInterfaceController
                 audioFilename = "Kali_GoodJob_07"
             }
 
-            let randomNumber = Int.random(in: 0...6)
-
-            if randomNumber < 6
-            {
-                // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
-                audioFilename = "Kali_KeepGoing_07"
-                displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
-                                     staticContentMode: .goodJobScene)
-                isAnimatedCongratulation = false
-            } else
-            {
-                playAnimationInSpriteKitScene(frames: frames)
-                isAnimatedCongratulation = true
-            }
-
-            playSoundLowAudioSync(soundName: audioFilename)
-
+            randomNumber = Int.random(in: 0...6)
         } else
         {
-            changeLetterAndPlayIt()
+            randomNumber = Int.random(in: 0...5)
         }
+
+
+        if randomNumber < 6
+        {
+            // NOTE: (Ted)  Use any of the still images. Make that a tap to keep going.
+            audioFilename = "Kali_KeepGoing_07"
+            displayStaticContent(texture: goodJobStillsAtlas.textureNamed("\(randomNumber)"), 
+                                 staticContentMode: .goodJobScene)
+            isAnimatedCongratulation = false
+        } else
+        {
+            playAnimationInSpriteKitScene(frames: frames)
+            isAnimatedCongratulation = true
+        }
+
+        playSoundLowAudioSync(soundName: audioFilename)
     }
 
     private let successSoundName = "TapLetter"
@@ -629,9 +630,9 @@ class MainController: WKInterfaceController
             playSoundLowAudioSync(soundName: successSoundName, fileType: .m4a)
 
         case .successDingLetterObject:
-            congratulateIfLoadedIfNotChangeLetter()
+            congratulate()
 
-        case .goodJob:
+        case .awaitingGoodJobTap:
             changeLetterAndPlayIt()
 
         default: break
@@ -688,17 +689,21 @@ extension MainController: AVAudioPlayerDelegate
             lessonCount += 1
 
         case .successDingLetterObject:
-            congratulateIfLoadedIfNotChangeLetter()
+            congratulate()
 
         case .goodJob:
 
             if isAnimatedCongratulation
             {
                 switch congratulationType {
-                case .long: break
+                case .long: 
+                    sceneState = .awaitingGoodJobTap
                 case .short:
                     changeLetterAndPlayIt()
                 }
+            } else
+            {
+                sceneState = .awaitingGoodJobTap
             }
 
             isAnimatedCongratulation = false
@@ -714,7 +719,8 @@ extension MainController: WKCrownDelegate
     {
         guard 
             let kaliScene = kaliScene,
-            let kaliNode = kaliScene.kaliNode else
+            let kaliNode = kaliScene.kaliNode,
+            let backgroundNode = kaliScene.backgroundNode else
         {
             return
         }
@@ -725,6 +731,7 @@ extension MainController: WKCrownDelegate
         {
             crownRotationEventCount = 0
             kaliNode.zRotation = kaliNode.zRotation + 3.14159
+            backgroundNode.zRotation = backgroundNode.zRotation + 3.14159
         }
     }
 }
