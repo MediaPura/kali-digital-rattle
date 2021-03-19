@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.tanooki.kali</string>
+	<string>com.mediapura.kali</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

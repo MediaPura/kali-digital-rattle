@@ -715,7 +715,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = SHR79YU44T;
+						DevelopmentTeam = 292DCRAX72;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -729,12 +729,12 @@
 					};
 					AC1033262568194300162259 = {
 						CreatedOnToolsVersion = 12.2;
-						DevelopmentTeam = SHR79YU44T;
+						DevelopmentTeam = 292DCRAX72;
 						ProvisioningStyle = Automatic;
 					};
 					AC1033322568194400162259 = {
 						CreatedOnToolsVersion = 12.2;
-						DevelopmentTeam = SHR79YU44T;
+						DevelopmentTeam = 292DCRAX72;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1279,16 +1279,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SHR79YU44T;
+				DEVELOPMENT_TEAM = 292DCRAX72;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Kali/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediapura.kali;
 				PRODUCT_NAME = Kali;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1303,15 +1304,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SHR79YU44T;
+				DEVELOPMENT_TEAM = 292DCRAX72;
 				INFOPLIST_FILE = Kali/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediapura.kali;
 				PRODUCT_NAME = Kali;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1556,14 +1558,14 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = SHR79YU44T;
+				DEVELOPMENT_TEAM = 292DCRAX72;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = KaliWatchApp_Extension;
 				INFOPLIST_FILE = KaliWatchApp/Info.plist;
 				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediapura.kali.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1591,13 +1593,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SHR79YU44T;
+				DEVELOPMENT_TEAM = 292DCRAX72;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = KaliWatchApp_Extension;
 				INFOPLIST_FILE = KaliWatchApp/Info.plist;
 				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediapura.kali.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1621,14 +1623,14 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = SHR79YU44T;
+				DEVELOPMENT_TEAM = 292DCRAX72;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "KaliWatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediapura.kali.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1654,13 +1656,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SHR79YU44T;
+				DEVELOPMENT_TEAM = 292DCRAX72;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "KaliWatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tanooki.kali.watch.extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediapura.kali.watch.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
