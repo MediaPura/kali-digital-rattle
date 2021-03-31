@@ -40,7 +40,7 @@ class MainController: WKInterfaceController
 
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
-
+    
     enum SoundFileType
     {
         case mp3
@@ -422,7 +422,7 @@ class MainController: WKInterfaceController
                 weakSelf.playSoundLowAudioSync(soundName: "Letter\(weakSelf.currentLetter)Object")
 
             case .successDingLetterObject:
-                weakSelf.congratulate()
+                weakSelf.congratulateIfThirdSceneOtherwiseChangeLetter()
 
             case .goodJob, .awaitingGoodJobTap:
                 weakSelf.changeLetterAndPlayIt()
@@ -507,7 +507,18 @@ class MainController: WKInterfaceController
             backgroundNode.color = tanColor
         }
     }
-           
+    
+    private func congratulateIfThirdSceneOtherwiseChangeLetter()
+    {
+        if lessonCount == 2
+        {
+            congratulate()
+        } else
+        {
+            changeLetterAndPlayIt()
+        }
+    }
+
     private func congratulate()
     {
         sceneState = .goodJob
@@ -630,7 +641,7 @@ class MainController: WKInterfaceController
             playSoundLowAudioSync(soundName: successSoundName, fileType: .m4a)
 
         case .successDingLetterObject:
-            congratulate()
+            congratulateIfThirdSceneOtherwiseChangeLetter()
 
         case .awaitingGoodJobTap:
             changeLetterAndPlayIt()
@@ -688,8 +699,13 @@ extension MainController: AVAudioPlayerDelegate
 
             lessonCount += 1
 
+            if lessonCount > 2 && goodJobAtlasLoaded
+            {
+                lessonCount = 0
+            }
+
         case .successDingLetterObject:
-            congratulate()
+            congratulateIfThirdSceneOtherwiseChangeLetter()
 
         case .goodJob:
 
