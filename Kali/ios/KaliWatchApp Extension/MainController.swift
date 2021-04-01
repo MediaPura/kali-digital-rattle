@@ -40,7 +40,9 @@ class MainController: WKInterfaceController
 
     private var soundPlayer: AVAudioPlayer?
     private var soundIsPlaying: Bool = false
-    
+
+    private var isAppleWatch3 = false
+
     enum SoundFileType
     {
         case mp3
@@ -155,8 +157,17 @@ class MainController: WKInterfaceController
         sysctlbyname("hw.machine", nil, &size, nil, 0);
         var machine = CChar()
         sysctlbyname("hw.machine", &machine, &size, nil, 0);
-        let model = String(cString: &machine, encoding: String.Encoding.utf8)
-        print(model)
+        
+        if let model = String(cString: &machine, encoding: String.Encoding.utf8)
+        {
+            let modelStart = model.prefix(6) 
+
+            // NOTE: The string should start with Watch3
+            if modelStart == "Watch3"
+            {
+                isAppleWatch3 = true
+            } 
+        }
     }
 
     private func loadGoodJobAnimation()
@@ -277,12 +288,12 @@ class MainController: WKInterfaceController
             guard 
                 let spriteKitScene = spriteKitScene,
                 let kaliScene = KaliScene(fileNamed: "Kali.sks"),
-                let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode else
+                let kaliNode = kaliScene.childNode(withName: "Kali") as? SKSpriteNode,
+                let notSupportedNode = kaliScene.childNode(withName: "NotSupported") else
             {
                 assertionFailure("Expected to load Kali Scene")
                 return
             }
-
 
             kaliScene.kaliNode = kaliNode 
             self.kaliScene = kaliScene
@@ -292,6 +303,15 @@ class MainController: WKInterfaceController
 
             spriteKitScene.preferredFramesPerSecond = 30
             spriteKitScene.presentScene(kaliScene)
+
+            guard !isAppleWatch3 else
+            {
+                kaliNode.isHidden = true
+                notSupportedNode.isHidden = false
+                return
+            } 
+
+            notSupportedNode.isHidden = true
 
             let defaults = UserDefaults.standard
             let firstLaunchKey = "FirstLaunch"
@@ -400,6 +420,8 @@ class MainController: WKInterfaceController
 
         default: break
         }
+
+        guard !isAppleWatch3 else { return }
 
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] (timer) in
             guard 
@@ -595,6 +617,8 @@ class MainController: WKInterfaceController
 
     @IBAction func didTapWatchFace()
     {
+        guard !isAppleWatch3 else { return }
+
         switch sceneState {
         
         case .intro:
@@ -669,7 +693,12 @@ extension MainController: AVAudioPlayerDelegate
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool)
     {
         // NOTE: (Ted)  Don't continue unless it has played successfully.
-        guard flag else { return }
+        guard 
+            flag, 
+            !isAppleWatch3 else 
+        { 
+            return 
+        }
 
         switch sceneState {
 
