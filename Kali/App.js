@@ -73,7 +73,7 @@ const App: () => React$Node = () => {
                 Questions or Support:
             </Text>
             <Text style = { styles.footerText }>
-                <Text onPress={() => Linking.openURL('mailto:email@kalithecoder.com')}>email@kalithecoder.com | </Text>  
+                <Text onPress={() => Linking.openURL('mailto:info@kalithecoder.com')}>info@kalithecoder.com | </Text>  
                 <Text onPress={() => Linking.openURL('http://www.kalithecoder.com')}>kalithecoder.com</Text>
             </Text>
             <View style = { { height: 400 } }/>
